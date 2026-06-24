@@ -400,31 +400,45 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: .85rem;
 }
 
-/* Setas de navegação minimalistas */
+/* Setas de navegação — Glassmorphism luxury */
 .hero__arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,.28);
-  background: rgba(0,0,0,.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--white);
+  /* Glassmorphism: vidro fosco claro — legível sobre qualquer imagem */
+  border: 1.5px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .10);
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  color: #ffffff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: background .25s ease, border-color .25s ease;
+  /* Opacidade reduzida em repouso — não compete com o conteúdo */
+  opacity: .40;
+  transition:
+    background    .30s ease,
+    border-color  .30s ease,
+    box-shadow    .30s ease,
+    opacity       .30s ease,
+    transform     .30s ease;
 }
 
 .hero__arrow:hover {
-  background: rgba(0,0,0,.5);
-  border-color: rgba(255,255,255,.6);
+  background: rgba(255, 255, 255, .18);
+  border-color: var(--orange);
+  /* Halo laranja sutil — identidade da marca no hover */
+  box-shadow:
+    0 0 0 1px rgba(240, 120, 0, .22),
+    0 6px 28px rgba(0, 0, 0, .45);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.06);
 }
 
 .hero__arrow--prev { left: clamp(1rem, 3vw, 2.5rem); }
@@ -1611,6 +1625,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ----------------------------------------------------------
    16. RESPONSIVO — Tablet ≤ 1024px
 ---------------------------------------------------------- */
+/* ----------------------------------------------------------
+   RESPONSIVO — Notebook ≤ 1280px
+   Evita colisão de itens de nav em telas 13"–14"
+   (1280×800, 1366×768, 1440×900)
+---------------------------------------------------------- */
+@media (max-width: 1280px) {
+
+  /* Header compacto: reduz gap interno e logo */
+  .header__inner       { gap: 1rem; }
+  .header__logo-img    { height: 42px; }
+
+  /* Nav: fonte e gap menores para caber os 8 itens */
+  .header__nav-list    { gap: 1rem; }
+  .nav-link            { font-size: .72rem; }
+
+  /* Botões dentro da nav — padding mais compacto */
+  .header__nav-list .btn {
+    padding:   .52rem 1rem;
+    font-size: .64rem;
+  }
+
+  /* Hero: botões lado a lado com gap menor */
+  .hero__actions       { gap: .75rem; }
+  .hero__actions .btn--lg {
+    padding: .85rem 1.65rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVO — Tablet/Notebook pequeno ≤ 1024px
+---------------------------------------------------------- */
 @media (max-width: 1024px) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
@@ -1652,19 +1697,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ----------------------------------------------------------
-   17. RESPONSIVO — Mobile ≤ 768px
+   RESPONSIVO — Tablet/Notebook ≤ 960px
+   Aciona o drawer de navegação antes de chegar ao mobile,
+   evitando colisão de itens no header em telas intermediárias
 ---------------------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 960px) {
 
-  /* Nav drawer */
   .header__burger { display: flex; }
 
   .header__nav {
     position: fixed;
     inset: 0;
-    background: rgba(20,20,20,.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(12, 12, 12, .97);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1683,8 +1729,22 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   .nav-link {
     font-size: 1rem;
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, .8);
   }
+
+  /* Restaura botões de nav ao tamanho padrão dentro do drawer */
+  .header__nav-list .btn {
+    padding:   .8rem 1.9rem;
+    font-size: .72rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   17. RESPONSIVO — Mobile ≤ 768px
+---------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Nav drawer — regras já declaradas em ≤ 960px acima */
 
   /* Cards overlay sempre visível no mobile */
   .amb-card__overlay { opacity: 1; }
