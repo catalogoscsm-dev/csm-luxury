@@ -53,13 +53,13 @@
         <ul class="header__nav-list">
           <li><a href="#historia" class="nav-link">Nossa História</a></li>
           <li><a href="#ambientes" class="nav-link">Ambientes</a></li>
-          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#produtos" class="nav-link">Produtos</a></li>
           <li><a href="#showroom" class="nav-link">Showroom</a></li>
           <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
           <li><a href="#arquitetos" class="nav-link">Arquitetos</a></li>
           <li>
             <button type="button" class="btn btn--outline btn--sm" onclick="openModal('modal-arquiteto')">
-              Área do Arquiteto
+              Cadastre-se / Login
             </button>
           </li>
           <li>
@@ -73,21 +73,50 @@
         </ul>
       </nav>
 
+      <!-- Alternador Dark / Light Mode -->
+      <button class="header__theme-toggle" id="theme-toggle" aria-label="Ativar modo escuro">
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1"  x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1"  y1="12" x2="3"  y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+          <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+
     </div>
   </header>
 
   <main>
 
     <!-- ============================================================
-         HERO
+         HERO — Carrossel Premium
     ============================================================ -->
     <section class="hero" id="inicio" aria-label="Apresentação CSM">
-      <!-- Fundo: substituir pelo arquivo da foto do showroom -->
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__bg-img" style="background-image: url('assets/hero-showroom.jpg');"></div>
+
+      <div class="hero__slider" aria-hidden="true">
+        <div class="hero__slide hero__slide--active" style="background-image: url('apresentacao/mesa-centro-liu.webp');"></div>
+        <div class="hero__slide" style="background-image: url('apresentacao/mesa-zaki7.webp');"></div>
+        <div class="hero__slide" style="background-image: url('apresentacao/noa0c.webp');"></div>
+        <div class="hero__slide" style="background-image: url('apresentacao/poltrona-ada6.jpg');"></div>
+        <div class="hero__slide" style="background-image: url('apresentacao/poltrona-shell4.webp');"></div>
+        <div class="hero__slide" style="background-image: url('apresentacao/puff5.webp');"></div>
         <div class="hero__bg-overlay"></div>
       </div>
 
+      <!-- Seta esquerda -->
+      <button class="hero__arrow hero__arrow--prev" aria-label="Slide anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <!-- Conteúdo sobreposto -->
       <div class="container hero__body">
         <p class="eyebrow">Campinas Shopping Móveis</p>
         <h1 class="hero__headline">
@@ -109,10 +138,21 @@
         </div>
       </div>
 
-      <div class="hero__scroll" aria-hidden="true">
-        <div class="hero__scroll-line"></div>
-        <span class="hero__scroll-text">Role para baixo</span>
+      <!-- Seta direita -->
+      <button class="hero__arrow hero__arrow--next" aria-label="Próximo slide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Dots de navegação -->
+      <div class="hero__dots" role="group" aria-label="Navegação do carrossel">
+        <button class="hero__dot hero__dot--active" aria-label="Slide 1 de 6" data-slide="0"></button>
+        <button class="hero__dot" aria-label="Slide 2 de 6" data-slide="1"></button>
+        <button class="hero__dot" aria-label="Slide 3 de 6" data-slide="2"></button>
+        <button class="hero__dot" aria-label="Slide 4 de 6" data-slide="3"></button>
+        <button class="hero__dot" aria-label="Slide 5 de 6" data-slide="4"></button>
+        <button class="hero__dot" aria-label="Slide 6 de 6" data-slide="5"></button>
       </div>
+
     </section>
 
     <!-- ============================================================
@@ -271,24 +311,25 @@
     </section>
 
     <!-- ============================================================
-         CATÁLOGO DE PRODUTOS
+         PRODUTOS
     ============================================================ -->
-    <section class="catalogo" id="catalogo" aria-label="Catálogo de sofás e poltronas CSM Decor">
+    <section class="catalogo" id="produtos" aria-label="Produtos CSM Decor — Sofás, Poltronas e Ambientes">
       <div class="container">
-        <p class="eyebrow">Catálogo</p>
+        <p class="eyebrow">Produtos</p>
         <h2 class="section-title">
-          Sofás e poltronas<br /><em>que definem ambientes</em>
+          Nossa coleção<br /><em>completa</em>
         </h2>
         <p class="section-sub">
-          Cada peça nasce da escolha rigorosa de materiais, estrutura e acabamento.
-          Explore a coleção completa e solicite seu orçamento direto pelo WhatsApp.
+          Sofás, poltronas e ambientes montados — cada peça escolhida com critério
+          para elevar o nível de qualquer projeto. Solicite seu orçamento via WhatsApp.
         </p>
       </div>
 
-      <div class="catalogo__filters" role="tablist" aria-label="Filtrar catálogo por tipo">
+      <div class="catalogo__filters" role="tablist" aria-label="Filtrar produtos por tipo">
         <button class="filter active" role="tab" aria-selected="true"  data-cat="all">Todos</button>
         <button class="filter"        role="tab" aria-selected="false" data-cat="sofa">Sofás</button>
         <button class="filter"        role="tab" aria-selected="false" data-cat="poltrona">Poltronas</button>
+        <button class="filter"        role="tab" aria-selected="false" data-cat="ambiente">Ambientes</button>
       </div>
 
       <div class="catalogo__grid" id="catalogo-grid">
@@ -608,6 +649,56 @@
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
               Ver Produto
             </button>
+          </div>
+        </article>
+
+
+
+        <!-- ── Ambientes: Living Contemporâneo ── -->
+        <article class="cat-card" data-tipo="ambiente" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20ambiente%20Living%20Contemporâneo.%20Pode%20me%20ajudar%3F">
+          <figure class="cat-card__fig cat-card__fig--bg" data-nome="Living Contemporâneo" style="background-image: url('assets/living-01.jpg');">
+            <span class="cat-card__badge cat-card__badge--ambiente">Ambiente</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Living Contemporâneo</h3>
+            <p class="cat-card__tagline">Sala · Composição completa · Alto padrão</p>
+            <a href="#ambientes" class="btn btn--primary btn--sm cat-card__cta">Ver no Showroom</a>
+          </div>
+        </article>
+
+        <!-- ── Ambientes: Jantar Imperial ── -->
+        <article class="cat-card" data-tipo="ambiente" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20ambiente%20Jantar%20Imperial.%20Pode%20me%20ajudar%3F">
+          <figure class="cat-card__fig cat-card__fig--bg" data-nome="Jantar Imperial" style="background-image: url('assets/jantar-01.jpg');">
+            <span class="cat-card__badge cat-card__badge--ambiente">Ambiente</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Jantar Imperial</h3>
+            <p class="cat-card__tagline">Sala de Jantar · Mesa e cadeiras · Completo</p>
+            <a href="#ambientes" class="btn btn--primary btn--sm cat-card__cta">Ver no Showroom</a>
+          </div>
+        </article>
+
+        <!-- ── Ambientes: Suíte Master ── -->
+        <article class="cat-card" data-tipo="ambiente" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20ambiente%20Su%C3%ADte%20Master.%20Pode%20me%20ajudar%3F">
+          <figure class="cat-card__fig cat-card__fig--bg" data-nome="Suíte Master Serena" style="background-image: url('assets/quarto-01.jpg');">
+            <span class="cat-card__badge cat-card__badge--ambiente">Ambiente</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Suíte Master Serena</h3>
+            <p class="cat-card__tagline">Quarto · Composição exclusiva · Alto padrão</p>
+            <a href="#ambientes" class="btn btn--primary btn--sm cat-card__cta">Ver no Showroom</a>
+          </div>
+        </article>
+
+        <!-- ── Ambientes: Área Gourmet ── -->
+        <article class="cat-card" data-tipo="ambiente" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20ambiente%20%C3%81rea%20Gourmet.%20Pode%20me%20ajudar%3F">
+          <figure class="cat-card__fig cat-card__fig--bg" data-nome="Área Gourmet Premium" style="background-image: url('assets/externo-01.jpg');">
+            <span class="cat-card__badge cat-card__badge--ambiente">Ambiente</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Área Gourmet Premium</h3>
+            <p class="cat-card__tagline">Externo · Varanda · Composição completa</p>
+            <a href="#ambientes" class="btn btn--primary btn--sm cat-card__cta">Ver no Showroom</a>
           </div>
         </article>
 
@@ -931,47 +1022,132 @@
     </div>
   </div>
 
-  <!-- ── Modal: Área do Arquiteto ── -->
+  <!-- ── Modal: Cadastro / Login ── -->
   <div class="modal-overlay" id="modal-arquiteto" role="dialog" aria-modal="true" aria-labelledby="modal-arq-title" hidden>
     <div class="modal modal--sm" role="document">
       <button class="modal__close" aria-label="Fechar" onclick="closeModal('modal-arquiteto')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
+
+      <!-- ── Estado: formulários ── -->
       <div id="arq-form-wrap">
+
         <div class="modal__arq-header">
           <img src="../csm logo.png" alt="CSM Decor" class="modal__arq-logo" />
-          <h2 id="modal-arq-title" class="modal__arq-title">Área do Arquiteto</h2>
-          <p class="modal__arq-sub">Acesso exclusivo para profissionais de arquitetura e design de interiores.</p>
+          <h2 id="modal-arq-title" class="modal__arq-title">Bem-vindo à CSM</h2>
+          <p class="modal__arq-sub">Crie sua conta para acompanhar projetos e receber novidades exclusivas.</p>
         </div>
+
+        <!-- Google Login -->
         <button class="btn-google" onclick="simulateGoogleLogin()">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
           Entrar com o Google
         </button>
-        <div class="modal__divider"><span>ou cadastre-se como arquiteto</span></div>
-        <form class="arq-form" onsubmit="submitArqForm(event)">
-          <div class="arq-form__row">
-            <label class="arq-form__label" for="arq-nome">Nome completo</label>
-            <input class="arq-form__input" type="text" id="arq-nome" name="nome" placeholder="Seu nome" required />
+
+        <div class="modal__divider"><span>ou complete seu cadastro</span></div>
+
+        <!-- Área de formulários (alterna conforme a aba ativa) -->
+        <div id="modal-form-area">
+
+          <!-- Padrão: Cliente comum -->
+          <div id="form-cliente-wrap">
+            <form class="arq-form" onsubmit="submitArqForm(event)">
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="cli-nome">Nome completo</label>
+                <input class="arq-form__input" type="text" id="cli-nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="cli-email">E-mail</label>
+                <input class="arq-form__input" type="email" id="cli-email" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="cli-tel">Telefone / WhatsApp</label>
+                <input class="arq-form__input" type="tel" id="cli-tel" name="telefone" placeholder="(19) 9 0000-0000" />
+              </div>
+              <button type="submit" class="btn btn--primary arq-form__submit">Criar minha conta</button>
+            </form>
           </div>
-          <div class="arq-form__row">
-            <label class="arq-form__label" for="arq-email">E-mail profissional</label>
-            <input class="arq-form__input" type="email" id="arq-email" name="email" placeholder="seu@email.com" required />
+
+          <!-- Aba: Arquiteto Parceiro -->
+          <div id="form-arq-wrap" hidden>
+            <form class="arq-form" onsubmit="submitArqForm(event)">
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="arq-nome">Nome completo</label>
+                <input class="arq-form__input" type="text" id="arq-nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="arq-email">E-mail profissional</label>
+                <input class="arq-form__input" type="email" id="arq-email" name="email" placeholder="seu@email.com" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="arq-cau">Registro CAU / CFT</label>
+                <input class="arq-form__input" type="text" id="arq-cau" name="cau" placeholder="CAU A 000000-0" />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="arq-empresa">Escritório / Empresa</label>
+                <input class="arq-form__input" type="text" id="arq-empresa" name="empresa" placeholder="Nome do escritório" />
+              </div>
+              <button type="submit" class="btn btn--primary arq-form__submit">Solicitar acesso profissional</button>
+            </form>
           </div>
-          <div class="arq-form__row">
-            <label class="arq-form__label" for="arq-cau">Registro CAU / CFT</label>
-            <input class="arq-form__input" type="text" id="arq-cau" name="cau" placeholder="CAU A 000000-0" />
+
+          <!-- Aba: Fornecedor -->
+          <div id="form-forn-wrap" hidden>
+            <form class="arq-form" onsubmit="submitArqForm(event)">
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="forn-empresa">Empresa / Fábrica</label>
+                <input class="arq-form__input" type="text" id="forn-empresa" name="empresa" placeholder="Nome da empresa" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="forn-cnpj">CNPJ</label>
+                <input class="arq-form__input" type="text" id="forn-cnpj" name="cnpj" placeholder="00.000.000/0000-00" />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="forn-segmento">Segmento</label>
+                <select class="arq-form__input arq-form__select" id="forn-segmento" name="segmento">
+                  <option value="" disabled selected>Selecione o segmento</option>
+                  <option value="estofados">Estofados</option>
+                  <option value="iluminacao">Iluminação</option>
+                  <option value="planejados">Planejados</option>
+                  <option value="decoracao">Decoração</option>
+                  <option value="tapetes">Tapetes e Revestimentos</option>
+                  <option value="outros">Outros</option>
+                </select>
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="forn-email">E-mail comercial</label>
+                <input class="arq-form__input" type="email" id="forn-email" name="email" placeholder="comercial@empresa.com.br" required />
+              </div>
+              <div class="arq-form__row">
+                <label class="arq-form__label" for="forn-tel">Telefone</label>
+                <input class="arq-form__input" type="tel" id="forn-tel" name="telefone" placeholder="(19) 9 0000-0000" />
+              </div>
+              <button type="submit" class="btn btn--primary arq-form__submit">Solicitar parceria como fornecedor</button>
+            </form>
           </div>
-          <div class="arq-form__row">
-            <label class="arq-form__label" for="arq-empresa">Escritório / Empresa</label>
-            <input class="arq-form__input" type="text" id="arq-empresa" name="empresa" placeholder="Nome do escritório" />
+
+        </div><!-- /modal-form-area -->
+
+        <!-- Abas de acesso profissional -->
+        <div class="modal__pro-section">
+          <div class="modal__pro-header"><span>Sou Profissional</span></div>
+          <div class="modal__pro-tabs">
+            <button type="button" class="pro-tab" id="tab-arq" data-target="arq" onclick="switchProTab(this)">
+              Sou Arquiteto<br />Parceiro
+            </button>
+            <button type="button" class="pro-tab" id="tab-forn" data-target="forn" onclick="switchProTab(this)">
+              Seja um<br />Fornecedor
+            </button>
           </div>
-          <button type="submit" class="btn btn--primary arq-form__submit">Solicitar acesso profissional</button>
-        </form>
-      </div>
+        </div>
+
+      </div><!-- /arq-form-wrap -->
+
+      <!-- ── Estado: sucesso ── -->
       <div id="arq-success" hidden class="arq-success">
         <div class="arq-success__icon" aria-hidden="true">✓</div>
-        <h3 class="arq-success__title">Solicitação enviada!</h3>
-        <p class="arq-success__text">Nossa equipe entrará em contato em até 24 horas para confirmar seu acesso à Área do Arquiteto.</p>
+        <h3 class="arq-success__title">Cadastro realizado!</h3>
+        <p class="arq-success__text">Nossa equipe entrará em contato em até 24 horas para confirmar seu acesso.</p>
         <button class="btn btn--outline" onclick="closeModal('modal-arquiteto')" style="margin-top:1.5rem;">Fechar</button>
       </div>
     </div>
@@ -1086,7 +1262,7 @@
     });
 
     // ── Scroll reveal ────────────────────────────────────────────
-    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .amb-card');
+    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .amb-card, .cat-card');
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
@@ -1106,7 +1282,11 @@
       if (id === 'modal-arquiteto') {
         document.getElementById('arq-form-wrap').hidden = false;
         document.getElementById('arq-success').hidden = true;
-        document.querySelector('.arq-form').reset();
+        document.querySelectorAll('.pro-tab').forEach(t => t.classList.remove('pro-tab--active'));
+        document.getElementById('form-cliente-wrap').hidden = false;
+        document.getElementById('form-arq-wrap').hidden     = true;
+        document.getElementById('form-forn-wrap').hidden    = true;
+        document.querySelectorAll('#modal-arquiteto .arq-form').forEach(f => f.reset());
       }
     }
 
@@ -1180,6 +1360,23 @@
       document.getElementById('arq-success').hidden = false;
     }
 
+    // ── Abas profissionais (modal cadastro) ─────────────────────
+    function switchProTab(btn) {
+      const target   = btn.dataset.target;
+      const isActive = btn.classList.contains('pro-tab--active');
+
+      document.querySelectorAll('.pro-tab').forEach(t => t.classList.remove('pro-tab--active'));
+      document.getElementById('form-cliente-wrap').hidden = false;
+      document.getElementById('form-arq-wrap').hidden     = true;
+      document.getElementById('form-forn-wrap').hidden    = true;
+
+      if (!isActive) {
+        btn.classList.add('pro-tab--active');
+        document.getElementById('form-cliente-wrap').hidden              = true;
+        document.getElementById('form-' + target + '-wrap').hidden       = false;
+      }
+    }
+
     // ── FAB expansível ───────────────────────────────────────────
     const fabCluster = document.getElementById('fab-cluster');
     const fabMain    = document.getElementById('fab-main');
@@ -1198,6 +1395,63 @@
         fabMain.setAttribute('aria-expanded', 'false');
         fabSubs.setAttribute('aria-hidden', 'true');
       }
+    });
+
+    // ── Carrossel Hero ───────────────────────────────────────────
+    (function () {
+      const slides = document.querySelectorAll('.hero__slide');
+      const dots   = document.querySelectorAll('.hero__dot');
+      let current  = 0;
+      let timer;
+
+      function goTo(n) {
+        slides[current].classList.remove('hero__slide--active');
+        dots[current].classList.remove('hero__dot--active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('hero__slide--active');
+        dots[current].classList.add('hero__dot--active');
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      function startTimer() { timer = setInterval(next, 5000); }
+      function resetTimer()  { clearInterval(timer); startTimer(); }
+
+      document.querySelector('.hero__arrow--prev').addEventListener('click', () => { prev(); resetTimer(); });
+      document.querySelector('.hero__arrow--next').addEventListener('click', () => { next(); resetTimer(); });
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+      });
+
+      const hero = document.getElementById('inicio');
+      hero.addEventListener('mouseenter', () => clearInterval(timer));
+      hero.addEventListener('mouseleave', startTimer);
+
+      startTimer();
+    }());
+
+    // ── Dark Mode ─────────────────────────────────────────────
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      const html   = document.documentElement;
+      function setTheme(dark) {
+        html.setAttribute('data-theme', dark ? 'dark' : 'light');
+        localStorage.setItem('csm-theme', dark ? 'dark' : 'light');
+        toggle.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      }
+      if (localStorage.getItem('csm-theme') === 'dark') setTheme(true);
+      toggle.addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
+    }());
+
+    // ── Shimmer nos links de navegação ────────────────────────
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-link--active', 'nav-link--shimmer'));
+        this.classList.add('nav-link--active', 'nav-link--shimmer');
+        this.addEventListener('animationend', () => this.classList.remove('nav-link--shimmer'), { once: true });
+      });
     });
   </script>
 
