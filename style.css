@@ -2090,6 +2090,177 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ----------------------------------------------------------
+   DIFERENCIAIS — Glassmorphism Luxury
+---------------------------------------------------------- */
+.dif {
+  position: relative;
+  padding-block: var(--gap-section);
+  background: var(--off-white);
+  overflow: hidden;
+}
+
+/* Glow radial de fundo — detalhe ambiental suave */
+.dif__bg-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(240,120,0,.055) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 85% 90%,  rgba(240,120,0,.035) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Grid responsivo — 3 cols no desktop, 2 no tablet, 1 no mobile */
+.dif__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .dif__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 540px) {
+  .dif__grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* Card base — glassmorphism */
+.dif-card {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.75rem 2.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid rgba(240, 120, 0, 0.10);
+  box-shadow:
+    0 2px 8px  rgba(0,0,0,.05),
+    0 1px 0    rgba(255,255,255,.80) inset;
+  transition:
+    transform      380ms cubic-bezier(.22,.61,.36,1),
+    box-shadow     380ms cubic-bezier(.22,.61,.36,1),
+    border-color   380ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+}
+
+/* Reflexo de canto sutil */
+.dif-card::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 72px; height: 72px;
+  background: radial-gradient(circle at top right, rgba(240,120,0,.07), transparent 70%);
+  border-radius: 0 16px 0 0;
+  pointer-events: none;
+}
+
+/* ── Efeito shimmer — linha de luz que cruza o card ── */
+.dif-card__shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    108deg,
+    transparent            25%,
+    rgba(255,200,100,.10)  42%,
+    rgba(255,255,255,.22)  50%,
+    rgba(240,120,0,.07)    58%,
+    transparent            75%
+  );
+  background-size: 220% 100%;
+  animation: dif-shimmer 6s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Delays escalonados — cada card brilha em momento diferente */
+.dif-card:nth-child(1) .dif-card__shimmer { animation-delay:  0s; }
+.dif-card:nth-child(2) .dif-card__shimmer { animation-delay:  1s; }
+.dif-card:nth-child(3) .dif-card__shimmer { animation-delay:  2s; }
+.dif-card:nth-child(4) .dif-card__shimmer { animation-delay:  3s; }
+.dif-card:nth-child(5) .dif-card__shimmer { animation-delay:  4s; }
+.dif-card:nth-child(6) .dif-card__shimmer { animation-delay:  5s; }
+
+@keyframes dif-shimmer {
+  0%   { background-position:  160% 0; opacity: 0; }
+  15%  { opacity: 1; }
+  50%  { background-position: -60%  0; opacity: 1; }
+  65%  { opacity: 0; }
+  100% { background-position: -60%  0; opacity: 0; }
+}
+
+/* ── Hover — elevação + borda acessa ── */
+.dif-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(240, 120, 0, 0.36);
+  box-shadow:
+    0 4px 12px  rgba(0,0,0,.07),
+    0 20px 48px rgba(240,120,0,.11),
+    0 1px 0     rgba(255,255,255,.90) inset;
+}
+
+/* Pausa shimmer no hover para não competir com a elevação */
+.dif-card:hover .dif-card__shimmer {
+  animation-play-state: paused;
+}
+
+/* ── Ícone ── */
+.dif-card__icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(240, 120, 0, .07);
+  border: 1px solid rgba(240, 120, 0, .14);
+  margin-bottom: 1.35rem;
+  position: relative;
+  z-index: 1;
+  transition: background 360ms ease, border-color 360ms ease, box-shadow 360ms ease;
+}
+
+.dif-card__icon svg {
+  width: 26px;
+  height: 26px;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.dif-card:hover .dif-card__icon {
+  background: rgba(240, 120, 0, .13);
+  border-color: rgba(240, 120, 0, .30);
+  box-shadow: 0 0 18px rgba(240,120,0,.15);
+}
+
+/* ── Texto ── */
+.dif-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: .55rem;
+  position: relative;
+  z-index: 1;
+}
+
+.dif-card__text {
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  line-height: 1.78;
+  color: var(--gray-mid);
+  position: relative;
+  z-index: 1;
+}
+
+/* Respeita preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .dif-card__shimmer { animation: none; }
+  .dif-card:hover    { transform: none; }
+}
+
+/* ----------------------------------------------------------
    DARK MODE — Variáveis de tema
 ---------------------------------------------------------- */
 [data-theme="dark"] {
@@ -2113,10 +2284,53 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   filter: brightness(0) invert(1) opacity(.9);
 }
 
+/* Dark mode — Diferenciais */
+[data-theme="dark"] .dif-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(240, 120, 0, 0.10);
+  box-shadow:
+    0 2px 8px  rgba(0,0,0,.50),
+    0 1px 0    rgba(255,255,255,.04) inset;
+}
+
+[data-theme="dark"] .dif-card:hover {
+  border-color: rgba(240, 120, 0, 0.38);
+  box-shadow:
+    0 4px 16px  rgba(0,0,0,.60),
+    0 20px 50px rgba(240,120,0,.14),
+    0 1px 0     rgba(255,255,255,.06) inset;
+}
+
+[data-theme="dark"] .dif-card__shimmer {
+  background: linear-gradient(
+    108deg,
+    transparent           25%,
+    rgba(240,120,0,.06)   42%,
+    rgba(255,255,255,.07) 50%,
+    rgba(240,120,0,.04)   58%,
+    transparent           75%
+  );
+  background-size: 220% 100%;
+}
+
+[data-theme="dark"] .dif-card::after {
+  background: radial-gradient(circle at top right, rgba(240,120,0,.05), transparent 70%);
+}
+
+[data-theme="dark"] .dif-card__icon {
+  background: rgba(240, 120, 0, .09);
+  border-color: rgba(240, 120, 0, .18);
+}
+
+[data-theme="dark"] .dif-card:hover .dif-card__icon {
+  background: rgba(240, 120, 0, .16);
+  border-color: rgba(240, 120, 0, .36);
+}
+
 /* Transição suave ao trocar tema */
 body, .header, .cat-card, .review, .stat,
 .modal, .arq-form__input, .btn-google,
-.brand-strip, .brand-strip__item {
+.brand-strip, .brand-strip__item, .dif-card {
   transition: background-color .5s ease, color .4s ease, border-color .4s ease !important;
 }
 
