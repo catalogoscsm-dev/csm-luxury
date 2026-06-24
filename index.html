@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CSM Decor — Campinas Shopping Móveis. Mais de 30 anos transformando ambientes com móveis e decoração de alto padrão. Showroom exclusivo de 6.000 m²." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CSM — Campinas Shopping Móveis" />
+  <meta property="og:description" content="6.000 m² de ambientes de alto padrão. Visite nosso showroom." />
+  <meta property="og:type" content="website" />
+
+  <title>CSM — Campinas Shopping Móveis | Alto Padrão</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+
+      <a href="#" class="header__logo" aria-label="CSM — Campinas Shopping Móveis">
+        <img
+          src="../csm logo.png"
+          alt="CSM — Campinas Shopping Móveis"
+          class="header__logo-img"
+          width="160"
+          height="48"
+        />
+      </a>
+
+      <button
+        class="header__burger"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="nav-primary"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="header__nav" id="nav-primary" aria-label="Navegação principal">
+        <ul class="header__nav-list">
+          <li><a href="#historia" class="nav-link">Nossa História</a></li>
+          <li><a href="#ambientes" class="nav-link">Ambientes</a></li>
+          <li><a href="#catalogo" class="nav-link">Catálogo</a></li>
+          <li><a href="#showroom" class="nav-link">Showroom</a></li>
+          <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+          <li><a href="#arquitetos" class="nav-link">Arquitetos</a></li>
+          <li>
+            <button type="button" class="btn btn--outline btn--sm" onclick="openModal('modal-arquiteto')">
+              Área do Arquiteto
+            </button>
+          </li>
+          <li>
+            <a
+              href="https://wa.me/5519990034068?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
+              class="btn btn--primary btn--sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Fale Conosco</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="inicio" aria-label="Apresentação CSM">
+      <!-- Fundo: substituir pelo arquivo da foto do showroom -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__bg-img" style="background-image: url('assets/hero-showroom.jpg');"></div>
+        <div class="hero__bg-overlay"></div>
+      </div>
+
+      <div class="container hero__body">
+        <p class="eyebrow">Campinas Shopping Móveis</p>
+        <h1 class="hero__headline">
+          O ambiente que você<br />
+          <em>sempre imaginou</em>,<br />
+          finalmente realizado.
+        </h1>
+        <p class="hero__sub">
+          Móveis e decoração de alto padrão.<br />
+          Mais de 30 anos de tradição. 6.000 m² de inspiração.
+        </p>
+        <div class="hero__actions">
+          <a
+            href="https://wa.me/5519990034068?text=Quero%20agendar%20uma%20visita%20ao%20showroom%20CSM."
+            class="btn btn--primary btn--lg"
+            target="_blank" rel="noopener noreferrer"
+          >Agendar visita ao showroom</a>
+          <a href="#ambientes" class="btn btn--ghost btn--lg">Explorar ambientes</a>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span class="hero__scroll-text">Role para baixo</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HISTÓRIA / CREDIBILIDADE
+    ============================================================ -->
+    <section class="historia" id="historia" aria-label="Nossa história e números">
+      <div class="container">
+
+        <p class="eyebrow">Nossa História</p>
+        <h2 class="section-title">
+          Décadas construindo<br /><em>referência em alto padrão</em>
+        </h2>
+        <p class="section-sub">
+          Da madeira bruta ao ambiente finalizado, cada peça passa pelo critério que
+          nos tornou referência em Campinas e região.
+        </p>
+
+        <div class="stats">
+
+          <div class="stat" data-animate>
+            <strong class="stat__num">30<sup>+</sup></strong>
+            <span class="stat__label">Anos de mercado</span>
+            <p class="stat__desc">Tradição familiar com evolução constante em design e atendimento.</p>
+          </div>
+
+          <div class="stat stat--featured" data-animate>
+            <strong class="stat__num">6.000<sup>m²</sup></strong>
+            <span class="stat__label">Showroom exclusivo</span>
+            <p class="stat__desc">O maior espaço de ambientes montados para você viver a experiência antes de comprar.</p>
+          </div>
+
+          <div class="stat" data-animate>
+            <strong class="stat__num">5k<sup>+</sup></strong>
+            <span class="stat__label">Projetos entregues</span>
+            <p class="stat__desc">Lares e escritórios transformados com excelência e exclusividade.</p>
+          </div>
+
+          <div class="stat" data-animate>
+            <strong class="stat__num">200<sup>+</sup></strong>
+            <span class="stat__label">Marcas parceiras</span>
+            <p class="stat__desc">Curadoria rigorosa das melhores linhas nacionais e importadas.</p>
+          </div>
+
+        </div>
+
+        <!-- Faixa de marcas -->
+        <div class="brand-strip" aria-label="Marcas parceiras representadas">
+          <div class="brand-strip__item">Marca A</div>
+          <div class="brand-strip__item">Marca B</div>
+          <div class="brand-strip__item">Marca C</div>
+          <div class="brand-strip__item">Marca D</div>
+          <div class="brand-strip__item">Marca E</div>
+          <div class="brand-strip__item">Marca F</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GALERIA DE AMBIENTES
+    ============================================================ -->
+    <section class="ambientes" id="ambientes" aria-label="Galeria de ambientes">
+      <div class="container">
+        <p class="eyebrow">Ambientes</p>
+        <h2 class="section-title">
+          Cada espaço tem<br /><em>a sua linguagem</em>
+        </h2>
+        <p class="section-sub">
+          Navegue pelos nossos ambientes montados e encontre a composição perfeita para o seu estilo de vida.
+        </p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="ambientes__filters" role="tablist" aria-label="Filtrar por tipo de ambiente">
+        <button class="filter active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="living">Living</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="jantar">Jantar</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="quarto">Quartos</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="escritorio">Escritório</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="externo">Externo</button>
+      </div>
+
+      <!-- Grid de cards -->
+      <div class="ambientes__grid" id="galeria-grid">
+
+        <article class="amb-card" data-cat="living" tabindex="0" aria-label="Living — Sala Contemporânea">
+          <div class="amb-card__img" style="background-image: url('assets/living-01.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Living</span>
+              <h3 class="amb-card__title">Sala Contemporânea</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Sala%20Contemporânea." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="amb-card" data-cat="jantar" tabindex="0" aria-label="Jantar — Mesa Imperial">
+          <div class="amb-card__img" style="background-image: url('assets/jantar-01.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Jantar</span>
+              <h3 class="amb-card__title">Mesa Imperial</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Mesa%20Imperial." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="amb-card amb-card--wide" data-cat="quarto" tabindex="0" aria-label="Quarto — Suíte Master">
+          <div class="amb-card__img" style="background-image: url('assets/quarto-01.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Quarto</span>
+              <h3 class="amb-card__title">Suíte Master Serena</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Suíte%20Master%20Serena." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="amb-card" data-cat="escritorio" tabindex="0" aria-label="Escritório — Home Office Executivo">
+          <div class="amb-card__img" style="background-image: url('assets/escritorio-01.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Escritório</span>
+              <h3 class="amb-card__title">Home Office Executivo</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Home%20Office%20Executivo." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="amb-card" data-cat="living" tabindex="0" aria-label="Living — Lounge Moderno">
+          <div class="amb-card__img" style="background-image: url('assets/living-02.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Living</span>
+              <h3 class="amb-card__title">Living Lounge Moderno</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Living%20Lounge%20Moderno." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="amb-card" data-cat="externo" tabindex="0" aria-label="Externo — Área Gourmet">
+          <div class="amb-card__img" style="background-image: url('assets/externo-01.jpg');">
+            <div class="amb-card__overlay">
+              <span class="amb-card__cat">Externo</span>
+              <h3 class="amb-card__title">Área Gourmet Premium</h3>
+              <a href="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Área%20Gourmet%20Premium." class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">Tenho Interesse</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="container ambientes__footer">
+        <a
+          href="https://wa.me/5519990034068?text=Quero%20conhecer%20todos%20os%20ambientes%20do%20showroom%20CSM."
+          class="btn btn--outline"
+          target="_blank" rel="noopener noreferrer"
+        >Ver todos os ambientes no showroom</a>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         CATÁLOGO DE PRODUTOS
+    ============================================================ -->
+    <section class="catalogo" id="catalogo" aria-label="Catálogo de sofás e poltronas CSM Decor">
+      <div class="container">
+        <p class="eyebrow">Catálogo</p>
+        <h2 class="section-title">
+          Sofás e poltronas<br /><em>que definem ambientes</em>
+        </h2>
+        <p class="section-sub">
+          Cada peça nasce da escolha rigorosa de materiais, estrutura e acabamento.
+          Explore a coleção completa e solicite seu orçamento direto pelo WhatsApp.
+        </p>
+      </div>
+
+      <div class="catalogo__filters" role="tablist" aria-label="Filtrar catálogo por tipo">
+        <button class="filter active" role="tab" aria-selected="true"  data-cat="all">Todos</button>
+        <button class="filter"        role="tab" aria-selected="false" data-cat="sofa">Sofás</button>
+        <button class="filter"        role="tab" aria-selected="false" data-cat="poltrona">Poltronas</button>
+      </div>
+
+      <div class="catalogo__grid" id="catalogo-grid">
+
+        <!-- ── Gênesis ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Gênesis.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Gênesis">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/genesis.jpg"
+                 alt="Sofá Gênesis — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Gênesis</h3>
+            <p class="cat-card__tagline">Modular · encosto fixo · almofadas soltas</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Êxodo ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Êxodo.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Êxodo">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/exodo.jpg"
+                 alt="Sofá Êxodo — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1493663284031-b7e3aaa24d5?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Êxodo</h3>
+            <p class="cat-card__tagline">Modular · encosto fixo · almofadas soltas</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Filipus ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Filipus.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Filipus">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/filipus.jpg"
+                 alt="Sofá Filipus — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Filipus</h3>
+            <p class="cat-card__tagline">Modular · design moderno · encosto fixo</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,00 · 1,20 · 1,40 · 1,60 · 1,80 · 2,00 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Éfeso ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Éfeso.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Éfeso">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/efeso.jpg"
+                 alt="Sofá Éfeso — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Éfeso</h3>
+            <p class="cat-card__tagline">Modular · fácil composição · elegante</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,97 · 1,30 · 1,62 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Gálatas ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Gálatas.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Gálatas">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/galatas.jpg"
+                 alt="Sofá Gálatas — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Gálatas</h3>
+            <p class="cat-card__tagline">Modular formato L · fácil composição · versátil</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,05 · 1,25 · 1,45 · 1,65 · 1,85 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Pátmos ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Pátmos.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Pátmos">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/patmos.jpg"
+                 alt="Sofá Pátmos — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Pátmos</h3>
+            <p class="cat-card__tagline">Design curvo · envolvente e aconchegante</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
+                <div class="cat-specs__row"><dt>Largura</dt><dd>1,92 · 2,12 · 2,32 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Baruc ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Baruc.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Baruc">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/baruc.jpg"
+                 alt="Sofá Baruc — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Baruc</h3>
+            <p class="cat-card__tagline">Retrátil · encosto reclinável · chaise retrátil</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Duplo molejo + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
+                <div class="cat-specs__row"><dt>Chaise</dt><dd>1,65 m (abertura 2,25 m)</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Couro</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Ágape ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Ágape.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Ágape">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/agape.jpg"
+                 alt="Sofá Ágape — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Ágape</h3>
+            <p class="cat-card__tagline">Modular · design moderno e leve · almofadas soltas</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
+                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,50 · 1,70 · 1,90 · 2,10 · 2,30 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Safira ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Safira.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Safira">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/safira.jpg"
+                 alt="Poltrona Safira — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Safira</h3>
+            <p class="cat-card__tagline">Reclinável · mecanismo zero wall lift · 3 opções</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Lift · Elétrica c/ USB · Manual</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Largura</dt><dd>Aprox. 0,90 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Jade ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Jade.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Jade">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/jade.jpg"
+                 alt="Poltrona Jade — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1592247350271-c5efb34dd967?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Jade</h3>
+            <p class="cat-card__tagline">Reclinável · design nervuras · 4 mecanismos</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Lift · Elétrica · Manual · Giratória + Balanço</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Largura</dt><dd>Aprox. 0,90 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Íris ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Íris.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Íris">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/iris.jpg"
+                 alt="Poltrona Íris — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1519947486785-47f9b0264c37?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Íris</h3>
+            <p class="cat-card__tagline">Formato concha · base giratória invisível</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Base</dt><dd>Giratória invisível</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>0,88 m alt. × 1,04 m larg.</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Lia ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Lia.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Lia">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/lia.jpg"
+                 alt="Poltrona Lia — CSM Decor" loading="lazy"
+                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80&fit=crop')" />
+            <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Lia</h3>
+            <p class="cat-card__tagline">Design compacto · moderno e resistente</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
+                <div class="cat-specs__row"><dt>Largura</dt><dd>0,74 m</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+      </div><!-- /catalogo__grid -->
+
+      <div class="container catalogo__rodape">
+        <p class="catalogo__nota">
+          Todos os produtos são fabricados sob encomenda com tecidos e couros à escolha.
+          Consulte prazos e condições de pagamento com nossos consultores.
+        </p>
+        <a href="https://wa.me/5519990034068?text=Gostaria%20de%20conhecer%20todo%20o%20catálogo%20CSM%20Decor."
+           class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+          Ver catálogo completo no showroom
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         SHOWROOM & PROJETOS
+    ============================================================ -->
+    <section class="showroom" id="showroom" aria-label="Nosso showroom e localização">
+      <div class="container showroom__inner">
+
+        <div class="showroom__content">
+          <p class="eyebrow">Showroom & Projetos</p>
+          <h2 class="section-title">
+            Visite o maior showroom<br /><em>de alto padrão da região</em>
+          </h2>
+          <p class="showroom__body">
+            Nosso showroom de 6.000 m² foi criado para que você vivencie cada ambiente
+            antes de decidir. Mais de 200 composições montadas, prontas para inspirar
+            o seu próximo projeto.
+          </p>
+
+          <ul class="showroom__features">
+            <li>
+              <span class="feature-dot" aria-hidden="true"></span>
+              Ambientes 100% montados e decorados
+            </li>
+            <li>
+              <span class="feature-dot" aria-hidden="true"></span>
+              Consultores especializados em alto padrão
+            </li>
+            <li>
+              <span class="feature-dot" aria-hidden="true"></span>
+              Estacionamento privativo e acessibilidade total
+            </li>
+            <li>
+              <span class="feature-dot" aria-hidden="true"></span>
+              Atendimento dedicado a arquitetos e decoradores
+            </li>
+          </ul>
+
+          <div class="showroom__ctas">
+            <a
+              href="https://wa.me/5519990034068?text=Quero%20agendar%20uma%20visita%20guiada%20ao%20showroom%20CSM."
+              class="btn btn--primary"
+              target="_blank" rel="noopener noreferrer"
+            >Agendar visita guiada</a>
+            <a href="https://maps.google.com/?q=Av.+Dr.+Moraes+Sales,+1575,+Cambu%C3%AD,+Campinas,+SP" class="btn btn--outline" target="_blank" rel="noopener noreferrer">Como chegar</a>
+          </div>
+        </div>
+
+        <!-- Google Maps — Showroom CSM Decor -->
+        <div class="showroom__map" aria-label="Localização do showroom no mapa">
+          <iframe
+            src="https://maps.google.com/maps?q=Av.+Dr.+Moraes+Sales,+1575,+Cambu%C3%AD,+Campinas,+SP,+13010-002,+Brazil&output=embed&hl=pt-BR&z=16"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização CSM Decor — Av. Dr. Moraes Sales, 1575, Cambuí, Campinas/SP"
+          ></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DEPOIMENTOS
+    ============================================================ -->
+    <section class="depoimentos" id="depoimentos" aria-label="Depoimentos de clientes">
+      <div class="container">
+
+        <p class="eyebrow">Clientes</p>
+        <h2 class="section-title">
+          O que dizem sobre<br /><em>a experiência CSM</em>
+        </h2>
+
+        <div class="rating-bar" aria-label="Avaliação geral 4.9 de 5 estrelas no Google">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span class="rating-text"><strong>4,9</strong> / 5 — mais de 300 avaliações no Google</span>
+          <svg class="google-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        </div>
+
+        <div class="reviews-grid">
+
+          <blockquote class="review" data-animate>
+            <div class="review__header">
+              <div class="review__avatar" style="background:#F07800;" aria-hidden="true">A</div>
+              <div>
+                <cite class="review__name">Ana Lima</cite>
+                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
+              </div>
+            </div>
+            <p class="review__text">
+              "A experiência no showroom da CSM é absolutamente única. Cada ambiente é um convite — e os consultores realmente entendem de alto padrão. Meu apartamento ficou irreconhecível, da melhor forma possível."
+            </p>
+            <time class="review__date" datetime="2026-04">Abril 2026</time>
+          </blockquote>
+
+          <blockquote class="review" data-animate>
+            <div class="review__header">
+              <div class="review__avatar" style="background:#2d4a3e;" aria-hidden="true">R</div>
+              <div>
+                <cite class="review__name">Ricardo Mendes</cite>
+                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
+              </div>
+            </div>
+            <p class="review__text">
+              "Projeto de escritório inteiro feito em parceria com a equipe CSM. Prazo cumprido, materiais impecáveis e um resultado que impressiona todos os clientes que recebo. Recomendo sem reservas."
+            </p>
+            <time class="review__date" datetime="2026-03">Março 2026</time>
+          </blockquote>
+
+          <blockquote class="review" data-animate>
+            <div class="review__header">
+              <div class="review__avatar" style="background:#1a3a5c;" aria-hidden="true">F</div>
+              <div>
+                <cite class="review__name">Fernanda Sousa</cite>
+                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
+              </div>
+            </div>
+            <p class="review__text">
+              "Indicação de uma amiga arquiteta e não me arrependi. Além da qualidade dos móveis, o atendimento foi completamente personalizado. Senti que cuidaram da minha casa como se fosse a deles."
+            </p>
+            <time class="review__date" datetime="2026-05">Maio 2026</time>
+          </blockquote>
+
+        </div>
+
+        <div class="depoimentos__cta">
+          <a href="https://g.page/r/PLACEHOLDER/review" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+            Ver todas as avaliações no Google
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ÁREA PARA ARQUITETOS
+    ============================================================ -->
+    <section class="arquitetos" id="arquitetos" aria-label="Programa exclusivo para arquitetos e decoradores">
+      <div class="arquitetos__bg" aria-hidden="true"></div>
+      <div class="container arquitetos__inner">
+
+        <div class="arquitetos__content">
+          <p class="eyebrow eyebrow--light">Para Profissionais</p>
+          <h2 class="section-title section-title--light">
+            Parceria exclusiva para<br /><em>arquitetos e decoradores</em>
+          </h2>
+          <p class="arquitetos__body">
+            Na CSM, profissionais de design têm acesso a condições diferenciadas,
+            showroom reservado para apresentações e uma equipe dedicada para apoiar
+            cada projeto do briefing à entrega.
+          </p>
+
+          <ul class="arquitetos__list">
+            <li>Comissão de parceria sobre projetos indicados</li>
+            <li>Acesso antecipado a novas coleções e lançamentos</li>
+            <li>Espaço exclusivo no showroom para seus clientes</li>
+            <li>Suporte técnico de medição e especificação</li>
+            <li>Condições e prazos de pagamento diferenciados</li>
+          </ul>
+
+          <a
+            href="https://wa.me/5519990034068?text=Sou%20arquiteto(a)%20e%20quero%20conhecer%20a%20parceria%20CSM."
+            class="btn btn--primary btn--lg"
+            target="_blank" rel="noopener noreferrer"
+          >Cadastrar como parceiro profissional</a>
+        </div>
+
+        <div class="arquitetos__visual" aria-hidden="true">
+          <div class="arquitetos__img-card">
+            <div class="arquitetos__img" style="background-image: url('assets/arquiteto-01.jpg');"></div>
+          </div>
+          <div class="arquitetos__badge">
+            <span class="arquitetos__badge-num">200+</span>
+            <span class="arquitetos__badge-label">profissionais parceiros</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA FINAL
+    ============================================================ -->
+    <section class="cta-final" aria-label="Convite final para visita ou contato">
+      <div class="container cta-final__inner">
+        <p class="eyebrow">Dê o próximo passo</p>
+        <h2 class="cta-final__title">
+          Pronto para transformar<br /><em>o seu ambiente?</em>
+        </h2>
+        <p class="cta-final__sub">
+          Agende uma visita ao showroom ou fale agora com um de nossos consultores.
+        </p>
+        <a
+          href="https://wa.me/5519990034068?text=Quero%20transformar%20meu%20ambiente%20com%20a%20CSM."
+          class="btn btn--primary btn--xl"
+          target="_blank" rel="noopener noreferrer"
+        >Falar com consultor no WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__top">
+
+      <div class="footer__brand">
+        <a href="#" aria-label="CSM — Campinas Shopping Móveis">
+          <img src="../csm logo.png" alt="CSM — Campinas Shopping Móveis" class="footer__logo" width="140" height="42" />
+        </a>
+        <p class="footer__tagline">
+          Transformando ambientes com sofisticação<br />há mais de 30 anos em Campinas.
+        </p>
+        <div class="footer__socials" aria-label="Redes sociais">
+          <a href="https://www.instagram.com/csmdecor/" class="social-link" aria-label="Instagram CSM" target="_blank" rel="noopener noreferrer">
+            <!-- Instagram icon -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/csmdecor" class="social-link" aria-label="Facebook CSM" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube CSM" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer__nav" aria-label="Links do rodapé">
+        <div class="footer__col">
+          <h3 class="footer__col-title">Empresa</h3>
+          <ul>
+            <li><a href="#historia">Nossa História</a></li>
+            <li><a href="#ambientes">Ambientes</a></li>
+            <li><a href="#showroom">Showroom</a></li>
+            <li><a href="#arquitetos">Para Arquitetos</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Contato</h3>
+          <ul>
+            <li><a href="https://wa.me/5519990034068?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20consultor." target="_blank" rel="noopener noreferrer">(19) 99003-4068</a></li>
+            <li><a href="tel:+551937538988">(19) 3753-8988</a></li>
+            <li><a href="mailto:contato@csmdecor.com.br">contato@csmdecor.com.br</a></li>
+            <li><a href="https://maps.google.com/?q=Av.+Dr.+Moraes+Sales,+1575,+Cambu%C3%AD,+Campinas,+SP" target="_blank" rel="noopener noreferrer">Av. Dr. Moraes Sales, 1575 — Cambuí</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h3 class="footer__col-title">Horários</h3>
+          <ul class="footer__hours">
+            <li><span>Seg — Sex</span><span>9h às 19h</span></li>
+            <li><span>Sábado</span><span>9h às 18h</span></li>
+            <li><span>Dom e Feriados</span><span>10h às 18h</span></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© <span id="ano">2026</span> CSM — Campinas Shopping Móveis. Todos os direitos reservados.</p>
+        <p>
+          <a href="#">Política de Privacidade</a>
+          <span aria-hidden="true"> · </span>
+          <a href="#">Termos de Uso</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Modal: Produto ── -->
+  <div class="modal-overlay" id="modal-produto" role="dialog" aria-modal="true" aria-labelledby="modal-produto-title" hidden>
+    <div class="modal" role="document">
+      <button class="modal__close" aria-label="Fechar" onclick="closeModal('modal-produto')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal__layout">
+        <div class="modal__gallery">
+          <div class="modal__img-wrap">
+            <img id="modal-img-main" src="" alt="" class="modal__img-main" />
+          </div>
+          <div class="modal__thumbs" id="modal-thumbs"></div>
+        </div>
+        <div class="modal__info">
+          <span class="modal__badge" id="modal-badge">Sofá</span>
+          <h2 class="modal__title" id="modal-produto-title"></h2>
+          <p class="modal__tagline" id="modal-tagline"></p>
+          <div class="modal__specs" id="modal-specs"></div>
+          <a id="modal-wpp-btn" href="#" class="btn btn--primary modal__cta" target="_blank" rel="noopener noreferrer">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Solicitar Orçamento via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Modal: Área do Arquiteto ── -->
+  <div class="modal-overlay" id="modal-arquiteto" role="dialog" aria-modal="true" aria-labelledby="modal-arq-title" hidden>
+    <div class="modal modal--sm" role="document">
+      <button class="modal__close" aria-label="Fechar" onclick="closeModal('modal-arquiteto')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="arq-form-wrap">
+        <div class="modal__arq-header">
+          <img src="../csm logo.png" alt="CSM Decor" class="modal__arq-logo" />
+          <h2 id="modal-arq-title" class="modal__arq-title">Área do Arquiteto</h2>
+          <p class="modal__arq-sub">Acesso exclusivo para profissionais de arquitetura e design de interiores.</p>
+        </div>
+        <button class="btn-google" onclick="simulateGoogleLogin()">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Entrar com o Google
+        </button>
+        <div class="modal__divider"><span>ou cadastre-se como arquiteto</span></div>
+        <form class="arq-form" onsubmit="submitArqForm(event)">
+          <div class="arq-form__row">
+            <label class="arq-form__label" for="arq-nome">Nome completo</label>
+            <input class="arq-form__input" type="text" id="arq-nome" name="nome" placeholder="Seu nome" required />
+          </div>
+          <div class="arq-form__row">
+            <label class="arq-form__label" for="arq-email">E-mail profissional</label>
+            <input class="arq-form__input" type="email" id="arq-email" name="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="arq-form__row">
+            <label class="arq-form__label" for="arq-cau">Registro CAU / CFT</label>
+            <input class="arq-form__input" type="text" id="arq-cau" name="cau" placeholder="CAU A 000000-0" />
+          </div>
+          <div class="arq-form__row">
+            <label class="arq-form__label" for="arq-empresa">Escritório / Empresa</label>
+            <input class="arq-form__input" type="text" id="arq-empresa" name="empresa" placeholder="Nome do escritório" />
+          </div>
+          <button type="submit" class="btn btn--primary arq-form__submit">Solicitar acesso profissional</button>
+        </form>
+      </div>
+      <div id="arq-success" hidden class="arq-success">
+        <div class="arq-success__icon" aria-hidden="true">✓</div>
+        <h3 class="arq-success__title">Solicitação enviada!</h3>
+        <p class="arq-success__text">Nossa equipe entrará em contato em até 24 horas para confirmar seu acesso à Área do Arquiteto.</p>
+        <button class="btn btn--outline" onclick="closeModal('modal-arquiteto')" style="margin-top:1.5rem;">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Botão Flutuante de Atendimento ── -->
+  <div class="fab-cluster" id="fab-cluster" role="complementary" aria-label="Canais de atendimento">
+    <div class="fab-subs" id="fab-subs" aria-hidden="true">
+      <!-- Facebook -->
+      <a href="https://web.facebook.com/CampinasShoppingMoveis/?_rdc=1&_rdr#"
+         class="fab-sub fab-sub--fb" aria-label="Visitar Facebook da CSM"
+         target="_blank" rel="noopener noreferrer">
+        <span class="fab-sub__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </span>
+        <span class="fab-sub__label">Facebook</span>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/csmdecor/"
+         class="fab-sub fab-sub--ig" aria-label="Seguir Instagram da CSM"
+         target="_blank" rel="noopener noreferrer">
+        <span class="fab-sub__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </span>
+        <span class="fab-sub__label">Instagram</span>
+      </a>
+      <!-- WhatsApp -->
+      <a href="https://wa.me/5519990034068?text=Olá%2C%20vim%20pelo%20site%20CSM%20e%20gostaria%20de%20falar%20com%20um%20consultor."
+         class="fab-sub fab-sub--wpp" aria-label="Falar no WhatsApp"
+         target="_blank" rel="noopener noreferrer">
+        <span class="fab-sub__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </span>
+        <span class="fab-sub__label">WhatsApp</span>
+      </a>
+    </div>
+    <button class="fab-main" id="fab-main" aria-expanded="false" aria-controls="fab-subs">
+      <span class="fab-main__icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </span>
+      <span class="fab-main__label">Atendimento</span>
+    </button>
+  </div>
+
+  <script>
+    // ── Utilitários ──────────────────────────────────────────────
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    function imgFallback(img, url) {
+      if (!img.dataset.fb) {
+        img.dataset.fb = '1';
+        img.src = url;
+      } else {
+        img.closest('figure').classList.add('img-fallback');
+      }
+    }
+
+    // ── Header scroll ────────────────────────────────────────────
+    const header = document.getElementById('header');
+    const onScroll = () => header.classList.toggle('header--scrolled', window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // ── Mobile menu ──────────────────────────────────────────────
+    const burger = document.querySelector('.header__burger');
+    const nav    = document.getElementById('nav-primary');
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('header__nav--open');
+      burger.classList.toggle('header__burger--open', open);
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => {
+        nav.classList.remove('header__nav--open');
+        burger.classList.remove('header__burger--open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // ── Filtro galeria ───────────────────────────────────────────
+    const filterBtns = document.querySelectorAll('.ambientes__filters .filter');
+    const ambCards   = document.querySelectorAll('.amb-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const f = btn.dataset.filter;
+        ambCards.forEach(c => {
+          const show = f === 'all' || c.dataset.cat === f;
+          c.style.display = show ? '' : 'none';
+          if (show) { c.style.opacity = '0'; requestAnimationFrame(() => { c.style.opacity = '1'; }); }
+        });
+      });
+    });
+
+    // ── Filtro catálogo ──────────────────────────────────────────
+    const catBtns  = document.querySelectorAll('.catalogo__filters .filter');
+    const catCards = document.querySelectorAll('.cat-card');
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const f = btn.dataset.cat;
+        catCards.forEach(c => {
+          const show = f === 'all' || c.dataset.tipo === f;
+          c.style.display = show ? '' : 'none';
+          if (show) { c.style.opacity = '0'; requestAnimationFrame(() => { c.style.opacity = '1'; }); }
+        });
+      });
+    });
+
+    // ── Scroll reveal ────────────────────────────────────────────
+    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .amb-card');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ── Modais ───────────────────────────────────────────────────
+    function openModal(id) {
+      const el = document.getElementById(id);
+      el.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      el.querySelector('.modal__close').focus();
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      if (id === 'modal-arquiteto') {
+        document.getElementById('arq-form-wrap').hidden = false;
+        document.getElementById('arq-success').hidden = true;
+        document.querySelector('.arq-form').reset();
+      }
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay:not([hidden])').forEach(m => closeModal(m.id));
+      }
+    });
+
+    // ── Modal de produto ─────────────────────────────────────────
+    function openProductModal(card) {
+      const fig     = card.querySelector('.cat-card__fig');
+      const img     = card.querySelector('img');
+      const badge   = card.querySelector('.cat-card__badge');
+      const name    = card.querySelector('.cat-card__name').textContent;
+      const tagline = card.querySelector('.cat-card__tagline').textContent;
+      const specsDl = card.querySelector('.cat-specs__list');
+      const wpp     = card.dataset.wpp;
+      const isPolt  = card.dataset.tipo === 'poltrona';
+
+      document.getElementById('modal-produto-title').textContent = name;
+      document.getElementById('modal-tagline').textContent = tagline;
+      document.getElementById('modal-wpp-btn').href = wpp;
+
+      const modalBadge = document.getElementById('modal-badge');
+      modalBadge.textContent = badge.textContent;
+      modalBadge.className = 'modal__badge' + (isPolt ? ' modal__badge--poltrona' : '');
+
+      const mainImg = document.getElementById('modal-img-main');
+      mainImg.src   = img.src;
+      mainImg.alt   = img.alt;
+
+      const specsContainer = document.getElementById('modal-specs');
+      specsContainer.innerHTML = '';
+      if (specsDl) specsContainer.appendChild(specsDl.cloneNode(true));
+
+      const thumbsContainer = document.getElementById('modal-thumbs');
+      thumbsContainer.innerHTML = '';
+      for (let i = 0; i < 3; i++) {
+        const thumb = document.createElement('div');
+        thumb.className = 'modal__thumb' + (i === 0 ? ' active' : '');
+        const ti = document.createElement('img');
+        ti.src = img.src;
+        ti.alt = name + ' — vista ' + (i + 1);
+        ti.loading = 'lazy';
+        thumb.appendChild(ti);
+        thumb.addEventListener('click', () => {
+          thumbsContainer.querySelectorAll('.modal__thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+        });
+        thumbsContainer.appendChild(thumb);
+      }
+
+      openModal('modal-produto');
+    }
+
+    // ── Modal arquiteto ──────────────────────────────────────────
+    function simulateGoogleLogin() { showArqSuccess(); }
+
+    function submitArqForm(e) {
+      e.preventDefault();
+      showArqSuccess();
+    }
+
+    function showArqSuccess() {
+      document.getElementById('arq-form-wrap').hidden = true;
+      document.getElementById('arq-success').hidden = false;
+    }
+
+    // ── FAB expansível ───────────────────────────────────────────
+    const fabCluster = document.getElementById('fab-cluster');
+    const fabMain    = document.getElementById('fab-main');
+    const fabSubs    = document.getElementById('fab-subs');
+
+    fabMain.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = fabCluster.classList.toggle('fab-open');
+      fabMain.setAttribute('aria-expanded', String(open));
+      fabSubs.setAttribute('aria-hidden', String(!open));
+    });
+
+    document.addEventListener('click', e => {
+      if (!fabCluster.contains(e.target) && fabCluster.classList.contains('fab-open')) {
+        fabCluster.classList.remove('fab-open');
+        fabMain.setAttribute('aria-expanded', 'false');
+        fabSubs.setAttribute('aria-hidden', 'true');
+      }
+    });
+  </script>
+
+</body>
+</html>
