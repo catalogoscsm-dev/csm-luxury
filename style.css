@@ -317,16 +317,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   min-height: 600px;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  color: var(--white);
+  /* overflow removido do hero — movido para .hero__slider
+     (evita cortar os botões de ação em viewports menores) */
+  overflow: visible;
+  /* cor fixa — hero sempre tem overlay escuro, independe do tema */
+  color: #ffffff;
   padding-top: 80px;
 }
 
-/* Contêiner do slider */
+/* Contêiner do slider — overflow:hidden aqui, não no .hero */
 .hero__slider {
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
 }
 
 /* Cada slide — fade suave entre imagens */
@@ -377,12 +381,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.1;
   margin-bottom: 1.5rem;
   max-width: 14ch;
+  color: #ffffff; /* fixo — hero sempre tem overlay escuro */
 }
 
 .hero__headline em {
   font-style: italic;
   font-weight: 300;
-  color: var(--orange-light);
+  color: #FF9030; /* fixo — laranja premium, independe do tema */
 }
 
 .hero__sub {
@@ -561,9 +566,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-inline: calc(-1 * clamp(1.25rem, 5vw, 2.5rem));
   margin-top: 3rem;
 
-  /* Fundo escuro elegante — intencionalmente fixo em ambos os temas */
-  background: linear-gradient(180deg, #0d0d0d 0%, #111111 100%);
-  border-block: 1px solid rgba(240, 120, 0, 0.14);
+  /* Tema Light (default): fundo off-white elegante */
+  background: linear-gradient(180deg, #f0ede7 0%, #f5f2ed 100%);
+  border-block: 1px solid rgba(240, 120, 0, 0.10);
   padding-block: 1.1rem;
 
   /* Fade nas bordas — dissolve o texto nos extremos */
@@ -619,21 +624,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   to   { transform: translateX(-50%); }
 }
 
-/* Itens de texto */
+/* Itens de texto — Light mode default */
 .brand-strip__item {
   font-family: var(--font-sans);
   font-size: clamp(.6rem, 1.15vw, .7rem);
   font-weight: 500;
   letter-spacing: .24em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .48);
+  color: rgba(30, 30, 30, .52);
   white-space: nowrap;
   flex-shrink: 0;
   padding-inline: 2.4rem;
   transition: color 220ms ease;
 }
 
-.brand-strip:hover .brand-strip__item { color: rgba(255,255,255,.68); }
+.brand-strip:hover .brand-strip__item { color: rgba(30,30,30,.80); }
 
 /* Separador ✦ — estrela laranja premium */
 .brand-strip__sep {
@@ -2397,7 +2402,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   --shadow-lg:  0 12px 48px rgba(0,0,0,.75);
 }
 
-/* brand-strip é sempre dark — sem override de tema necessário */
+/* brand-strip dark mode — fundo escuro, texto claro */
+[data-theme="dark"] .brand-strip {
+  background: linear-gradient(180deg, #0d0d0d 0%, #111111 100%);
+  border-block-color: rgba(240, 120, 0, 0.14);
+}
+
+[data-theme="dark"] .brand-strip__item {
+  color: rgba(255, 255, 255, .48);
+}
+
+[data-theme="dark"] .brand-strip:hover .brand-strip__item {
+  color: rgba(255, 255, 255, .70);
+}
 
 [data-theme="dark"] .header__logo-img {
   filter: brightness(0) invert(1) opacity(.9);
@@ -2682,10 +2699,13 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
   align-items: stretch;
 }
 
-/* ── Card — fundo escuro fixo, independente do tema ── */
+/* ── Card — adapta ao tema (Light: branco | Dark: grafite) ── */
 .conv-card {
-  background: #0d0d0d;
-  border: 1px solid rgba(255,255,255,.055);
+  position: relative;
+  overflow: hidden;
+  /* Light mode default */
+  background: var(--white);
+  border: 1px solid var(--gray-line);
   border-bottom: 1px solid rgba(240,120,0,.14);
   border-radius: 16px;
   padding: 2rem 1.75rem 1.85rem;
@@ -2693,10 +2713,48 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
   flex-direction: column;
   gap: 0.85rem;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.035),
-    0 16px 48px rgba(0,0,0,.30);
+    inset 0 1px 0 rgba(255,255,255,.85),
+    0 4px 20px rgba(0,0,0,.07);
   animation: convCardFloat 6s ease-in-out infinite;
 }
+
+/* Shimmer reflexivo — traço de luz assincrônico por detrás do conteúdo */
+.conv-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    108deg,
+    transparent            25%,
+    rgba(240,120,0,.055)   40%,
+    rgba(255,255,255,.16)  50%,
+    rgba(240,120,0,.035)   60%,
+    transparent            75%
+  );
+  background-size: 220% 100%;
+  animation: convShimmer 8s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.conv-card:nth-child(1)::before { animation-delay:  0.0s; }
+.conv-card:nth-child(2)::before { animation-delay:  2.6s; }
+.conv-card:nth-child(3)::before { animation-delay:  5.2s; }
+
+@keyframes convShimmer {
+  0%   { background-position: 160% 0; opacity: 0; }
+  15%  { opacity: 1; }
+  55%  { background-position: -60% 0; opacity: 1; }
+  72%  { opacity: 0; }
+  100% { background-position: -60% 0; opacity: 0; }
+}
+
+/* Garante que o conteúdo fique acima do shimmer */
+.conv-card__icon-wrap,
+.conv-card__title,
+.conv-card__text,
+.conv-card__actions { position: relative; z-index: 1; }
 
 .conv-card:nth-child(2) { animation-delay: -2s; }
 .conv-card:nth-child(3) { animation-delay: -4s; }
@@ -2720,21 +2778,25 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
   flex-shrink: 0;
 }
 
-/* ── Título e texto sobre fundo escuro ── */
+/* ── Título e texto adaptativos ── */
 .conv-card__title {
   font-family: var(--font-serif);
   font-size: 1.28rem;
   font-weight: 400;
   line-height: 1.25;
-  color: rgba(255,255,255,.92);
+  color: var(--dark);     /* #1E1E1E light | #ebebeb dark */
   letter-spacing: .01em;
+  position: relative;
+  z-index: 1;
 }
 
 .conv-card__text {
   font-size: .875rem;
-  color: rgba(255,255,255,.46);
+  color: var(--gray-mid); /* #6B6B6B light | #9a9a9a dark */
   line-height: 1.78;
-  flex-grow: 1; /* empurra ações para o rodapé */
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Área de ações — sempre ancorada no rodapé ── */
@@ -2761,7 +2823,7 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
   border-radius: var(--r-sm);
   border: 1.5px solid rgba(240,120,0,.42);
   background: transparent;
-  color: rgba(255,255,255,.62);
+  color: var(--dark); /* adapta: grafite no light, quase-branco no dark */
   text-decoration: none;
   cursor: pointer;
   transition:
@@ -2792,11 +2854,26 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
   flex-shrink: 0;
 }
 
-/* Garante que a borda do card não muda com o tema — já é sempre dark */
+/* Dark mode — grafite fechado (não preto absoluto) */
 [data-theme="dark"] .conv-card {
+  background: #1c1c1e;
+  border-color: rgba(255,255,255,.06);
+  border-bottom-color: rgba(240,120,0,.16);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.03),
+    inset 0 1px 0 rgba(255,255,255,.04),
     0 16px 48px rgba(0,0,0,.55);
+}
+
+[data-theme="dark"] .conv-card::before {
+  background: linear-gradient(
+    108deg,
+    transparent           25%,
+    rgba(240,120,0,.045)  40%,
+    rgba(255,255,255,.07) 50%,
+    rgba(240,120,0,.025)  60%,
+    transparent           75%
+  );
+  background-size: 220% 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
