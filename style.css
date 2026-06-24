@@ -538,40 +538,100 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.65;
 }
 
-/* Brand strip — carrossel infinito */
+/* ── Marquee luxury — Times Square Infinite Scroll ── */
 .brand-strip {
+  position: relative;
   overflow: hidden;
-  padding-block: 1.75rem;
-  border: 1px solid var(--gray-line);
-  border-radius: var(--r-lg);
+
+  /* Quebra para fora do container — faixa de borda a borda */
+  margin-inline: calc(-1 * clamp(1.25rem, 5vw, 2.5rem));
+  margin-top: 3rem;
+
+  /* Fundo escuro elegante — intencionalmente fixo em ambos os temas */
+  background: linear-gradient(180deg, #0d0d0d 0%, #111111 100%);
+  border-block: 1px solid rgba(240, 120, 0, 0.14);
+  padding-block: 1.1rem;
+
+  /* Fade nas bordas — dissolve o texto nos extremos */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent  0%,
+    #000         8%,
+    #000        92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent  0%,
+    #000         8%,
+    #000        92%,
+    transparent 100%
+  );
+
+  cursor: default;
 }
 
+/* Linha de brilho laranja ultra-fina no topo */
+.brand-strip::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(240,120,0,.35) 30%,
+    rgba(240,120,0,.55) 50%,
+    rgba(240,120,0,.35) 70%,
+    transparent 100%
+  );
+}
+
+/* Track — fila infinita */
 .brand-strip__track {
   display: flex;
   align-items: center;
-  gap: 3.5rem;
-  padding-inline: 2rem;
   width: max-content;
-  animation: brandScroll 26s linear infinite;
+  animation: marqueeScroll 42s linear infinite;
 }
 
-@keyframes brandScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Pausa no hover — leitura focada */
+.brand-strip:hover .brand-strip__track {
+  animation-play-state: paused;
 }
 
+@keyframes marqueeScroll {
+  from { transform: translateX(0);    }
+  to   { transform: translateX(-50%); }
+}
+
+/* Itens de texto */
 .brand-strip__item {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--gray-mid);
-  letter-spacing: .08em;
+  font-family: var(--font-sans);
+  font-size: clamp(.6rem, 1.15vw, .7rem);
+  font-weight: 500;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .48);
   white-space: nowrap;
   flex-shrink: 0;
-  transition: color var(--dur) var(--ease);
+  padding-inline: 2.4rem;
+  transition: color 220ms ease;
 }
 
-.brand-strip__item:hover { color: var(--dark); }
+.brand-strip:hover .brand-strip__item { color: rgba(255,255,255,.68); }
+
+/* Separador ✦ — estrela laranja premium */
+.brand-strip__sep {
+  font-size: .5rem;
+  color: var(--orange);
+  opacity: .70;
+  flex-shrink: 0;
+  line-height: 1;
+  position: relative;
+  top: .5px;
+  user-select: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .brand-strip__track { animation: none; }
@@ -2277,8 +2337,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   --shadow-lg:  0 12px 48px rgba(0,0,0,.75);
 }
 
-[data-theme="dark"] .brand-strip__item       { color: rgba(255,255,255,.42); }
-[data-theme="dark"] .brand-strip__item:hover { color: rgba(255,255,255,.72); }
+/* brand-strip é sempre dark — sem override de tema necessário */
 
 [data-theme="dark"] .header__logo-img {
   filter: brightness(0) invert(1) opacity(.9);
@@ -2329,8 +2388,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* Transição suave ao trocar tema */
 body, .header, .cat-card, .review, .stat,
-.modal, .arq-form__input, .btn-google,
-.brand-strip, .brand-strip__item, .dif-card {
+.modal, .arq-form__input, .btn-google, .dif-card {
   transition: background-color .5s ease, color .4s ease, border-color .4s ease !important;
 }
 
