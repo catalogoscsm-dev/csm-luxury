@@ -23,6 +23,17 @@
 <body>
 
   <!-- ============================================================
+       BARRA COPA DO MUNDO 2026
+  ============================================================ -->
+  <div class="worldcup-bar" role="banner" aria-label="Mensagem comemorativa — Copa do Mundo 2026">
+    <div class="worldcup-bar__inner">
+      <span class="worldcup-bar__icon" aria-hidden="true">— ★ —</span>
+      <p class="worldcup-bar__text">Design campeão: Prepare sua casa para os grandes momentos de 2026 com o conforto que você merece.</p>
+      <span class="worldcup-bar__icon" aria-hidden="true">— ★ —</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
        HEADER
   ============================================================ -->
   <header class="header" id="header">
@@ -30,7 +41,7 @@
 
       <a href="#" class="header__logo" aria-label="CSM — Campinas Shopping Móveis">
         <img
-          src="imagens/logo/csm logo.png"
+          src="imagens/logo/csm-logo.png"
           alt="CSM — Campinas Shopping Móveis"
           class="header__logo-img"
           width="160"
@@ -156,6 +167,62 @@
     </section>
 
     <!-- ============================================================
+         CARDS DE CONVERSÃO — Glassmorphism
+    ============================================================ -->
+    <section class="conversion-cards" aria-label="Links e informações rápidas">
+      <div class="container conversion-cards__grid">
+
+        <!-- Card 1 — Redes Sociais -->
+        <article class="conv-card">
+          <div class="conv-card__icon-wrap" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <h3 class="conv-card__title">Siga-nos nas Redes</h3>
+          <p class="conv-card__text">Inspire-se com ambientes de alto padrão no dia a dia. Acompanhe projetos, tendências e novidades exclusivas.</p>
+          <div class="conv-card__actions">
+            <a href="https://www.instagram.com/csmdecor/" class="conv-card__social-link conv-card__social-link--ig" target="_blank" rel="noopener noreferrer" aria-label="Seguir CSM no Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              Instagram
+            </a>
+            <a href="https://web.facebook.com/CampinasShoppingMoveis/" class="conv-card__social-link conv-card__social-link--fb" target="_blank" rel="noopener noreferrer" aria-label="Curtir página CSM no Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2 — Frete Grátis -->
+        <article class="conv-card">
+          <div class="conv-card__icon-wrap" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="conv-card__title">Frete Grátis?</h3>
+          <p class="conv-card__text">Sim! Realizamos entregas sem custo para Campinas e toda a região metropolitana. Consulte a disponibilidade para seu endereço.</p>
+          <a
+            href="https://wa.me/5519990034068?text=Olá!%20Gostaria%20de%20saber%20sobre%20frete%20grátis%20para%20minha%20região."
+            class="btn btn--outline btn--sm"
+            target="_blank" rel="noopener noreferrer"
+          >Verificar minha região</a>
+        </article>
+
+        <!-- Card 3 — Assessoria de Projeto -->
+        <article class="conv-card">
+          <div class="conv-card__icon-wrap" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3 class="conv-card__title">Ajuda com seu projeto?</h3>
+          <p class="conv-card__text">Assessoria profissional completamente gratuita. Nossos especialistas ajudam você a criar o ambiente ideal para o seu estilo de vida.</p>
+          <a
+            href="https://wa.me/5519990034068?text=Olá!%20Gostaria%20de%20assessoria%20gratuita%20para%20meu%20projeto%20de%20decoração."
+            class="btn btn--primary btn--sm"
+            target="_blank" rel="noopener noreferrer"
+          >Falar com especialista</a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
          HISTÓRIA / CREDIBILIDADE
     ============================================================ -->
     <section class="historia" id="historia" aria-label="Nossa história e números">
@@ -198,14 +265,22 @@
 
         </div>
 
-        <!-- Faixa de marcas -->
+        <!-- Faixa de marcas — carrossel infinito -->
         <div class="brand-strip" aria-label="Marcas parceiras representadas">
-          <div class="brand-strip__item">Marca A</div>
-          <div class="brand-strip__item">Marca B</div>
-          <div class="brand-strip__item">Marca C</div>
-          <div class="brand-strip__item">Marca D</div>
-          <div class="brand-strip__item">Marca E</div>
-          <div class="brand-strip__item">Marca F</div>
+          <div class="brand-strip__track" aria-hidden="true">
+            <span class="brand-strip__item">Marca A</span>
+            <span class="brand-strip__item">Marca B</span>
+            <span class="brand-strip__item">Marca C</span>
+            <span class="brand-strip__item">Marca D</span>
+            <span class="brand-strip__item">Marca E</span>
+            <span class="brand-strip__item">Marca F</span>
+            <span class="brand-strip__item">Marca A</span>
+            <span class="brand-strip__item">Marca B</span>
+            <span class="brand-strip__item">Marca C</span>
+            <span class="brand-strip__item">Marca D</span>
+            <span class="brand-strip__item">Marca E</span>
+            <span class="brand-strip__item">Marca F</span>
+          </div>
         </div>
 
       </div>
@@ -334,24 +409,24 @@
 
       <div class="catalogo__grid" id="catalogo-grid">
 
-        <!-- ── Gênesis ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Gênesis.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Gênesis">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/genesis.jpg"
-                 alt="Sofá Gênesis — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80&fit=crop')" />
+        <!-- ── Portland ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Portland.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Portland">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/portland.jpg"
+                 alt="Sofá Portland — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Gênesis</h3>
-            <p class="cat-card__tagline">Modular · encosto fixo · almofadas soltas</p>
+            <h3 class="cat-card__name">Portland</h3>
+            <p class="cat-card__tagline">Encosto de fibra · pés em aço · alta resiliência</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Fibra siliconada com cinta elástica</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 + D28 soft alta resiliência</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Aço</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>1,90m × 0,80m alt.</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -360,50 +435,24 @@
           </div>
         </article>
 
-        <!-- ── Êxodo ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Êxodo.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Êxodo">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/exodo.jpg"
-                 alt="Sofá Êxodo — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1493663284031-b7e3aaa24d5?w=800&q=80&fit=crop')" />
+        <!-- ── Chesterfield I ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Chesterfield%20I.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Chesterfield I">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg"
+                 alt="Sofá Chesterfield I — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Êxodo</h3>
-            <p class="cat-card__tagline">Modular · encosto fixo · almofadas soltas</p>
+            <h3 class="cat-card__name">Chesterfield I</h3>
+            <p class="cat-card__tagline">Clássico britânico · almofadas soltas · molas zig zag</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
-              </dl>
-            </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
-              Ver Produto
-            </button>
-          </div>
-        </article>
-
-        <!-- ── Filipus ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Filipus.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Filipus">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/filipus.jpg"
-                 alt="Sofá Filipus — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1567538096621-38d2284b23ff?w=800&q=80&fit=crop')" />
-            <span class="cat-card__badge">Sofá</span>
-          </figure>
-          <div class="cat-card__body">
-            <h3 class="cat-card__name">Filipus</h3>
-            <p class="cat-card__tagline">Modular · design moderno · encosto fixo</p>
-            <details class="cat-specs">
-              <summary class="cat-specs__toggle">Especificações técnicas</summary>
-              <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 soft com molas zig zag</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft c/ manta plumante · almofadas soltas</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
                 <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,00 · 1,20 · 1,40 · 1,60 · 1,80 · 2,00 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>2,40m × 0,80m alt.</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -412,24 +461,24 @@
           </div>
         </article>
 
-        <!-- ── Éfeso ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Éfeso.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Éfeso">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/efeso.jpg"
-                 alt="Sofá Éfeso — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1540574163026-643ea20ade25?w=800&q=80&fit=crop')" />
+        <!-- ── Premium ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Premium.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Premium">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/premium-1.jpg"
+                 alt="Sofá Premium — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Éfeso</h3>
-            <p class="cat-card__tagline">Modular · fácil composição · elegante</p>
+            <h3 class="cat-card__name">Premium</h3>
+            <p class="cat-card__tagline">Braços em fibra · pillow · molas zig zag</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Almofadas de fibra siliconada c/ molas zig zag</dd></div>
+                <div class="cat-specs__row"><dt>Braços</dt><dd>Fibra siliconada</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft alta resiliência com pillow</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
                 <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,97 · 1,30 · 1,62 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -438,24 +487,24 @@
           </div>
         </article>
 
-        <!-- ── Gálatas ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Gálatas.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Gálatas">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/galatas.jpg"
-                 alt="Sofá Gálatas — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&q=80&fit=crop')" />
+        <!-- ── Ibiza ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Ibiza.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Ibiza">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/ibiza.jpg"
+                 alt="Sofá Ibiza — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Gálatas</h3>
-            <p class="cat-card__tagline">Modular formato L · fácil composição · versátil</p>
+            <h3 class="cat-card__name">Ibiza</h3>
+            <p class="cat-card__tagline">Retrátil · acionamento elétrico touch · pés em aço</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,05 · 1,25 · 1,45 · 1,65 · 1,85 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D30 soft c/ manta de fibra siliconada</dd></div>
+                <div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D26 dura</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D30 soft · acionamento elétrico touch</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>Aço</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>3,00m × 1,05m</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -464,24 +513,76 @@
           </div>
         </article>
 
-        <!-- ── Pátmos ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Pátmos.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Pátmos">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/patmos.jpg"
-                 alt="Sofá Pátmos — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80&fit=crop')" />
+        <!-- ── Seul ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Seul.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Seul">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/seul-1.jpg"
+                 alt="Sofá Seul — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Pátmos</h3>
-            <p class="cat-card__tagline">Design curvo · envolvente e aconchegante</p>
+            <h3 class="cat-card__name">Seul</h3>
+            <p class="cat-card__tagline">Plumante · mola espiral · composição ampla 4,00m</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D25 soft c/ plumante</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 hr soft com mola espiral</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>MDF</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>4,00m × 1,00m</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Rubi ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Rubi.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Rubi">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/rubi.jpg"
+                 alt="Sofá Rubi — CSM Decor" loading="lazy" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Rubi</h3>
+            <p class="cat-card__tagline">Tecnoform · D32 alta resiliência · mola zig zag</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D23 c/ fibra siliconada</dd></div>
+                <div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D23 soft com tecnoform</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D32 alta resiliência com mola zig zag</dd></div>
+                <div class="cat-specs__row"><dt>Pés</dt><dd>MDF</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>3,00m × 0,95m</dd></div>
+              </dl>
+            </details>
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+              Ver Produto
+            </button>
+          </div>
+        </article>
+
+        <!-- ── Chesterfield II ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Chesterfield%20II.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Chesterfield II">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-ii.jpg"
+                 alt="Sofá Chesterfield II — CSM Decor" loading="lazy" />
+            <span class="cat-card__badge">Sofá</span>
+          </figure>
+          <div class="cat-card__body">
+            <h3 class="cat-card__name">Chesterfield II</h3>
+            <p class="cat-card__tagline">Versão slim · almofadas soltas · molas zig zag</p>
+            <details class="cat-specs">
+              <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <dl class="cat-specs__list">
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 soft com molas zig zag</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft alta resiliência c/ almofadas soltas</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
                 <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
-                <div class="cat-specs__row"><dt>Largura</dt><dd>1,92 · 2,12 · 2,32 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>2,40m × 0,80m alt.</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -490,26 +591,24 @@
           </div>
         </article>
 
-        <!-- ── Baruc ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Baruc.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Baruc">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/baruc.jpg"
-                 alt="Sofá Baruc — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&q=80&fit=crop')" />
+        <!-- ── Apgar ── -->
+        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Apgar.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Apgar">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/apgar.jpg"
+                 alt="Sofá Apgar — CSM Decor" loading="lazy" />
             <span class="cat-card__badge">Sofá</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Baruc</h3>
-            <p class="cat-card__tagline">Retrátil · encosto reclinável · chaise retrátil</p>
+            <h3 class="cat-card__name">Apgar</h3>
+            <p class="cat-card__tagline">Fibra siliconada · pés em madeira · elegante</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Assento</dt><dd>Duplo molejo + Espuma D28 soft c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26</dd></div>
+                <div class="cat-specs__row"><dt>Encosto</dt><dd>Fibra siliconada com cinta elástica</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 hr soft alta resiliência c/ mola zig zag</dd></div>
+                <div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto reflorestado e MDF</dd></div>
                 <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>0,80 · 0,90 · 1,00 · 1,10 · 1,20 m</dd></div>
-                <div class="cat-specs__row"><dt>Chaise</dt><dd>1,65 m (abertura 2,25 m)</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Couro</dd></div>
+                <div class="cat-specs__row"><dt>Dimensões</dt><dd>2,25m × 0,90m alt.</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -518,51 +617,23 @@
           </div>
         </article>
 
-        <!-- ── Ágape ── -->
-        <article class="cat-card" data-tipo="sofa" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Ágape.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Ágape">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/agape.jpg"
-                 alt="Sofá Ágape — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?w=800&q=80&fit=crop')" />
-            <span class="cat-card__badge">Sofá</span>
-          </figure>
-          <div class="cat-card__body">
-            <h3 class="cat-card__name">Ágape</h3>
-            <p class="cat-card__tagline">Modular · design moderno e leve · almofadas soltas</p>
-            <details class="cat-specs">
-              <summary class="cat-specs__toggle">Especificações técnicas</summary>
-              <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Conforto</dt><dd>Molas Bonnel + Espuma D28 soft c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
-                <div class="cat-specs__row"><dt>Módulos</dt><dd>1,50 · 1,70 · 1,90 · 2,10 · 2,30 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
-              </dl>
-            </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
-              Ver Produto
-            </button>
-          </div>
-        </article>
-
-        <!-- ── Safira ── -->
-        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Safira.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Safira">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/safira.jpg"
-                 alt="Poltrona Safira — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?w=800&q=80&fit=crop')" />
+        <!-- ── Poltrona Allure ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Allure.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Allure">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/allure-scaled.jpg"
+                 alt="Poltrona Allure — CSM Decor" loading="lazy" />
             <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Safira</h3>
-            <p class="cat-card__tagline">Reclinável · mecanismo zero wall lift · 3 opções</p>
+            <h3 class="cat-card__name">Allure</h3>
+            <p class="cat-card__tagline">Giratória · design sofisticado · ambientes sociais</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Lift · Elétrica c/ USB · Manual</dd></div>
-                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Largura</dt><dd>Aprox. 0,90 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Base</dt><dd>Giratória</dd></div>
+                <div class="cat-specs__row"><dt>Design</dt><dd>Linhas elegantes com costura refinada</dd></div>
+                <div class="cat-specs__row"><dt>Indicação</dt><dd>Sala de estar · living · quarto</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros premium</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -571,25 +642,22 @@
           </div>
         </article>
 
-        <!-- ── Jade ── -->
-        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Jade.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Jade">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/jade.jpg"
-                 alt="Poltrona Jade — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1592247350271-c5efb34dd967?w=800&q=80&fit=crop')" />
+        <!-- ── Poltrona Aura ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Aura.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Aura">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/02.png"
+                 alt="Poltrona Aura — CSM Decor" loading="lazy" />
             <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Jade</h3>
-            <p class="cat-card__tagline">Reclinável · design nervuras · 4 mecanismos</p>
+            <h3 class="cat-card__name">Aura</h3>
+            <p class="cat-card__tagline">Formas fluidas · envolvente · design exclusivo</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Lift · Elétrica · Manual · Giratória + Balanço</dd></div>
-                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Largura</dt><dd>Aprox. 0,90 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Design</dt><dd>Contornos envolventes e formas orgânicas</dd></div>
+                <div class="cat-specs__row"><dt>Conforto</dt><dd>Linhas suaves com sensação de acolhimento</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros premium</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -598,25 +666,22 @@
           </div>
         </article>
 
-        <!-- ── Íris ── -->
-        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Íris.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Íris">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/iris.jpg"
-                 alt="Poltrona Íris — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1519947486785-47f9b0264c37?w=800&q=80&fit=crop')" />
+        <!-- ── Poltrona Reclinável Bela ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Reclin%C3%A1vel%20Bela.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Reclinável Bela">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/08/12.png"
+                 alt="Poltrona Reclinável Bela — CSM Decor" loading="lazy" />
             <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Íris</h3>
-            <p class="cat-card__tagline">Formato concha · base giratória invisível</p>
+            <h3 class="cat-card__name">Reclinável Bela</h3>
+            <p class="cat-card__tagline">Reclinável · conforto total · design moderno</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Base</dt><dd>Giratória invisível</dd></div>
-                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Dimensões</dt><dd>0,88 m alt. × 1,04 m larg.</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Reclinável</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 alta resiliência</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -625,25 +690,22 @@
           </div>
         </article>
 
-        <!-- ── Lia ── -->
-        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Lia.%20Pode%20me%20enviar%20mais%20informações%3F">
-          <figure class="cat-card__fig" data-nome="Lia">
-            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2026/06/lia.jpg"
-                 alt="Poltrona Lia — CSM Decor" loading="lazy"
-                 onerror="imgFallback(this,'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80&fit=crop')" />
+        <!-- ── Poltrona Reclinável Ava ── -->
+        <article class="cat-card" data-tipo="poltrona" data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Reclin%C3%A1vel%20Ava.%20Pode%20me%20enviar%20mais%20informações%3F">
+          <figure class="cat-card__fig" data-nome="Reclinável Ava">
+            <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/08/2.png"
+                 alt="Poltrona Reclinável Ava — CSM Decor" loading="lazy" />
             <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
           </figure>
           <div class="cat-card__body">
-            <h3 class="cat-card__name">Lia</h3>
-            <p class="cat-card__tagline">Design compacto · moderno e resistente</p>
+            <h3 class="cat-card__name">Reclinável Ava</h3>
+            <p class="cat-card__tagline">Reclinável · elegante · múltiplos acabamentos</p>
             <details class="cat-specs">
               <summary class="cat-specs__toggle">Especificações técnicas</summary>
               <dl class="cat-specs__list">
-                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 c/ manta 150g</dd></div>
-                <div class="cat-specs__row"><dt>Pés</dt><dd>Metal</dd></div>
-                <div class="cat-specs__row"><dt>Largura</dt><dd>0,74 m</dd></div>
-                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos</dd></div>
+                <div class="cat-specs__row"><dt>Mecanismo</dt><dd>Reclinável</dd></div>
+                <div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D28 alta resiliência</dd></div>
+                <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros</dd></div>
               </dl>
             </details>
             <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
@@ -933,7 +995,7 @@
 
       <div class="footer__brand">
         <a href="#" aria-label="CSM — Campinas Shopping Móveis">
-          <img src="../csm logo.png" alt="CSM — Campinas Shopping Móveis" class="footer__logo" width="140" height="42" />
+          <img src="imagens/logo/csm-logo.png" alt="CSM — Campinas Shopping Móveis" class="footer__logo" width="140" height="42" />
         </a>
         <p class="footer__tagline">
           Transformando ambientes com sofisticação<br />há mais de 30 anos em Campinas.
@@ -1033,7 +1095,7 @@
       <div id="arq-form-wrap">
 
         <div class="modal__arq-header">
-          <img src="../csm logo.png" alt="CSM Decor" class="modal__arq-logo" />
+          <img src="imagens/logo/csm-logo.png" alt="CSM Decor" class="modal__arq-logo" />
           <h2 id="modal-arq-title" class="modal__arq-title">Bem-vindo à CSM</h2>
           <p class="modal__arq-sub">Crie sua conta para acompanhar projetos e receber novidades exclusivas.</p>
         </div>
@@ -1446,13 +1508,41 @@
     }());
 
     // ── Shimmer nos links de navegação ────────────────────────
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function () {
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('nav-link--active', 'nav-link--shimmer'));
-        this.classList.add('nav-link--active', 'nav-link--shimmer');
-        this.addEventListener('animationend', () => this.classList.remove('nav-link--shimmer'), { once: true });
+    // Clique: shimmer imediato. Enquanto ativo: repete a cada 10 s.
+    (function () {
+      let shimmerTimer = null;
+
+      function triggerShimmer(link) {
+        link.classList.remove('nav-link--shimmer');
+        void link.offsetWidth; // força reflow para reiniciar a animação CSS
+        link.classList.add('nav-link--shimmer');
+        link.addEventListener('animationend', () => {
+          link.classList.remove('nav-link--shimmer');
+        }, { once: true });
+      }
+
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function () {
+          if (shimmerTimer) clearInterval(shimmerTimer);
+
+          document.querySelectorAll('.nav-link').forEach(l => {
+            l.classList.remove('nav-link--active', 'nav-link--shimmer');
+          });
+
+          const activeLink = this;
+          activeLink.classList.add('nav-link--active');
+          triggerShimmer(activeLink);
+
+          shimmerTimer = setInterval(() => {
+            if (activeLink.classList.contains('nav-link--active')) {
+              triggerShimmer(activeLink);
+            } else {
+              clearInterval(shimmerTimer);
+            }
+          }, 10000);
+        });
       });
-    });
+    }());
   </script>
 
 </body>
