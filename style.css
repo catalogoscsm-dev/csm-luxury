@@ -689,6 +689,123 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .brand-strip__track { animation: none; }
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Section Dividers — Times Square marquee
+   Mesmo sistema visual do brand-strip:
+   Light → fundo creme + texto cinza-forte + ✦ laranja
+   Dark  → fundo escuro + texto branco-claro + ✦ laranja
+───────────────────────────────────────────────────────────── */
+.sec-divider {
+  position: relative;
+  overflow: hidden;
+
+  /* Light mode: mesmo creme premium do brand-strip */
+  background: linear-gradient(180deg, #ede9e2 0%, #f2efe9 100%);
+  border-block: 1px solid rgba(240, 120, 0, 0.12);
+  padding-block: 1.15rem;
+
+  /* Fade nas bordas horizontais */
+  mask-image: linear-gradient(
+    to right,
+    transparent  0%,
+    #000         8%,
+    #000        92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent  0%,
+    #000         8%,
+    #000        92%,
+    transparent 100%
+  );
+
+  cursor: default;
+}
+
+/* Linha de brilho laranja no topo — acento de marca */
+.sec-divider::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(240,120,0,.38) 30%,
+    rgba(240,120,0,.60) 50%,
+    rgba(240,120,0,.38) 70%,
+    transparent 100%
+  );
+}
+
+/* Track — fila infinita, GPU-accelerated via translate3d */
+.sec-divider__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  animation: secDivScroll 26s linear infinite;
+}
+
+.sec-divider:hover .sec-divider__track {
+  animation-play-state: paused;
+}
+
+@keyframes secDivScroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Texto — Light mode: cinza reforçado, mais legível que brand-strip padrão */
+.sec-divider__item {
+  font-family: var(--font-sans);
+  font-size: clamp(.62rem, 1.2vw, .74rem);   /* ligeiramente maior que brand-strip */
+  font-weight: 600;                            /* semi-bold — reforço de leitura */
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(30, 30, 30, .72);               /* mais forte que brand-strip (.52) */
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-inline: 2.4rem;
+  user-select: none;
+  transition: color 220ms ease;
+}
+
+.sec-divider:hover .sec-divider__item {
+  color: rgba(30, 30, 30, .92);
+}
+
+/* Separador ✦ — losango laranja, idêntico ao brand-strip__sep */
+.sec-divider__sep {
+  font-size: .5rem;
+  color: var(--orange);
+  opacity: .75;
+  flex-shrink: 0;
+  line-height: 1;
+  position: relative;
+  top: .5px;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sec-divider__track { animation: none; }
+}
+
+/* ── Dark mode: espelha exatamente o brand-strip dark ── */
+[data-theme="dark"] .sec-divider {
+  background: linear-gradient(180deg, #0d0d0d 0%, #111111 100%);
+  border-block-color: rgba(240, 120, 0, 0.14);
+}
+
+[data-theme="dark"] .sec-divider__item {
+  color: rgba(255, 255, 255, .55);
+}
+
+[data-theme="dark"] .sec-divider:hover .sec-divider__item {
+  color: rgba(255, 255, 255, .78);
+}
+
 /* ----------------------------------------------------------
    8. AMBIENTES / GALERIA
 ---------------------------------------------------------- */
@@ -728,40 +845,115 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-color: var(--dark);
 }
 
-/* Grid — 3 × 3 para as 9 categorias oficiais */
-.ambientes__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 350px;
-  gap: 6px;
-  padding-inline: 6px;
+/* ── Carrossel Center Mode ─────────────────────────────────── */
+.amb-carousel {
+  position: relative;
+  overflow: hidden;
+  padding-block: 2.5rem;
 }
 
+.amb-carousel__track {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  will-change: transform;
+  cursor: grab;
+}
+.amb-carousel__track:active { cursor: grabbing; }
+
+/* ── Slide wrapper (escala + brilho de borda) */
+.amb-slide {
+  flex: 0 0 68%;
+  position: relative;
+  border-radius: calc(var(--r-sm) + 4px);
+  transform: scale(0.93);
+  opacity: 0.38;
+  filter: blur(1.5px);
+  transition:
+    transform  650ms cubic-bezier(0.25, 1, 0.5, 1),
+    opacity    650ms cubic-bezier(0.25, 1, 0.5, 1),
+    filter     650ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform, opacity, filter;
+}
+
+/* Filete de luz animado — só aparece no slide ativo */
+.amb-slide::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent                    0%,
+    rgba(240, 120,  0, .00)       15%,
+    rgba(240, 120,  0, .85)       35%,
+    rgba(255, 210, 120, 1)        50%,
+    rgba(240, 120,  0, .85)       65%,
+    rgba(240, 120,  0, .00)       85%,
+    transparent                  100%
+  );
+  background-size: 250% 100%;
+  background-position: 200% 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  pointer-events: none;
+}
+
+.amb-slide.is-active {
+  transform: scale(1.03);
+  opacity: 1;
+  filter: none;
+}
+
+/* Ativa o filete de luz no slide central */
+.amb-slide.is-active::before {
+  opacity: 1;
+  animation: amb-streak 2.8s ease-in-out infinite;
+}
+
+@keyframes amb-streak {
+  0%   { background-position:  200% 0; }
+  50%  { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Glow do card ativo */
+.amb-slide.is-active .amb-card {
+  box-shadow:
+    0 0 0 1px rgba(240, 120, 0, .55),
+    0 0  32px rgba(240, 120, 0, .28),
+    0 0  80px rgba(240, 120, 0, .12),
+    0 24px 48px rgba(0, 0, 0, .55);
+}
+
+/* ── Card em si */
 .amb-card {
   position: relative;
   overflow: hidden;
   border-radius: var(--r-sm);
   cursor: pointer;
-  opacity: 0;
-  transform: scale(.98);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
-  will-change: transform;
+  height: 420px;
+  transition: box-shadow 650ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.amb-card.revealed {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.amb-card--wide { grid-column: span 2; }
-
-.amb-card__img {
+/* Wrapper relativo para empilhar múltiplas imagens */
+.amb-card__imgs {
+  position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  /* Gradiente como fallback enquanto a imagem carrega */
-  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
 }
+
+/* Cada item de imagem — crossfade via opacity */
+.amb-card__img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.amb-card__img.is-shown { opacity: 1; }
 
 .amb-card__img img {
   width: 100%;
@@ -769,58 +961,36 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform .65s cubic-bezier(.25, .46, .45, .94);
+  transition: transform .75s cubic-bezier(.25, .46, .45, .94);
   will-change: transform;
 }
 
-/* Zoom apenas em dispositivos com pointer real (desktop) */
-@media (hover: hover) {
-  .amb-card:hover .amb-card__img img,
-  .amb-card:focus-visible .amb-card__img img {
-    transform: scale(1.06);
-  }
+/* Escala de buffer no card ativo — garante sem bordas brancas durante o parallax */
+.amb-slide.is-active .amb-card__img img {
+  transform: scale(1.08);
 }
 
+/* Overlay — visível somente no slide ativo */
 .amb-card__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10,10,10,.88) 0%,
-    rgba(10,10,10,.30) 48%,
+    rgba(10,10,10,.92) 0%,
+    rgba(10,10,10,.40) 48%,
     transparent        100%
   );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.75rem;
-  /* Desktop: overlay aparece no hover */
+  padding: 2rem;
   opacity: 0;
-  transition: opacity 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
 }
-
-/* Desktop — overlay no hover/focus */
-@media (hover: hover) {
-  .amb-card:hover .amb-card__overlay,
-  .amb-card:focus-visible .amb-card__overlay {
-    opacity: 1;
-  }
-}
-
-/* Mobile / Touch — overlay sempre visível na base do card */
-@media (hover: none), (max-width: 768px) {
-  .amb-card__overlay {
-    opacity: 1;
-    /* Gradiente mais concentrado na base — título sempre legível */
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,.82) 0%,
-      rgba(0,0,0,.55) 40%,
-      transparent     78%
-    );
-  }
-  /* Sem zoom no touch — evita saltos visuais */
-  .amb-card:hover .amb-card__img img { transform: none; }
+.amb-slide.is-active .amb-card__overlay {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .amb-card__cat {
@@ -829,44 +999,101 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--orange-light);
-  margin-bottom: .35rem;
+  margin-bottom: .4rem;
 }
 
 .amb-card__title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 300;
   color: #ffffff;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
-/* Botão de ação — desktop: visível no hover; mobile: sempre visível */
 .amb-card__btn {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: .4rem;
-  font-size: .72rem;
+  font-size: .74rem;
   letter-spacing: .06em;
 }
 
-/* Mobile — título e botão sempre na base; tap único navega */
-@media (hover: none), (max-width: 768px) {
-  .amb-card__title {
-    font-size: 1.15rem;
-    margin-bottom: .6rem;
+/* ── Setas de navegação */
+.amb-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 220ms, border-color 220ms, transform 220ms;
+}
+.amb-carousel__arrow--prev { left: 1.25rem; }
+.amb-carousel__arrow--next { right: 1.25rem; }
+
+@media (hover: hover) {
+  .amb-carousel__arrow:hover {
+    background: rgba(240,120,0,.85);
+    border-color: transparent;
   }
-  .amb-card__btn {
-    font-size: .68rem;
-    padding: .42rem .95rem;
-  }
+  .amb-carousel__arrow--prev:hover { transform: translateY(-50%) scale(1.08); }
+  .amb-carousel__arrow--next:hover { transform: translateY(-50%) scale(1.08); }
+}
+
+/* ── Dots */
+.amb-carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1.5rem;
+}
+.amb-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.22); /* Tema Light: grafite legível sobre fundo claro */
+  border: none;
+  cursor: pointer;
+  transition: background 300ms, transform 300ms;
+  padding: 0;
+}
+.amb-dot.is-active {
+  background: var(--orange);
+  transform: scale(1.4);
 }
 
 .ambientes__footer {
   display: flex;
   justify-content: center;
   padding-top: 2rem;
+}
+
+/* ── Responsivo */
+@media (max-width: 1024px) {
+  .amb-slide { flex: 0 0 78%; }
+  .amb-card  { height: 360px; }
+}
+@media (max-width: 768px) {
+  .amb-slide { flex: 0 0 85%; }
+  .amb-card  { height: 300px; }
+  .amb-carousel { padding-block: 1.5rem; }
+  .amb-carousel__arrow { display: none; }
+  /* Mobile: overlay sempre visível */
+  .amb-card__overlay { opacity: 1; pointer-events: auto; }
+  .amb-card__title { font-size: 1.25rem; margin-bottom: .75rem; }
+  .amb-card__btn   { font-size: .68rem; padding: .42rem .95rem; }
 }
 
 /* ----------------------------------------------------------
@@ -1271,7 +1498,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .footer__nav {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 
@@ -1326,6 +1553,73 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .footer__bottom-inner a:hover { color: var(--orange-light); }
+
+/* ── Footer Credibilidade — selos e pagamento ── */
+.footer__trust-list {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+  list-style: none;
+  padding: 0; margin: 0;
+}
+
+.footer__pay-item {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.footer__pay-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .18rem .55rem;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 3px;
+  font-size: .55rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(255,255,255,.50);
+  white-space: nowrap;
+}
+
+.footer__pay-chip--pix {
+  border-color: rgba(54,179,126,.35);
+  color: rgba(54,179,126,.75);
+}
+
+.footer__pay-chip svg {
+  flex-shrink: 0;
+}
+
+.footer__trust-seal {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .73rem;
+  color: rgba(255,255,255,.32);
+  font-style: italic;
+  letter-spacing: .025em;
+  line-height: 1.4;
+}
+
+.footer__trust-seal::before {
+  content: '✓';
+  font-style: normal;
+  font-weight: 700;
+  font-size: .6rem;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+/* ── Sitemap semantic link styling ── */
+.footer__col--sitemap li a[rel~="index"],
+.footer__col--sitemap li a {
+  font-size: .83rem;
+  color: rgba(255,255,255,.45);
+  transition: color var(--dur) var(--ease);
+}
 
 /* ----------------------------------------------------------
    14. FAB — Botão "Atendimento" expansível
@@ -1761,17 +2055,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Tablet — 2 colunas (4 linhas + 1 card sozinho → forçar última linha a 2 cols) */
-  .ambientes__grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 300px;
-  }
-
-  /* Nono card ocupa toda a largura no layout de 2 colunas */
-  .ambientes__grid .amb-card:last-child {
-    grid-column: 1 / -1;
-  }
-
   .showroom__inner,
   .arquitetos__inner {
     grid-template-columns: 1fr;
@@ -1796,7 +2079,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   }
 
   .footer__nav {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1849,16 +2132,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 768px) {
 
   /* Nav drawer — regras já declaradas em ≤ 960px acima */
-
-  .ambientes__grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 260px;
-  }
-
-  /* No mobile coluna única, o último card não precisa de span especial */
-  .ambientes__grid .amb-card:last-child {
-    grid-column: auto;
-  }
 
   .catalogo__grid { grid-template-columns: 1fr; }
 
@@ -2502,6 +2775,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   --shadow-md:  0 4px 24px rgba(0,0,0,.65);
   --shadow-lg:  0 12px 48px rgba(0,0,0,.75);
 }
+
+/* Dots — fundo escuro precisa de cor clara */
+[data-theme="dark"] .amb-dot { background: rgba(255,255,255,.28); }
 
 /* brand-strip dark mode — fundo escuro, texto claro */
 [data-theme="dark"] .brand-strip {

@@ -398,6 +398,25 @@
       </div>
     </section>
 
+    <!-- ─── Divisor: Ambientes ─── -->
+    <div class="sec-divider" role="marquee" aria-label="Novidades no catálogo de ambientes">
+      <div class="sec-divider__track">
+        <span class="sec-divider__item">NOVIDADES NO CATÁLOGO DE AMBIENTES</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item">SUA CASA COM ASSINATURA CSM LUXURY</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item">DESIGN EXCLUSIVO ASSINADO</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <!-- Espelho exato para loop perfeito sem salto visual -->
+        <span class="sec-divider__item" aria-hidden="true">NOVIDADES NO CATÁLOGO DE AMBIENTES</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item" aria-hidden="true">SUA CASA COM ASSINATURA CSM LUXURY</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item" aria-hidden="true">DESIGN EXCLUSIVO ASSINADO</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+      </div>
+    </div>
+
     <!-- ============================================================
          GALERIA DE AMBIENTES
     ============================================================ -->
@@ -426,181 +445,223 @@
         <button class="filter" role="tab" aria-selected="false" data-filter="sala-tv">Sala de TV</button>
       </div>
 
-      <!-- Grid de cards — 9 categorias oficiais -->
-      <div class="ambientes__grid" id="galeria-grid">
+      <!-- Carrossel Center Mode -->
+      <div class="amb-carousel" id="amb-carousel" aria-label="Carrossel de categorias">
 
-        <!-- 1. Área Gourmet -->
-        <article class="amb-card" data-cat="area-gourmet" data-href="produtos.html?categoria=area-gourmet" tabindex="0" aria-label="Área Gourmet">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-              alt="Varanda gourmet de luxo com mobiliário externo premium e iluminação paisagística"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Externo</span>
-            <h3 class="amb-card__title">Área Gourmet</h3>
-            <a href="produtos.html?categoria=area-gourmet" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
+        <button class="amb-carousel__arrow amb-carousel__arrow--prev" id="amb-prev" aria-label="Categoria anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
 
-        <!-- 2. Complementos -->
-        <article class="amb-card" data-cat="complementos" data-href="produtos.html?categoria=complementos" tabindex="0" aria-label="Complementos">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=80"
-              alt="Mesa de centro de design, aparador fino e peças de decoração de alto padrão"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Decoração</span>
-            <h3 class="amb-card__title">Complementos</h3>
-            <a href="produtos.html?categoria=complementos" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
+        <div class="amb-carousel__track" id="amb-track">
 
-        <!-- 3. Corporativo -->
-        <article class="amb-card" data-cat="corporativo" data-href="produtos.html?categoria=corporativo" tabindex="0" aria-label="Corporativo">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=900&q=80"
-              alt="Sala de reunião executiva com cadeiras presidenciais e mesa de conferência moderna"
-              loading="lazy"
-            />
+          <!-- 1. Área Gourmet — varanda / bancada com banquetas / churrasqueira integrada -->
+          <div class="amb-slide" data-cat="area-gourmet">
+            <article class="amb-card" data-href="produtos.html?categoria=area-gourmet" aria-label="Área Gourmet">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Varanda gourmet de luxo com mobiliário externo premium e iluminação paisagística" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80" alt="Bancada gourmet com banquetas de design e iluminação pendente de cobre" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1556909172-a6c5b78452e5?auto=format&fit=crop&w=1200&q=80" alt="Churrasqueira moderna integrada com bancada em pedra e estrutura de inox" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Externo</span>
+                <h3 class="amb-card__title">Área Gourmet</h3>
+                <a href="produtos.html?categoria=area-gourmet" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Escritório</span>
-            <h3 class="amb-card__title">Corporativo</h3>
-            <a href="produtos.html?categoria=corporativo" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 4. Linha Couro -->
-        <article class="amb-card" data-cat="linha-couro" data-href="produtos.html?categoria=linha-couro" tabindex="0" aria-label="Linha Couro">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80"
-              alt="Sofá de estofado premium em sala de alto padrão com iluminação arquitetônica"
-              loading="lazy"
-            />
+          <!-- 2. Complementos — mesa de centro / aparador no hall / marcenaria fina -->
+          <div class="amb-slide" data-cat="complementos">
+            <article class="amb-card" data-href="produtos.html?categoria=complementos" aria-label="Complementos">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=80" alt="Mesa de centro assinada em madeira e mármore com decoração de alto padrão" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1524758631624-e2822132143e?auto=format&fit=crop&w=1200&q=80" alt="Aparador sofisticado em hall de entrada com espelho bisotado e iluminação indireta" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1614030423694-989d5f6bba04?auto=format&fit=crop&w=1200&q=80" alt="Detalhe de marcenaria fina com nichos embutidos e acabamento laca fosca premium" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Decoração</span>
+                <h3 class="amb-card__title">Complementos</h3>
+                <a href="produtos.html?categoria=complementos" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Estofados</span>
-            <h3 class="amb-card__title">Linha Couro</h3>
-            <a href="produtos.html?categoria=linha-couro" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 5. Living -->
-        <article class="amb-card" data-cat="living" data-href="produtos.html?categoria=living" tabindex="0" aria-label="Living">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=900&q=80"
-              alt="Sala de estar ampla com estofados premium, tapete de lã e iluminação arquitetônica"
-              loading="lazy"
-            />
+          <!-- 3. Corporativo — escritório executivo / sala de reuniões / workstation elegante -->
+          <div class="amb-slide" data-cat="corporativo">
+            <article class="amb-card" data-href="produtos.html?categoria=corporativo" aria-label="Corporativo">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80" alt="Escritório executivo premium com mesa em madeira nobre e cadeira presidente" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1568992687947-868a62a9f521?auto=format&fit=crop&w=1200&q=80" alt="Sala de reuniões moderna com mesa de vidro, cadeiras assinadas e painel acústico" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1541746972996-4e0b0f43b32e?auto=format&fit=crop&w=1200&q=80" alt="Estação de trabalho integrada e elegante com painéis de marcenaria sob medida" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Escritório</span>
+                <h3 class="amb-card__title">Corporativo</h3>
+                <a href="produtos.html?categoria=corporativo" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Sala de Estar</span>
-            <h3 class="amb-card__title">Living</h3>
-            <a href="produtos.html?categoria=living" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 6. Poltronas Reclináveis -->
-        <article class="amb-card" data-cat="poltronas-reclinaveis" data-href="produtos.html?categoria=poltronas-reclinaveis" tabindex="0" aria-label="Poltronas Reclináveis">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80"
-              alt="Poltrona reclinável de leitura em ambiente minimalista com iluminação suave"
-              loading="lazy"
-            />
+          <!-- 4. Linha Couro — textura do couro / poltrona icônica / living com couro -->
+          <div class="amb-slide" data-cat="linha-couro">
+            <article class="amb-card" data-href="produtos.html?categoria=linha-couro" aria-label="Linha Couro">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Detalhe da textura de um sofá em couro italiano nobre com costura artesanal" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?auto=format&fit=crop&w=1200&q=80" alt="Poltrona icônica em couro plena grain com estrutura em madeira torneada" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?auto=format&fit=crop&w=1200&q=80" alt="Living sofisticado com conjunto de estofados em couro e tapete de lã artesanal" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Estofados</span>
+                <h3 class="amb-card__title">Linha Couro</h3>
+                <a href="produtos.html?categoria=linha-couro" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Estofados</span>
-            <h3 class="amb-card__title">Poltronas Reclináveis</h3>
-            <a href="produtos.html?categoria=poltronas-reclinaveis" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 7. Quartos e Colchões -->
-        <article class="amb-card" data-cat="quartos-colchoes" data-href="produtos.html?categoria=quartos-colchoes" tabindex="0" aria-label="Quartos e Colchões">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80"
-              alt="Cama de casal com cabeceira estofada elegante, colchão premium e enxoval de alto padrão"
-              loading="lazy"
-            />
+          <!-- 5. Living — sala ampla / sofá principal / poltronas e tapete premium -->
+          <div class="amb-slide" data-cat="living">
+            <article class="amb-card" data-href="produtos.html?categoria=living" aria-label="Living">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=1200&q=80" alt="Sala de estar ampla e iluminada com pé direito duplo e janelas do piso ao teto" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd3?auto=format&fit=crop&w=1200&q=80" alt="Sofá principal de grife com almofadas de linho fino e mesa de centro em mármore" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1618220179428-22790b461be2?auto=format&fit=crop&w=1200&q=80" alt="Composição de poltronas e tapete de lã premium com iluminação aconchegante" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Sala de Estar</span>
+                <h3 class="amb-card__title">Living</h3>
+                <a href="produtos.html?categoria=living" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Dormitório</span>
-            <h3 class="amb-card__title">Quartos e Colchões</h3>
-            <a href="produtos.html?categoria=quartos-colchoes" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 8. Sala de Jantar -->
-        <article class="amb-card" data-cat="sala-jantar" data-href="produtos.html?categoria=sala-jantar" tabindex="0" aria-label="Sala de Jantar">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=900&q=80"
-              alt="Mesa de jantar imponente em madeira nobre com cadeiras assinadas e lustre contemporâneo"
-              loading="lazy"
-            />
+          <!-- 6. Poltronas Reclináveis — leitura / automatizada / acabamento/mecanismo -->
+          <div class="amb-slide" data-cat="poltronas-reclinaveis">
+            <article class="amb-card" data-href="produtos.html?categoria=poltronas-reclinaveis" aria-label="Poltronas Reclináveis">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80" alt="Poltrona de leitura em canto aconchegante com luminária de arco e tapete felpudo" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=80" alt="Poltrona motorizada de alto padrão com encosto regulável e apoio de pés automático" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&w=1200&q=80" alt="Close no mecanismo reclinável e acabamento em couro costureado à mão" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Estofados</span>
+                <h3 class="amb-card__title">Poltronas Reclináveis</h3>
+                <a href="produtos.html?categoria=poltronas-reclinaveis" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Jantar</span>
-            <h3 class="amb-card__title">Sala de Jantar</h3>
-            <a href="produtos.html?categoria=sala-jantar" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-        <!-- 9. Sala de TV -->
-        <article class="amb-card" data-cat="sala-tv" data-href="produtos.html?categoria=sala-tv" tabindex="0" aria-label="Sala de TV">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=80"
-              alt="Home theater sofisticado com painel de madeira nobre, estofado premium e iluminação indireta"
-              loading="lazy"
-            />
+          <!-- 7. Quartos e Colchões — cabeceira / minimalista iluminado / enxoval e recamier -->
+          <div class="amb-slide" data-cat="quartos-colchoes">
+            <article class="amb-card" data-href="produtos.html?categoria=quartos-colchoes" aria-label="Quartos e Colchões">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80" alt="Cama de casal com cabeceira estofada em veludo e colchão premium de molas ensacadas" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1522771739844-6a9136b5c672?auto=format&fit=crop&w=1200&q=80" alt="Quarto minimalista com iluminação embutida em sanca e painel ripado de madeira" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1540518614-38b0c56b29c0?auto=format&fit=crop&w=1200&q=80" alt="Detalhes de enxoval egípcio premium com recamier estofado ao pé da cama" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Dormitório</span>
+                <h3 class="amb-card__title">Quartos e Colchões</h3>
+                <a href="produtos.html?categoria=quartos-colchoes" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
           </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Entretenimento</span>
-            <h3 class="amb-card__title">Sala de TV</h3>
-            <a href="produtos.html?categoria=sala-tv" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
 
-      </div>
+          <!-- 8. Sala de Jantar — mesa imponente / lustre sobre mesa / buffet elegante -->
+          <div class="amb-slide" data-cat="sala-jantar">
+            <article class="amb-card" data-href="produtos.html?categoria=sala-jantar" aria-label="Sala de Jantar">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=1200&q=80" alt="Mesa imponente em madeira maciça com cadeiras de design assinado para 10 lugares" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80" alt="Lustre luxuoso em latão antique sobre mesa posta com louça e cristaleira premium" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1551269901-5c2f24a3ac4a?auto=format&fit=crop&w=1200&q=80" alt="Buffet de apoio elegante em madeira e mármore Calacatta com adega integrada" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Jantar</span>
+                <h3 class="amb-card__title">Sala de Jantar</h3>
+                <a href="produtos.html?categoria=sala-jantar" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
+          </div>
+
+          <!-- 9. Sala de TV — home theater / sofá retrátil / mídia integrada -->
+          <div class="amb-slide" data-cat="sala-tv">
+            <article class="amb-card" data-href="produtos.html?categoria=sala-tv" aria-label="Sala de TV">
+              <div class="amb-card__imgs">
+                <div class="amb-card__img is-shown">
+                  <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1200&q=80" alt="Home theater com painel de madeira nobre, TV embutida e iluminação LED indireta" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80" alt="Sofá retrátil de altíssimo conforto com chaise e apoio elétrico regulável" loading="lazy" />
+                </div>
+                <div class="amb-card__img">
+                  <img src="https://images.unsplash.com/photo-1574375927443-fe27dd4d49f7?auto=format&fit=crop&w=1200&q=80" alt="Ambiente de mídia integrado com acústica tratada e estante de design para coleção" loading="lazy" />
+                </div>
+              </div>
+              <div class="amb-card__overlay">
+                <span class="amb-card__cat">Entretenimento</span>
+                <h3 class="amb-card__title">Sala de TV</h3>
+                <a href="produtos.html?categoria=sala-tv" class="amb-card__btn btn btn--primary btn--sm">Ver Produtos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /amb-track -->
+
+        <button class="amb-carousel__arrow amb-carousel__arrow--next" id="amb-next" aria-label="Próxima categoria">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+
+        <!-- Dots de navegação -->
+        <div class="amb-carousel__dots" id="amb-dots" aria-label="Navegar por categoria" role="tablist"></div>
+
+      </div><!-- /amb-carousel -->
 
       <div class="container ambientes__footer">
         <a href="produtos.html" class="btn btn--outline">
@@ -610,6 +671,21 @@
       </div>
 
     </section>
+
+    <!-- ─── Divisor: Produtos ─── -->
+    <div class="sec-divider" role="marquee" aria-label="Alta marcenaria e estofados premium">
+      <div class="sec-divider__track">
+        <span class="sec-divider__item">ALTA MARCENARIA E ESTOFADOS PREMIUM</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item">SOLICITE SEU ORÇAMENTO EXCLUSIVO VIA WHATSAPP</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <!-- Espelho exato para loop perfeito sem salto visual -->
+        <span class="sec-divider__item" aria-hidden="true">ALTA MARCENARIA E ESTOFADOS PREMIUM</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item" aria-hidden="true">SOLICITE SEU ORÇAMENTO EXCLUSIVO VIA WHATSAPP</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+      </div>
+    </div>
 
     <!-- ============================================================
          PRODUTOS
@@ -661,7 +737,7 @@
           </div>
         </article>
 
-        <!-- ── Chesterfield I ── -->
+        <!-- ── Chesterfield I — linkado à página de produto ── -->
         <article class="cat-card" data-tipo="sofa" data-imgs='["https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg","https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-1.jpg"]' data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Chesterfield%20I.%20Pode%20me%20enviar%20mais%20informações%3F">
           <figure class="cat-card__fig" data-nome="Chesterfield I">
             <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg"
@@ -681,9 +757,10 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 2,40m · Prof. 1,00m · Alt. 0,80m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <a href="produto.html" class="btn btn--primary btn--sm cat-card__cta">
               Ver Produto
-            </button>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
           </div>
         </article>
 
@@ -1005,6 +1082,25 @@
 
     </section>
 
+    <!-- ─── Divisor: Showroom ─── -->
+    <div class="sec-divider" role="marquee" aria-label="Visite nosso showroom virtual">
+      <div class="sec-divider__track">
+        <span class="sec-divider__item">VISITE NOSSO SHOWROOM VIRTUAL</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item">INSTAGRAM ATUALIZADO @CSMLUXURY</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item">CONFIRA NOSSAS PARCERIAS COM ARQUITETOS</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <!-- Espelho exato para loop perfeito sem salto visual -->
+        <span class="sec-divider__item" aria-hidden="true">VISITE NOSSO SHOWROOM VIRTUAL</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item" aria-hidden="true">INSTAGRAM ATUALIZADO @CSMLUXURY</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+        <span class="sec-divider__item" aria-hidden="true">CONFIRA NOSSAS PARCERIAS COM ARQUITETOS</span>
+        <span class="sec-divider__sep" aria-hidden="true">✦</span>
+      </div>
+    </div>
+
     <!-- ============================================================
          SHOWROOM & PROJETOS
     ============================================================ -->
@@ -1241,15 +1337,20 @@
       </div>
 
       <nav class="footer__nav" aria-label="Links do rodapé">
-        <div class="footer__col">
-          <h3 class="footer__col-title">Empresa</h3>
+
+        <!-- Coluna 1: Mapa do Site (Sitemap) -->
+        <div class="footer__col footer__col--sitemap">
+          <h3 class="footer__col-title">Mapa do Site</h3>
           <ul>
-            <li><a href="#historia">Nossa História</a></li>
+            <li><a href="#inicio" rel="index">Início</a></li>
             <li><a href="#ambientes">Ambientes</a></li>
+            <li><a href="produtos.html?categoria=corporativo">Corporativo</a></li>
+            <li><a href="#historia">Sobre Nós</a></li>
             <li><a href="#showroom">Showroom</a></li>
-            <li><a href="#arquitetos">Para Arquitetos</a></li>
           </ul>
         </div>
+
+        <!-- Coluna 2: Contato -->
         <div class="footer__col">
           <h3 class="footer__col-title">Contato</h3>
           <ul>
@@ -1259,6 +1360,8 @@
             <li><a href="https://maps.google.com/?q=Av.+Dr.+Moraes+Sales,+1575,+Cambu%C3%AD,+Campinas,+SP" target="_blank" rel="noopener noreferrer">Av. Dr. Moraes Sales, 1575 — Cambuí</a></li>
           </ul>
         </div>
+
+        <!-- Coluna 3: Horários -->
         <div class="footer__col">
           <h3 class="footer__col-title">Horários</h3>
           <ul class="footer__hours">
@@ -1267,6 +1370,38 @@
             <li><span>Dom e Feriados</span><span>10h às 18h</span></li>
           </ul>
         </div>
+
+        <!-- Coluna 4: Credibilidade & Pagamento -->
+        <div class="footer__col footer__col--trust">
+          <h3 class="footer__col-title">Pagamento</h3>
+          <ul class="footer__trust-list">
+            <li class="footer__pay-item">
+              <span class="footer__pay-chip footer__pay-chip--pix">
+                <!-- Pix mark — 4 losangos em cruz -->
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M11.37 16.18 7.18 12l4.19-4.18 1.06 1.06L9.3 12l3.13 3.12-1.06 1.06Zm1.26 0 1.06-1.06L16.82 12l-3.13-3.12 1.06-1.06L18.94 12l-4.31 4.18Zm-3.6 4.84A10 10 0 1 1 22 12 10 10 0 0 1 9.03 21.02Z" opacity=".0001"/>
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5.66 6.59-2.2 2.2a3.06 3.06 0 0 1-4.32 0l-.35-.35a.77.77 0 0 0-1.09 0l-2.56 2.56 2.56 2.56a.77.77 0 0 0 1.09 0l.35-.35a3.06 3.06 0 0 1 4.32 0l2.2 2.2A7.94 7.94 0 0 0 12 4a7.94 7.94 0 0 0-5.71 2.39L8.82 8.9a.77.77 0 0 0 1.09 0l.35-.35a3.06 3.06 0 0 1 4.32 0l2.2 2.2ZM12 20a7.94 7.94 0 0 0 5.66-2.39l-2.2-2.2a3.06 3.06 0 0 1-4.32 0l-.35-.35a.77.77 0 0 0-1.09 0l-2.53 2.53A7.94 7.94 0 0 0 12 20Z"/>
+                </svg>
+                PIX
+              </span>
+            </li>
+            <li class="footer__pay-item">
+              <span class="footer__pay-chip">
+                <!-- Credit card icon -->
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <line x1="2" y1="10" x2="22" y2="10"/>
+                  <line x1="6" y1="15" x2="10" y2="15"/>
+                </svg>
+                CARTÃO
+              </span>
+              <span style="font-size:.68rem;color:rgba(255,255,255,.28);margin-left:.25rem">crédito&nbsp;e&nbsp;débito</span>
+            </li>
+            <li class="footer__trust-seal">Satisfação Assegurada CSM</li>
+            <li class="footer__trust-seal">Qualidade Alta Marcenaria</li>
+          </ul>
+        </div>
+
       </nav>
 
     </div>
@@ -1515,30 +1650,376 @@
       });
     });
 
-    // ── Filtro galeria ───────────────────────────────────────────
-    const filterBtns = document.querySelectorAll('.ambientes__filters .filter');
-    const ambCards   = document.querySelectorAll('.amb-card');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-        const f = btn.dataset.filter;
-        ambCards.forEach(c => {
-          const show = f === 'all' || c.dataset.cat === f;
-          c.style.display = show ? '' : 'none';
-          if (show) { c.style.opacity = '0'; requestAnimationFrame(() => { c.style.opacity = '1'; }); }
+    // ── Carrossel Ambientes — Center Mode Infinite ───────────────
+    (function () {
+      var CLONE_N      = 3;        // clones em cada lado
+      var AUTOPLAY_MS  = 5000;
+      var TRANS_MS     = 650;
+      var easing       = 'cubic-bezier(0.25, 1, 0.5, 1)';
+
+      var carousel  = document.getElementById('amb-carousel');
+      var track     = document.getElementById('amb-track');
+      var dotsWrap  = document.getElementById('amb-dots');
+      if (!carousel || !track) return;
+
+      // Slides originais
+      var origSlides = Array.from(track.querySelectorAll('.amb-slide'));
+      var n          = origSlides.length;
+
+      // Clona head + tail para loop infinito
+      var headClones = origSlides.slice(-CLONE_N).map(function (s) {
+        var c = s.cloneNode(true); c.setAttribute('aria-hidden', 'true'); return c;
+      });
+      var tailClones = origSlides.slice(0, CLONE_N).map(function (s) {
+        var c = s.cloneNode(true); c.setAttribute('aria-hidden', 'true'); return c;
+      });
+      headClones.forEach(function (c) { track.insertBefore(c, track.firstChild); });
+      tailClones.forEach(function (c) { track.appendChild(c); });
+
+      var allSlides = Array.from(track.querySelectorAll('.amb-slide'));
+      var total     = allSlides.length; // n + 2*CLONE_N
+
+      var current   = CLONE_N; // índice do primeiro slide real
+      var locked    = false;
+      var timer     = null;
+
+      // ─── Dots
+      origSlides.forEach(function (s, i) {
+        var dot = document.createElement('button');
+        dot.className = 'amb-dot';
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Categoria ' + (i + 1));
+        dot.dataset.idx = String(i);
+        dot.addEventListener('click', function () { goTo(CLONE_N + i, true); resetAutoplay(); });
+        dotsWrap.appendChild(dot);
+      });
+      var dots = Array.from(dotsWrap.querySelectorAll('.amb-dot'));
+
+      // ─── Cálculo do offset para centralizar o slide
+      function offset(idx) {
+        var vw     = carousel.offsetWidth;
+        var slide  = allSlides[idx] || allSlides[0];
+        var sw     = slide.offsetWidth;
+        var gap    = parseFloat(getComputedStyle(track).gap) || 0;
+        var center = (vw - sw) / 2;
+        return -(idx * (sw + gap)) + center;
+      }
+
+      // ─── Hooks preenchidos pelos módulos abaixo (parallax, crossfade, filtros)
+      var resetParallax  = function () {};
+      var syncFilterBtns = function () {};
+      var onCardChange   = function () {};
+
+      // ─── Atualiza classes ativas
+      function updateState() {
+        allSlides.forEach(function (s, i) { s.classList.toggle('is-active', i === current); });
+        var realIdx = ((current - CLONE_N) % n + n) % n;
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === realIdx); });
+        resetParallax();
+        syncFilterBtns(realIdx);
+        onCardChange(realIdx);
+      }
+
+      // ─── Navega para índice
+      function goTo(idx, animate) {
+        if (animate === undefined) animate = true;
+        if (animate) {
+          track.style.transition = 'transform ' + TRANS_MS + 'ms ' + easing;
+        } else {
+          track.style.transition = 'none';
+        }
+        current = idx;
+        track.style.transform = 'translateX(' + offset(idx) + 'px)';
+        updateState();
+        if (!animate) {
+          // Força reflow para que a próxima transição funcione
+          void track.offsetWidth;
+        }
+      }
+
+      // ─── Loop infinito: ao terminar a transição, salta silenciosamente
+      track.addEventListener('transitionend', function () {
+        if (current < CLONE_N) {
+          goTo(current + n, false);
+        } else if (current >= CLONE_N + n) {
+          goTo(current - n, false);
+        }
+        locked = false;
+      });
+
+      function next() {
+        if (locked) return;
+        locked = true;
+        goTo(current + 1, true);
+      }
+      function prev() {
+        if (locked) return;
+        locked = true;
+        goTo(current - 1, true);
+      }
+
+      // ─── Autoplay
+      function startAutoplay() {
+        stopAutoplay();
+        timer = setInterval(next, AUTOPLAY_MS);
+      }
+      function stopAutoplay() { clearInterval(timer); }
+      function resetAutoplay() { stopAutoplay(); startAutoplay(); }
+
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', startAutoplay);
+
+      // ─── Setas
+      var btnPrev = document.getElementById('amb-prev');
+      var btnNext = document.getElementById('amb-next');
+      if (btnPrev) btnPrev.addEventListener('click', function () { prev(); resetAutoplay(); });
+      if (btnNext) btnNext.addEventListener('click', function () { next(); resetAutoplay(); });
+
+      // ─── Swipe touch
+      var tx0 = 0, ty0 = 0;
+      carousel.addEventListener('touchstart', function (e) {
+        tx0 = e.touches[0].clientX;
+        ty0 = e.touches[0].clientY;
+        stopAutoplay();
+      }, { passive: true });
+      carousel.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - tx0;
+        var dy = e.changedTouches[0].clientY - ty0;
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 44) {
+          dx < 0 ? next() : prev();
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      // ─── Filtros → scroll para primeiro card + sincronização bidirecional
+      var filterBtns = Array.from(document.querySelectorAll('.ambientes__filters .filter'));
+
+      // syncFilterBtns: chamado pelo updateState a cada troca de card (autoplay/swipe/seta)
+      syncFilterBtns = function (realIdx) {
+        var cat = origSlides[realIdx] ? origSlides[realIdx].dataset.cat : null;
+        filterBtns.forEach(function (b) {
+          var matches = b.dataset.filter === cat;
+          b.classList.toggle('active', matches);
+          b.setAttribute('aria-selected', matches ? 'true' : 'false');
+        });
+      };
+
+      // Clique no filtro → navega e marca ativo
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+          var f = btn.dataset.filter;
+          if (f === 'all') {
+            goTo(CLONE_N, true);
+          } else {
+            var idx = origSlides.findIndex(function (s) { return s.dataset.cat === f; });
+            if (idx >= 0) goTo(CLONE_N + idx, true);
+          }
+          resetAutoplay();
         });
       });
-    });
 
-    // ── Navegação por clique/tap nos cards de ambientes ──────────
-    document.querySelectorAll('.amb-card[data-href]').forEach(card => {
-      card.addEventListener('click', e => {
+      // ─── Navegação por clique no card ativo
+      track.addEventListener('click', function (e) {
+        var slide = e.target.closest('.amb-slide');
+        if (!slide) return;
+        if (!slide.classList.contains('is-active')) return;
+        var card  = slide.querySelector('.amb-card');
+        if (!card) return;
         if (e.target.closest('.amb-card__btn')) return;
         window.location.href = card.dataset.href;
       });
-    });
+
+      // ─── Inicialização
+      goTo(CLONE_N, false);
+      startAutoplay();
+
+      // Recalcula posição ao redimensionar
+      window.addEventListener('resize', function () { goTo(current, false); });
+
+      // ── PARALLAX 3D — Microinteração no card ativo ───────────────
+      (function () {
+        var MAX_PX   = 16;    // deslocamento máximo em px (~ 4% de 400px)
+        var SCALE    = 1.08;  // escala de buffer anti-borda-branca
+        var LERP_T   = 0.08;  // suavidade do lerp (0 = parado, 1 = instantâneo)
+
+        var pxTarget = 0, pyTarget = 0;
+        var pxCur    = 0, pyCur    = 0;
+        var pActive  = false;   // true enquanto há input de mouse / gyro
+        var prafId   = null;
+        var pPrevImg = null;    // referência ao <img> do último card ativo
+
+        function lerp(a, b, t) { return a + (b - a) * t; }
+
+        function getActiveImg() {
+          var s = track.querySelector('.amb-slide.is-active');
+          if (!s) return null;
+          var shown = s.querySelector('.amb-card__img.is-shown img');
+          return shown || s.querySelector('.amb-card__img img');
+        }
+
+        function applyPx(img, x, y) {
+          img.style.transform =
+            'scale(' + SCALE + ') translate(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px)';
+        }
+
+        // RAF loop — lerp suave até o target; para quando próximo de zero sem input
+        function prafLoop() {
+          var img = getActiveImg();
+
+          // Detecta troca de card ativo → reseta posição
+          if (img !== pPrevImg) {
+            if (pPrevImg) pPrevImg.style.transform = '';
+            pxCur = 0; pyCur = 0;
+            pPrevImg = img;
+          }
+
+          if (!img) { prafId = null; return; }
+
+          pxCur = lerp(pxCur, pxTarget, LERP_T);
+          pyCur = lerp(pyCur, pyTarget, LERP_T);
+          applyPx(img, pxCur, pyCur);
+
+          // Encerra o loop quando próximo de zero e sem input
+          if (!pActive && Math.abs(pxCur) < 0.06 && Math.abs(pyCur) < 0.06) {
+            img.style.transform = '';
+            pxCur = 0; pyCur = 0;
+            prafId = null;
+            return;
+          }
+          prafId = requestAnimationFrame(prafLoop);
+        }
+
+        function ensurePRAF() {
+          if (!prafId) prafId = requestAnimationFrame(prafLoop);
+        }
+
+        // Expõe o reset para o hook de updateState (troca de slide)
+        resetParallax = function () {
+          pActive  = false;
+          pxTarget = 0;
+          pyTarget = 0;
+          if (pPrevImg) { pPrevImg.style.transform = ''; pPrevImg = null; }
+          pxCur = 0; pyCur = 0;
+        };
+
+        // ── Desktop: mousemove sobre o carrossel ─────────────────────
+        carousel.addEventListener('mousemove', function (e) {
+          var img = getActiveImg();
+          if (!img) return;
+          var card = img.closest('.amb-card');
+          if (!card) return;
+          var r  = card.getBoundingClientRect();
+          var nx = Math.max(-1, Math.min(1, (e.clientX - r.left - r.width  / 2) / (r.width  / 2)));
+          var ny = Math.max(-1, Math.min(1, (e.clientY - r.top  - r.height / 2) / (r.height / 2)));
+          pxTarget = -nx * MAX_PX;
+          pyTarget = -ny * MAX_PX;
+          pActive  = true;
+          ensurePRAF();
+        });
+
+        carousel.addEventListener('mouseleave', function () {
+          pActive  = false;
+          pxTarget = 0;
+          pyTarget = 0;
+          ensurePRAF(); // continua o lerp de retorno ao centro
+        });
+
+        // ── Mobile: deviceorientation (giroscópio) ───────────────────
+        function onOrientation(e) {
+          var img = getActiveImg();
+          if (!img) return;
+          // gamma: inclinação esquerda/direita  (−90° a +90°)
+          // beta:  inclinação frente/trás       (−180° a +180°)
+          var gx = Math.max(-25, Math.min(25, e.gamma || 0)) / 25;
+          var gy = Math.max(-30, Math.min(30, e.beta  || 0)) / 30;
+          pxTarget = -gx * MAX_PX * 0.65;
+          pyTarget = -gy * MAX_PX * 0.45;
+          pActive  = true;
+          ensurePRAF();
+        }
+
+        function setupGyro() {
+          if (typeof DeviceOrientationEvent === 'undefined') return;
+          function start() { window.addEventListener('deviceorientation', onOrientation, true); }
+          // iOS 13+ exige permissão explícita
+          if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+            carousel.addEventListener('touchend', function askOnce() {
+              DeviceOrientationEvent.requestPermission()
+                .then(function (s) { if (s === 'granted') start(); })
+                .catch(function () {});
+              carousel.removeEventListener('touchend', askOnce);
+            }, { once: true });
+          } else if (window.matchMedia('(hover: none)').matches) {
+            // Android e outros browsers sem API de permissão
+            start();
+          }
+        }
+
+        setupGyro();
+      }());
+
+      // ── CROSSFADE INTERNO — alterna até 3 imagens no card centralizado ──
+      (function () {
+        var FADE_MS     = 3500;  // ms entre cada imagem
+        var cfTimer     = null;
+        var cfIdx       = 0;
+        var prevRealIdx = -1;    // rastreia qual card estava ativo antes
+
+        // Retorna os .amb-card__img do slide real indicado
+        function imgItems(realIdx) {
+          var slide = origSlides[realIdx];
+          return slide ? Array.from(slide.querySelectorAll('.amb-card__img')) : [];
+        }
+
+        // Troca qual imagem está visível dentro do slide
+        function showImg(items, idx) {
+          items.forEach(function (el, i) { el.classList.toggle('is-shown', i === idx); });
+        }
+
+        // Pausa o timer e reseta o card indicado para a 1ª imagem
+        function resetCard(realIdx) {
+          if (realIdx < 0) return;
+          var items = imgItems(realIdx);
+          if (items.length) showImg(items, 0);
+        }
+
+        function stopCF() { clearInterval(cfTimer); cfTimer = null; }
+
+        function startCF(realIdx) {
+          stopCF();
+          var items = imgItems(realIdx);
+          if (items.length <= 1) return;
+          cfIdx = 0;
+          showImg(items, 0);
+          cfTimer = setInterval(function () {
+            cfIdx = (cfIdx + 1) % items.length;
+            showImg(imgItems(realIdx), cfIdx);
+          }, FADE_MS);
+        }
+
+        // Hook chamado pelo updateState a cada troca de card ativo
+        onCardChange = function (realIdx) {
+          // 1. Para o timer e reseta o card que acabou de sair do centro
+          if (prevRealIdx >= 0 && prevRealIdx !== realIdx) {
+            stopCF();
+            resetCard(prevRealIdx);
+          }
+          prevRealIdx = realIdx;
+          // 2. Inicia crossfade no novo card central
+          startCF(realIdx);
+        };
+
+        // Inicializa no card 0
+        onCardChange(0);
+      }());
+
+    }());
 
     // ── Filtro catálogo ──────────────────────────────────────────
     const catBtns  = document.querySelectorAll('.catalogo__filters .filter');
@@ -1558,7 +2039,7 @@
     });
 
     // ── Scroll reveal ────────────────────────────────────────────
-    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .amb-card, .cat-card');
+    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .cat-card');
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
