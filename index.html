@@ -412,121 +412,188 @@
         </p>
       </div>
 
-      <!-- Filtros -->
-      <div class="ambientes__filters" role="tablist" aria-label="Filtrar por tipo de ambiente">
-        <button class="filter active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+      <!-- Filtros — 9 categorias oficiais CSM -->
+      <div class="ambientes__filters" role="tablist" aria-label="Filtrar por categoria">
+        <button class="filter active" role="tab" aria-selected="true"  data-filter="all">Todos</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="area-gourmet">Área Gourmet</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="complementos">Complementos</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="corporativo">Corporativo</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="linha-couro">Linha Couro</button>
         <button class="filter" role="tab" aria-selected="false" data-filter="living">Living</button>
-        <button class="filter" role="tab" aria-selected="false" data-filter="jantar">Jantar</button>
-        <button class="filter" role="tab" aria-selected="false" data-filter="quarto">Quartos</button>
-        <button class="filter" role="tab" aria-selected="false" data-filter="escritorio">Escritório</button>
-        <button class="filter" role="tab" aria-selected="false" data-filter="externo">Externo</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="poltronas-reclinaveis">Poltronas</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="quartos-colchoes">Quartos</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="sala-jantar">Sala de Jantar</button>
+        <button class="filter" role="tab" aria-selected="false" data-filter="sala-tv">Sala de TV</button>
       </div>
 
-      <!-- Grid de cards -->
+      <!-- Grid de cards — 9 categorias oficiais -->
       <div class="ambientes__grid" id="galeria-grid">
 
-        <article class="amb-card" data-cat="living" data-href="produtos.html?ambiente=living" tabindex="0" aria-label="Living — Sala Contemporânea">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80"
-              alt="Sala contemporânea de alto padrão com sofá de design e iluminação difusa"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Living</span>
-            <h3 class="amb-card__title">Sala Contemporânea</h3>
-            <a href="produtos.html?ambiente=living" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="amb-card" data-cat="jantar" data-href="produtos.html?ambiente=jantar" tabindex="0" aria-label="Jantar — Mesa Imperial">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=900&q=80"
-              alt="Sala de jantar com mesa de madeira nobre, cadeiras de design e iluminação pendente"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Jantar</span>
-            <h3 class="amb-card__title">Mesa Imperial</h3>
-            <a href="produtos.html?ambiente=jantar" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="amb-card amb-card--wide" data-cat="quarto" data-href="produtos.html?ambiente=quarto" tabindex="0" aria-label="Quarto — Suíte Master Serena">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1200&q=80"
-              alt="Suíte master com cama king-size, cabeceira estofada e iluminação ambiental suave"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Quarto</span>
-            <h3 class="amb-card__title">Suíte Master Serena</h3>
-            <a href="produtos.html?ambiente=quarto" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="amb-card" data-cat="escritorio" data-href="produtos.html?ambiente=escritorio" tabindex="0" aria-label="Escritório — Home Office Executivo">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=900&q=80"
-              alt="Home office executivo com escrivaninha de madeira, estante embutida e luz natural"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Escritório</span>
-            <h3 class="amb-card__title">Home Office Executivo</h3>
-            <a href="produtos.html?ambiente=escritorio" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="amb-card" data-cat="living" data-href="produtos.html?ambiente=living" tabindex="0" aria-label="Living — Lounge Moderno">
-          <div class="amb-card__img">
-            <img
-              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80"
-              alt="Lounge moderno com poltrona de couro, tapete de lã e iluminação indireta"
-              loading="lazy"
-            />
-          </div>
-          <div class="amb-card__overlay">
-            <span class="amb-card__cat">Living</span>
-            <h3 class="amb-card__title">Living Lounge Moderno</h3>
-            <a href="produtos.html?ambiente=living" class="amb-card__btn btn btn--primary btn--sm">
-              Ver Produtos
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="amb-card" data-cat="externo" data-href="produtos.html?ambiente=externo" tabindex="0" aria-label="Externo — Área Gourmet">
+        <!-- 1. Área Gourmet -->
+        <article class="amb-card" data-cat="area-gourmet" data-href="produtos.html?categoria=area-gourmet" tabindex="0" aria-label="Área Gourmet">
           <div class="amb-card__img">
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-              alt="Área gourmet premium com mobiliário externo de alto padrão e iluminação paisagística"
+              alt="Varanda gourmet de luxo com mobiliário externo premium e iluminação paisagística"
               loading="lazy"
             />
           </div>
           <div class="amb-card__overlay">
             <span class="amb-card__cat">Externo</span>
-            <h3 class="amb-card__title">Área Gourmet Premium</h3>
-            <a href="produtos.html?ambiente=externo" class="amb-card__btn btn btn--primary btn--sm">
+            <h3 class="amb-card__title">Área Gourmet</h3>
+            <a href="produtos.html?categoria=area-gourmet" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. Complementos -->
+        <article class="amb-card" data-cat="complementos" data-href="produtos.html?categoria=complementos" tabindex="0" aria-label="Complementos">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=900&q=80"
+              alt="Mesa de centro de design, aparador fino e peças de decoração de alto padrão"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Decoração</span>
+            <h3 class="amb-card__title">Complementos</h3>
+            <a href="produtos.html?categoria=complementos" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. Corporativo -->
+        <article class="amb-card" data-cat="corporativo" data-href="produtos.html?categoria=corporativo" tabindex="0" aria-label="Corporativo">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=900&q=80"
+              alt="Sala de reunião executiva com cadeiras presidenciais e mesa de conferência moderna"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Escritório</span>
+            <h3 class="amb-card__title">Corporativo</h3>
+            <a href="produtos.html?categoria=corporativo" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. Linha Couro -->
+        <article class="amb-card" data-cat="linha-couro" data-href="produtos.html?categoria=linha-couro" tabindex="0" aria-label="Linha Couro">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1540932239986-30128da9ef7a?auto=format&fit=crop&w=900&q=80"
+              alt="Sofá e poltrona em couro natural cognac com textura nobre e costura artesanal"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Estofados</span>
+            <h3 class="amb-card__title">Linha Couro</h3>
+            <a href="produtos.html?categoria=linha-couro" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. Living -->
+        <article class="amb-card" data-cat="living" data-href="produtos.html?categoria=living" tabindex="0" aria-label="Living">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=900&q=80"
+              alt="Sala de estar ampla com estofados premium, tapete de lã e iluminação arquitetônica"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Sala de Estar</span>
+            <h3 class="amb-card__title">Living</h3>
+            <a href="produtos.html?categoria=living" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. Poltronas Reclináveis -->
+        <article class="amb-card" data-cat="poltronas-reclinaveis" data-href="produtos.html?categoria=poltronas-reclinaveis" tabindex="0" aria-label="Poltronas Reclináveis">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=900&q=80"
+              alt="Poltrona reclinável de leitura em ambiente minimalista com iluminação suave"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Estofados</span>
+            <h3 class="amb-card__title">Poltronas Reclináveis</h3>
+            <a href="produtos.html?categoria=poltronas-reclinaveis" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. Quartos e Colchões -->
+        <article class="amb-card" data-cat="quartos-colchoes" data-href="produtos.html?categoria=quartos-colchoes" tabindex="0" aria-label="Quartos e Colchões">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80"
+              alt="Cama de casal com cabeceira estofada elegante, colchão premium e enxoval de alto padrão"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Dormitório</span>
+            <h3 class="amb-card__title">Quartos e Colchões</h3>
+            <a href="produtos.html?categoria=quartos-colchoes" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. Sala de Jantar -->
+        <article class="amb-card" data-cat="sala-jantar" data-href="produtos.html?categoria=sala-jantar" tabindex="0" aria-label="Sala de Jantar">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=900&q=80"
+              alt="Mesa de jantar imponente em madeira nobre com cadeiras assinadas e lustre contemporâneo"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Jantar</span>
+            <h3 class="amb-card__title">Sala de Jantar</h3>
+            <a href="produtos.html?categoria=sala-jantar" class="amb-card__btn btn btn--primary btn--sm">
+              Ver Produtos
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 9. Sala de TV -->
+        <article class="amb-card" data-cat="sala-tv" data-href="produtos.html?categoria=sala-tv" tabindex="0" aria-label="Sala de TV">
+          <div class="amb-card__img">
+            <img
+              src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=900&q=80"
+              alt="Home theater sofisticado com painel de madeira nobre, estofado premium e iluminação indireta"
+              loading="lazy"
+            />
+          </div>
+          <div class="amb-card__overlay">
+            <span class="amb-card__cat">Entretenimento</span>
+            <h3 class="amb-card__title">Sala de TV</h3>
+            <a href="produtos.html?categoria=sala-tv" class="amb-card__btn btn btn--primary btn--sm">
               Ver Produtos
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
