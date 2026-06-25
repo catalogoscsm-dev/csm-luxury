@@ -519,7 +519,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex;
   flex-direction: column;
   gap: .3rem;
-  transition: transform .32s var(--ease), box-shadow .32s var(--ease), background var(--dur) var(--ease);
+  transition:
+    transform     300ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow    300ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    background    var(--dur) var(--ease);
+  will-change: transform, box-shadow;
   opacity: 0;
   transform: translateY(18px);
 }
@@ -536,19 +540,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .stat:nth-child(3).revealed { animation-delay: -3.5s; }
 .stat:nth-child(4).revealed { animation-delay: -5.25s; }
 
-.stat:hover {
-  background: var(--off-white);
-  animation: none;
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 10px 36px rgba(240,120,0,.14), 0 4px 16px rgba(0,0,0,.10);
-  z-index: 1;
+@media (hover: hover) {
+  .stat:hover {
+    background: var(--off-white);
+    animation: none;
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 20px rgba(0,0,0,.10),
+      0 10px 36px rgba(240,120,0,.14);
+    z-index: 1;
+  }
+
+  .stat--featured:hover { background: var(--off-white); }
 }
 
 .stat--featured {
   background: var(--white);
 }
-
-.stat--featured:hover { background: var(--off-white); }
 
 .stat__num {
   display: block;
@@ -737,6 +745,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   opacity: 0;
   transform: scale(.98);
   transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: transform;
 }
 
 .amb-card.revealed {
@@ -749,17 +758,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .amb-card__img {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  /* Fallback: gradiente escuro elegante */
-  background-color: var(--gray-dark);
-  background-image: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-  transition: transform .65s cubic-bezier(.25,.46,.45,.94);
+  overflow: hidden;
+  /* Gradiente como fallback enquanto a imagem carrega */
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
 }
 
-.amb-card:hover .amb-card__img,
-.amb-card:focus .amb-card__img {
-  transform: scale(1.06);
+.amb-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform .65s cubic-bezier(.25, .46, .45, .94);
+  will-change: transform;
+}
+
+/* Zoom apenas em dispositivos com pointer real (desktop) */
+@media (hover: hover) {
+  .amb-card:hover .amb-card__img img,
+  .amb-card:focus-visible .amb-card__img img {
+    transform: scale(1.06);
+  }
 }
 
 .amb-card__overlay {
@@ -767,21 +786,41 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(14,14,14,.85) 0%,
-    rgba(14,14,14,.2)  50%,
+    rgba(10,10,10,.88) 0%,
+    rgba(10,10,10,.30) 48%,
     transparent        100%
   );
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 1.75rem;
+  /* Desktop: overlay aparece no hover */
   opacity: 0;
-  transition: opacity var(--dur) var(--ease);
+  transition: opacity 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.amb-card:hover .amb-card__overlay,
-.amb-card:focus .amb-card__overlay {
-  opacity: 1;
+/* Desktop — overlay no hover/focus */
+@media (hover: hover) {
+  .amb-card:hover .amb-card__overlay,
+  .amb-card:focus-visible .amb-card__overlay {
+    opacity: 1;
+  }
+}
+
+/* Mobile / Touch — overlay sempre visível na base do card */
+@media (hover: none), (max-width: 768px) {
+  .amb-card__overlay {
+    opacity: 1;
+    /* Gradiente mais concentrado na base — título sempre legível */
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.82) 0%,
+      rgba(0,0,0,.55) 40%,
+      transparent     78%
+    );
+  }
+  /* Sem zoom no touch — evita saltos visuais */
+  .amb-card:hover .amb-card__img img { transform: none; }
 }
 
 .amb-card__cat {
@@ -797,9 +836,31 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-serif);
   font-size: 1.35rem;
   font-weight: 300;
-  color: var(--white);
+  color: #ffffff;
   line-height: 1.2;
   margin-bottom: 1rem;
+}
+
+/* Botão de ação — desktop: visível no hover; mobile: sempre visível */
+.amb-card__btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .72rem;
+  letter-spacing: .06em;
+}
+
+/* Mobile — título e botão sempre na base; tap único navega */
+@media (hover: none), (max-width: 768px) {
+  .amb-card__title {
+    font-size: 1.15rem;
+    margin-bottom: .6rem;
+  }
+  .amb-card__btn {
+    font-size: .68rem;
+    padding: .42rem .95rem;
+  }
 }
 
 .ambientes__footer {
@@ -1785,9 +1846,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
   /* Nav drawer — regras já declaradas em ≤ 960px acima */
 
-  /* Cards overlay sempre visível no mobile */
-  .amb-card__overlay { opacity: 1; }
-
   .ambientes__grid {
     grid-template-columns: 1fr;
     grid-auto-rows: 270px;
@@ -2297,10 +2355,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     0 2px 8px  rgba(0,0,0,.05),
     0 1px 0    rgba(255,255,255,.80) inset;
   transition:
-    transform      380ms cubic-bezier(.22,.61,.36,1),
-    box-shadow     380ms cubic-bezier(.22,.61,.36,1),
-    border-color   380ms cubic-bezier(.22,.61,.36,1);
-  will-change: transform;
+    transform     300ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow    300ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color  300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform, box-shadow;
 }
 
 /* Reflexo de canto sutil */
@@ -2348,19 +2406,27 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   100% { background-position: -60%  0; opacity: 0; }
 }
 
-/* ── Hover — elevação + borda acessa ── */
-.dif-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(240, 120, 0, 0.36);
-  box-shadow:
-    0 4px 12px  rgba(0,0,0,.07),
-    0 20px 48px rgba(240,120,0,.11),
-    0 1px 0     rgba(255,255,255,.90) inset;
-}
+/* ── Hover — elevação + borda acessa (apenas pointer real) ── */
+@media (hover: hover) {
+  .dif-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(240, 120, 0, 0.36);
+    box-shadow:
+      0 4px 12px  rgba(0,0,0,.07),
+      0 12px 20px rgba(0,0,0,.10),
+      0 20px 48px rgba(240,120,0,.11),
+      0 1px 0     rgba(255,255,255,.90) inset;
+  }
 
-/* Pausa shimmer no hover para não competir com a elevação */
-.dif-card:hover .dif-card__shimmer {
-  animation-play-state: paused;
+  .dif-card:hover .dif-card__shimmer {
+    animation-play-state: paused;
+  }
+
+  .dif-card:hover .dif-card__icon {
+    background: rgba(240, 120, 0, .13);
+    border-color: rgba(240, 120, 0, .30);
+    box-shadow: 0 0 18px rgba(240,120,0,.15);
+  }
 }
 
 /* ── Ícone ── */
@@ -2384,12 +2450,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 26px;
   color: var(--orange);
   flex-shrink: 0;
-}
-
-.dif-card:hover .dif-card__icon {
-  background: rgba(240, 120, 0, .13);
-  border-color: rgba(240, 120, 0, .30);
-  box-shadow: 0 0 18px rgba(240,120,0,.15);
 }
 
 /* ── Texto ── */
@@ -2463,12 +2523,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     0 1px 0    rgba(255,255,255,.04) inset;
 }
 
-[data-theme="dark"] .dif-card:hover {
-  border-color: rgba(240, 120, 0, 0.38);
-  box-shadow:
-    0 4px 16px  rgba(0,0,0,.60),
-    0 20px 50px rgba(240,120,0,.14),
-    0 1px 0     rgba(255,255,255,.06) inset;
+@media (hover: hover) {
+  [data-theme="dark"] .dif-card:hover {
+    border-color: rgba(240, 120, 0, 0.38);
+    box-shadow:
+      0 4px 16px  rgba(0,0,0,.60),
+      0 12px 20px rgba(0,0,0,.18),
+      0 20px 50px rgba(240,120,0,.14),
+      0 1px 0     rgba(255,255,255,.06) inset;
+  }
 }
 
 [data-theme="dark"] .dif-card__shimmer {
@@ -2492,9 +2555,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-color: rgba(240, 120, 0, .18);
 }
 
-[data-theme="dark"] .dif-card:hover .dif-card__icon {
-  background: rgba(240, 120, 0, .16);
-  border-color: rgba(240, 120, 0, .36);
+@media (hover: hover) {
+  [data-theme="dark"] .dif-card:hover .dif-card__icon {
+    background: rgba(240, 120, 0, .16);
+    border-color: rgba(240, 120, 0, .36);
+  }
 }
 
 /* Transição suave ao trocar tema */
@@ -2750,6 +2815,10 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
     inset 0 1px 0 rgba(255,255,255,.85),
     0 4px 20px rgba(0,0,0,.07);
   animation: convCardFloat 6s ease-in-out infinite;
+  transition:
+    transform     300ms cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow    300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  will-change: transform, box-shadow;
 }
 
 /* Shimmer reflexivo — traço de luz assincrônico por detrás do conteúdo */
@@ -2793,19 +2862,19 @@ html { scroll-padding-top: calc(80px + var(--bar-height)); }
 .conv-card:nth-child(2) { animation-delay: -2s; }
 .conv-card:nth-child(3) { animation-delay: -4s; }
 
-.conv-card {
-  transition: transform .32s var(--ease), box-shadow .32s var(--ease);
-}
+@media (hover: hover) {
+  .conv-card:hover {
+    animation: none;
+    transform: translateY(-6px);
+    box-shadow:
+      0 12px 20px rgba(0,0,0,.10),
+      0 14px 48px rgba(240,120,0,.18);
+    z-index: 1;
+  }
 
-.conv-card:hover {
-  animation: none;
-  transform: translateY(-7px) scale(1.03);
-  box-shadow: 0 14px 48px rgba(240,120,0,.18), 0 4px 20px rgba(0,0,0,.12);
-  z-index: 1;
-}
-
-.conv-card:hover::before {
-  animation-play-state: paused;
+  .conv-card:hover::before {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes convCardFloat {
