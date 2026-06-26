@@ -21,6 +21,9 @@
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="produto.css" />
+
+  <!-- model-viewer — AR / 3D para produtos -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -122,20 +125,72 @@
 
             <!-- Imagem principal -->
             <div class="product-gallery__main" id="gallery-main" role="button" aria-label="Ampliar imagem" tabindex="0">
-              <img
-                id="gallery-main-img"
-                src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg"
-                alt="Sofá Chesterfield I — vista frontal"
-                loading="eager"
-              />
-              <div class="product-gallery__badge-wrap" aria-hidden="true">
-                <span class="gallery-badge gallery-badge--cat">Sofás</span>
-                <span class="gallery-badge gallery-badge--new">Encomenda</span>
+
+              <!-- Vista fotográfica (padrão) -->
+              <div class="gallery-photo-view" id="gallery-photo-view">
+                <img
+                  id="gallery-main-img"
+                  src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg"
+                  alt="Sofá Chesterfield I — vista frontal"
+                  loading="eager"
+                />
+                <div class="product-gallery__badge-wrap" aria-hidden="true">
+                  <span class="gallery-badge gallery-badge--cat">Sofás</span>
+                  <span class="gallery-badge gallery-badge--new">Encomenda</span>
+                </div>
+                <div class="product-gallery__zoom-hint" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                  Ampliar
+                </div>
               </div>
-              <div class="product-gallery__zoom-hint" aria-hidden="true">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                Ampliar
+
+              <!-- Vista 3D / AR (ativa quando thumb-3d é clicado) -->
+              <div class="gallery-3d-view" id="gallery-3d-view" hidden>
+
+                <!-- Loading -->
+                <div class="gallery-3d-loading" id="gallery-3d-loading">
+                  <div class="ar-modal__loading-ring"></div>
+                  <p class="ar-modal__loading-text">Carregando modelo 3D…</p>
+                </div>
+
+                <model-viewer
+                  id="produto-model-viewer"
+                  src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/SheenChair/glTF-Binary/SheenChair.glb"
+                  alt="Sofá Chesterfield I — modelo 3D interativo"
+                  shadow-intensity="1.4"
+                  shadow-softness="0.6"
+                  camera-controls
+                  auto-rotate
+                  auto-rotate-delay="1500"
+                  rotation-per-second="14deg"
+                  ar
+                  ar-modes="webxr scene-viewer quick-look"
+                  ar-scale="auto"
+                  environment-image="neutral"
+                  exposure="1.1"
+                  tone-mapping="commerce"
+                  loading="lazy"
+                  reveal="interaction"
+                >
+                  <!-- AR button custom -->
+                  <button slot="ar-button" class="ar-modal__ar-btn ar-modal__ar-btn--inline">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                      <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                    Ver no seu espaço
+                  </button>
+                </model-viewer>
+
+                <!-- Dica interação -->
+                <div class="gallery-3d-hint">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                  Arraste para girar · Pinça para zoom
+                </div>
+
               </div>
+
             </div>
 
             <!-- Thumbnails -->
@@ -149,6 +204,16 @@
               <!-- Ambientes simulados (cinza elegante como placeholder visual) -->
               <div class="gallery-thumb" role="listitem" data-src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg" aria-label="Vista em ambiente" tabindex="0" style="background: linear-gradient(135deg,#d6ccc2,#b5a89a); display:flex; align-items:center; justify-content:center;">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg" alt="Sofá Chesterfield I — em ambiente" loading="lazy" style="opacity:.8" />
+              </div>
+
+              <!-- Tab 3D / AR -->
+              <div class="gallery-thumb gallery-thumb--3d" id="thumb-3d" role="listitem" aria-label="Ver em 3D e AR" tabindex="0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+                <span>3D · AR</span>
               </div>
             </div>
 
@@ -872,6 +937,61 @@
     // ── Ano dinâmico ─────────────────────────────────────────
     document.getElementById('ano').textContent = new Date().getFullYear();
 
+  </script>
+
+  <!-- AR / 3D Gallery Toggle -->
+  <script>
+  (function () {
+    var thumb3d    = document.getElementById('thumb-3d');
+    var photoView  = document.getElementById('gallery-photo-view');
+    var view3d     = document.getElementById('gallery-3d-view');
+    var loading3d  = document.getElementById('gallery-3d-loading');
+    var mvProduto  = document.getElementById('produto-model-viewer');
+    if (!thumb3d || !photoView || !view3d) return;
+
+    var is3dActive = false;
+
+    function enter3D() {
+      photoView.hidden = true;
+      view3d.hidden = false;
+      thumb3d.classList.add('active');
+      // remove active de todas as thumbs de foto
+      document.querySelectorAll('.gallery-thumb:not(.gallery-thumb--3d)').forEach(function (t) {
+        t.classList.remove('active');
+      });
+      is3dActive = true;
+      if (mvProduto) {
+        loading3d.style.display = 'flex';
+        mvProduto.addEventListener('load', function onLoad() {
+          loading3d.style.display = 'none';
+          mvProduto.removeEventListener('load', onLoad);
+        });
+      }
+    }
+
+    function exitToPhoto(src) {
+      view3d.hidden = true;
+      photoView.hidden = false;
+      thumb3d.classList.remove('active');
+      is3dActive = false;
+      if (src) document.getElementById('gallery-main-img').src = src;
+    }
+
+    // Click na tab 3D
+    thumb3d.addEventListener('click', function () {
+      if (!is3dActive) enter3D();
+    });
+    thumb3d.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!is3dActive) enter3D(); }
+    });
+
+    // Click em qualquer thumb de foto sai do modo 3D
+    document.querySelectorAll('.gallery-thumb:not(.gallery-thumb--3d)').forEach(function (t) {
+      t.addEventListener('click', function () {
+        if (is3dActive) exitToPhoto(t.dataset.src);
+      });
+    });
+  }());
   </script>
 
 </body>
