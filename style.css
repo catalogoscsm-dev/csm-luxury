@@ -192,15 +192,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-color: var(--white);
 }
 
-/* Hero ghost — hardcode branco: overlay escuro sempre ativo nos dois temas */
+/* Hero ghost — visível sobre qualquer área da imagem de fundo */
 .hero .btn--ghost {
   color: #ffffff;
-  border-color: rgba(255,255,255,.48);
+  border-color: rgba(255,255,255,.75);
+  background: rgba(0, 0, 0, .28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 1px 6px rgba(0,0,0,.55);
 }
 .hero .btn--ghost:hover {
-  background: rgba(255,255,255,.12);
-  border-color: rgba(255,255,255,.80);
+  background: rgba(255,255,255,.18);
+  border-color: #ffffff;
   color: #ffffff;
+  text-shadow: none;
 }
 
 /* Contorno — sobre fundo claro */
@@ -325,13 +330,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero {
   position: relative;
   height: 100vh;
-  min-height: 600px;
+  /* 700px garante que o conteúdo não estoure em notebooks 1366×768 */
+  min-height: 700px;
   display: flex;
   align-items: center;
-  /* overflow removido do hero — movido para .hero__slider
-     (evita cortar os botões de ação em viewports menores) */
-  overflow: visible;
-  /* cor fixa — hero sempre tem overlay escuro, independe do tema */
+  /* overflow: hidden aqui — hero__slider cobre inset:0 e acompanha a altura */
+  overflow: hidden;
   color: #ffffff;
   padding-top: 80px;
 }
@@ -372,7 +376,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero__body {
   position: relative;
   z-index: 1;
-  padding-block: 5rem;
+  padding-block: 4rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -2146,6 +2150,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     align-items: center;
     text-align: center;
   }
+
+  /* Hero mobile — reduz padding para conteúdo caber sem corte */
+  .hero__body {
+    padding-block: 2rem;
+  }
+  .hero__sub {
+    margin-bottom: 1.5rem;
+  }
+  /* Botão ghost do hero — mantém contraste em mobile */
+  .hero .btn--ghost {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(0,0,0,.35);
+  }
 }
 
 /* ----------------------------------------------------------
@@ -2163,7 +2181,44 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ----------------------------------------------------------
-   19. PRINT
+   19. RESPONSIVO POR ALTURA — Notebooks e telas curtas
+   Evita que o conteúdo do hero estoure abaixo da imagem
+   em viewports com altura reduzida (1366×768, 1280×720 etc.)
+---------------------------------------------------------- */
+
+/* Notebook médio — altura ≤ 820px (ex: 1366×768) */
+@media (max-height: 820px) {
+  .hero {
+    min-height: 640px;
+  }
+  .hero__body {
+    padding-block: 2.5rem;
+  }
+  .hero__sub {
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Notebook compacto — altura ≤ 700px (ex: 1280×720) */
+@media (max-height: 700px) {
+  .hero {
+    min-height: 600px;
+  }
+  .hero__body {
+    padding-block: 1.5rem;
+  }
+  .hero__headline {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin-bottom: 1rem;
+  }
+  .hero__sub {
+    font-size: .95rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   20. PRINT
 ---------------------------------------------------------- */
 @media print {
   .header, .fab-cluster, .hero__scroll, .modal-overlay { display: none; }
