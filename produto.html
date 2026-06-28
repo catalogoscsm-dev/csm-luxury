@@ -27,12 +27,56 @@
 </head>
 <body>
 
+  <!-- Cortina de transição entre páginas -->
+  <div id="page-curtain" class="page-curtain" aria-hidden="true"></div>
+
   <!-- ============================================================
        HEADER
   ============================================================ -->
   <header class="header" id="header">
     <div class="container header__inner">
 
+      <!-- ── ESQUERDA: Menu + Cadastro + Fale Conosco ── -->
+      <div class="header__left">
+
+        <!-- 1. Menu -->
+        <button class="header-icon header__menu-btn" id="menu-toggle-btn"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="menu-overlay">
+          <div class="header__menu-icon" aria-hidden="true">
+            <span class="header__menu-line"></span>
+            <span class="header__menu-line"></span>
+          </div>
+          <span class="header__menu-label">Menu</span>
+        </button>
+
+        <!-- 2. Cadastro -->
+        <button type="button" class="header-icon header__cadastro-btn"
+          aria-label="Cadastrar-se"
+          onclick="openModal('modal-arquiteto')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <line x1="19" y1="8" x2="19" y2="14"/>
+            <line x1="22" y1="11" x2="16" y2="11"/>
+          </svg>
+          <span class="header__icon-label">Cadastro</span>
+        </button>
+
+        <!-- 3. Fale Conosco -->
+        <a class="header-icon header__wpp-btn"
+          href="fale-conosco.html"
+          aria-label="Fale conosco">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="header__icon-label">Fale Conosco</span>
+        </a>
+
+      </div>
+
+      <!-- ── CENTRO: Logo → volta para o início ── -->
       <a href="index.html" class="header__logo" aria-label="CSM — Campinas Shopping Móveis">
         <img
           src="imagens/logo/csm-logo.png"
@@ -43,61 +87,135 @@
         />
       </a>
 
-      <button
-        class="header__burger"
-        aria-label="Abrir menu de navegação"
-        aria-expanded="false"
-        aria-controls="nav-primary"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- ── DIREITA: Pesquisar + Favoritos + Tema ── -->
+      <div class="header__right">
 
-      <nav class="header__nav" id="nav-primary" aria-label="Navegação principal">
-        <ul class="header__nav-list">
-          <li><a href="index.html#historia" class="nav-link">Nossa História</a></li>
-          <li><a href="index.html#ambientes" class="nav-link">Ambientes</a></li>
-          <li><a href="index.html#produtos" class="nav-link">Produtos</a></li>
-          <li><a href="index.html#showroom" class="nav-link">Showroom</a></li>
-          <li><a href="index.html#depoimentos" class="nav-link">Depoimentos</a></li>
-          <li><a href="index.html#arquitetos" class="nav-link">Arquitetos</a></li>
-          <li>
-            <button type="button" class="btn btn--outline btn--sm" onclick="openModal('modal-arquiteto')">
-              Cadastre-se / Login
-            </button>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/5519990034068?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-              class="btn btn--primary btn--sm"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Fale Conosco</a>
-          </li>
-        </ul>
-      </nav>
+        <!-- 5. Pesquisar -->
+        <button type="button" class="header-icon header__search-btn" id="header-search-btn"
+          data-label="Pesquisar"
+          aria-label="Pesquisar produtos"
+          aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
 
-      <!-- Alternador Dark / Light Mode -->
-      <button class="header__theme-toggle" id="theme-toggle" aria-label="Ativar modo escuro">
-        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1"  x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1"  y1="12" x2="3"  y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
-          <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
-        </svg>
-      </button>
+        <!-- 6. Favoritos -->
+        <button class="header-icon header__moodboard-btn" id="moodboard-header-btn"
+          data-label="Favoritos"
+          aria-label="Meu Moodboard — Favoritos">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+        </button>
+
+        <!-- 7. Tema -->
+        <button class="header-icon header__theme-toggle" id="theme-toggle"
+          data-label="Tema"
+          aria-label="Alternar tema claro/escuro">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1"  y1="12" x2="3"  y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+
+      </div>
 
     </div>
   </header>
+
+  <!-- ============================================================
+       MENU OVERLAY — Estilo Louis Vuitton
+  ============================================================ -->
+  <div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Menu de navegação" hidden>
+
+    <div class="menu-overlay__topbar">
+      <div class="container menu-overlay__topbar-inner">
+        <div class="header__left">
+          <button class="header__menu-btn is-open" id="menu-close-btn" aria-label="Fechar menu">
+            <div class="header__menu-icon" aria-hidden="true">
+              <span class="header__menu-line"></span>
+              <span class="header__menu-line"></span>
+            </div>
+            <span class="header__menu-label">Fechar</span>
+          </button>
+        </div>
+        <a href="index.html" class="header__logo" aria-label="CSM">
+          <img src="imagens/logo/csm-logo.png" alt="CSM" class="header__logo-img menu-overlay__logo" width="160" height="48" />
+        </a>
+        <div class="header__right"></div>
+      </div>
+    </div>
+
+    <div class="menu-overlay__body">
+      <div class="container menu-overlay__inner">
+
+        <nav class="menu-nav" aria-label="Navegação principal">
+          <ul class="menu-nav__list">
+            <li class="menu-nav__item">
+              <a href="index.html#inicio" class="menu-nav__link" data-num="01"><span class="menu-nav__link-text">Início</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="index.html#historia" class="menu-nav__link" data-num="02"><span class="menu-nav__link-text">Nossa História</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="index.html#ambientes" class="menu-nav__link" data-num="03"><span class="menu-nav__link-text">Ambientes</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="produtos.html" class="menu-nav__link" data-num="04"><span class="menu-nav__link-text">Produtos</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="index.html#showroom" class="menu-nav__link" data-num="05"><span class="menu-nav__link-text">Showroom</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="index.html#depoimentos" class="menu-nav__link" data-num="06"><span class="menu-nav__link-text">Depoimentos</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="index.html#arquitetos" class="menu-nav__link" data-num="07"><span class="menu-nav__link-text">Arquitetos</span></a>
+            </li>
+          </ul>
+        </nav>
+
+        <aside class="menu-aside">
+          <div class="menu-aside__block">
+            <p class="menu-aside__label">Showroom</p>
+            <p class="menu-aside__text">Av. Dr. Moraes Sales, 1575<br />Cambuí, Campinas — SP</p>
+          </div>
+          <div class="menu-aside__block">
+            <p class="menu-aside__label">Atendimento</p>
+            <a href="https://wa.me/5519990034068" class="menu-aside__text menu-aside__link" target="_blank" rel="noopener noreferrer">(19) 99003-4068 — WhatsApp</a>
+            <a href="mailto:contato@csmdecor.com.br" class="menu-aside__text menu-aside__link">contato@csmdecor.com.br</a>
+          </div>
+          <div class="menu-aside__block menu-aside__block--socials">
+            <a href="https://www.instagram.com/csmdecor/" target="_blank" rel="noopener noreferrer" class="menu-aside__social">Instagram</a>
+            <span class="menu-aside__dot" aria-hidden="true">·</span>
+            <a href="https://web.facebook.com/CampinasShoppingMoveis/" target="_blank" rel="noopener noreferrer" class="menu-aside__social">Facebook</a>
+          </div>
+          <a href="https://wa.me/5519990034068?text=Quero%20agendar%20uma%20visita%20ao%20showroom%20CSM."
+            class="btn btn--primary" target="_blank" rel="noopener noreferrer">Agendar visita ao showroom</a>
+        </aside>
+
+      </div>
+    </div>
+
+    <div class="menu-overlay__footer">
+      <div class="container">
+        <p class="menu-overlay__tagline">6.000 m² de Inspiração &nbsp;·&nbsp; 200+ Marcas Parceiras &nbsp;·&nbsp; 30+ Anos de Tradição</p>
+      </div>
+    </div>
+
+  </div>
 
   <!-- ============================================================
        PÁGINA DE PRODUTO
@@ -110,9 +228,9 @@
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Início</a>
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <a href="index.html#produtos">Produtos</a>
+          <a href="produtos.html">Produtos</a>
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <a href="index.html#produtos">Sofás</a>
+          <a href="produtos.html?categoria=sofa">Sofás</a>
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
           <span class="breadcrumb__current" aria-current="page">Sofá Chesterfield I</span>
         </nav>
@@ -434,7 +552,7 @@
               Você também pode <em>gostar</em>
             </h2>
           </div>
-          <a href="index.html#produtos" class="suggestions__link" aria-label="Ver todos os produtos">
+          <a href="produtos.html" class="suggestions__link" aria-label="Ver todos os produtos">
             Ver todos
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="vertical-align:middle;margin-left:3px"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
@@ -448,7 +566,7 @@
 
           <div class="suggestions__track" id="sugg-track" role="list">
 
-            <a href="#" class="suggestion-card" role="listitem" aria-label="Poltrona Barcelona">
+            <a href="produtos.html?categoria=poltrona" class="suggestion-card" role="listitem" aria-label="Poltrona Barcelona">
               <div class="suggestion-card__img">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/poltrona-barcelona-1.jpg" alt="Poltrona Barcelona" loading="lazy" onerror="this.src='imagens/placeholder.jpg'" />
               </div>
@@ -459,7 +577,7 @@
               </div>
             </a>
 
-            <a href="#" class="suggestion-card" role="listitem" aria-label="Sofá Seattle">
+            <a href="produtos.html?categoria=sofa" class="suggestion-card" role="listitem" aria-label="Sofá Seattle">
               <div class="suggestion-card__img">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/sofa-seattle-1.jpg" alt="Sofá Seattle" loading="lazy" onerror="this.src='imagens/placeholder.jpg'" />
               </div>
@@ -470,7 +588,7 @@
               </div>
             </a>
 
-            <a href="#" class="suggestion-card" role="listitem" aria-label="Mesa de Centro Essence">
+            <a href="produtos.html" class="suggestion-card" role="listitem" aria-label="Mesa de Centro Essence">
               <div class="suggestion-card__img">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/mesa-centro-essence.jpg" alt="Mesa Essence" loading="lazy" onerror="this.src='imagens/placeholder.jpg'" />
               </div>
@@ -481,7 +599,7 @@
               </div>
             </a>
 
-            <a href="#" class="suggestion-card" role="listitem" aria-label="Sofá Chesterfield II">
+            <a href="produtos.html?categoria=sofa" class="suggestion-card" role="listitem" aria-label="Sofá Chesterfield II">
               <div class="suggestion-card__img">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-ii-1.jpg" alt="Sofá Chesterfield II" loading="lazy" onerror="this.src='imagens/placeholder.jpg'" />
               </div>
@@ -492,7 +610,7 @@
               </div>
             </a>
 
-            <a href="#" class="suggestion-card" role="listitem" aria-label="Luminária Arco Milano">
+            <a href="produtos.html" class="suggestion-card" role="listitem" aria-label="Luminária Arco Milano">
               <div class="suggestion-card__img">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/luminaria-arco-1.jpg" alt="Luminária Arco Milano" loading="lazy" onerror="this.src='imagens/placeholder.jpg'" />
               </div>
@@ -773,39 +891,90 @@
   <script>
     'use strict';
 
+    // ── Helpers de scroll ────────────────────────────────────
+    function lockScroll()   { document.body.style.overflow = 'hidden'; }
+    function unlockScroll() { document.body.style.overflow = ''; }
+
     // ── Header scroll ─────────────────────────────────────────
     const header = document.getElementById('header');
     const onScroll = () => header.classList.toggle('header--scrolled', window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // ── Mobile menu ──────────────────────────────────────────
-    const burger = document.querySelector('.header__burger');
-    const nav    = document.getElementById('nav-primary');
-    burger.addEventListener('click', () => {
-      const open = nav.classList.toggle('header__nav--open');
-      burger.classList.toggle('header__burger--open', open);
-      burger.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('click', () => {
-        nav.classList.remove('header__nav--open');
-        burger.classList.remove('header__burger--open');
-        burger.setAttribute('aria-expanded', 'false');
+    // ── Menu Overlay ─────────────────────────────────────────
+    (function () {
+      var toggleBtn = document.getElementById('menu-toggle-btn');
+      var closeBtn  = document.getElementById('menu-close-btn');
+      var overlay   = document.getElementById('menu-overlay');
+      if (!toggleBtn || !overlay) return;
+
+      var isOpen  = false;
+      var openRAF = null;
+
+      overlay.querySelectorAll('.menu-nav__link').forEach(function (link, i) {
+        link.style.transitionDelay = (0.08 + i * 0.055) + 's';
       });
-    });
+
+      function openMenu() {
+        isOpen = true;
+        overlay.removeAttribute('hidden');
+        overlay.removeAttribute('aria-hidden');
+        lockScroll();
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.classList.add('is-open');
+        cancelAnimationFrame(openRAF);
+        openRAF = requestAnimationFrame(function () {
+          requestAnimationFrame(function () { overlay.classList.add('is-open'); });
+        });
+      }
+
+      function closeMenu() {
+        isOpen = false;
+        overlay.classList.remove('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.classList.remove('is-open');
+        unlockScroll();
+        overlay.addEventListener('transitionend', function hide(e) {
+          if (e.propertyName !== 'clip-path') return;
+          overlay.setAttribute('hidden', '');
+          overlay.removeEventListener('transitionend', hide);
+        });
+      }
+
+      toggleBtn.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+      // Links do menu navegam para index.html — apenas fecha o overlay antes
+      overlay.querySelectorAll('.menu-nav__link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen) closeMenu();
+      });
+    }());
 
     // ── Dark Mode ────────────────────────────────────────────
     (function () {
-      const toggle = document.getElementById('theme-toggle');
-      const html   = document.documentElement;
-      function setTheme(dark) {
-        html.setAttribute('data-theme', dark ? 'dark' : 'light');
-        localStorage.setItem('csm-theme', dark ? 'dark' : 'light');
-        toggle.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+      var toggle = document.getElementById('theme-toggle');
+      var html   = document.documentElement;
+      var saved  = localStorage.getItem('csm-theme');
+      if (saved) html.setAttribute('data-theme', saved);
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var isDark = html.getAttribute('data-theme') === 'dark';
+          html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+          localStorage.setItem('csm-theme', isDark ? 'light' : 'dark');
+        });
       }
-      if (localStorage.getItem('csm-theme') === 'dark') setTheme(true);
-      toggle.addEventListener('click', () => setTheme(html.getAttribute('data-theme') !== 'dark'));
+    }());
+
+    // ── Pesquisar → redireciona para index.html com busca ────
+    (function () {
+      var btn = document.getElementById('header-search-btn');
+      if (btn) btn.addEventListener('click', function () {
+        window.location.href = 'index.html';
+      });
     }());
 
     // ── Galeria de imagens ───────────────────────────────────
@@ -990,6 +1159,52 @@
       t.addEventListener('click', function () {
         if (is3dActive) exitToPhoto(t.dataset.src);
       });
+    });
+  }());
+  </script>
+
+  <!-- ============================================================
+       TRANSIÇÕES DE PÁGINA — Cortina cinematográfica
+  ============================================================ -->
+  <script>
+  (function () {
+    var curtain = document.getElementById('page-curtain');
+    if (!curtain) return;
+    var ease = 'cubic-bezier(.77,0,.175,1)';
+
+    // Revela a página: cortina sobe para fora da tela
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        curtain.style.transition = 'transform .72s ' + ease;
+        curtain.style.transform  = 'translateY(-100%)';
+        curtain.addEventListener('transitionend', function () {
+          curtain.style.pointerEvents = 'none';
+        }, { once: true });
+      });
+    });
+
+    // Cobre a página ao clicar num link .html interno, depois navega
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(https?:\/\/|\/\/|mailto:|tel:)/.test(href)) return;
+      if (link.target === '_blank') return;
+      if (href.indexOf('.html') === -1) return;
+
+      e.preventDefault();
+      try { sessionStorage.setItem('csm-pt', '1'); } catch (_) {}
+
+      curtain.style.transition    = 'none';
+      curtain.style.transform     = 'translateY(100%)';
+      curtain.style.pointerEvents = 'all';
+      curtain.offsetHeight; // força reflow
+      curtain.style.transition = 'transform .65s ' + ease;
+      curtain.style.transform  = 'translateY(0)';
+      curtain.addEventListener('transitionend', function () {
+        window.location.href = href;
+      }, { once: true });
     });
   }());
   </script>

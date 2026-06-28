@@ -13,6 +13,9 @@
 </head>
 <body>
 
+  <!-- Cortina de transição entre páginas -->
+  <div id="page-curtain" style="position:fixed;inset:0;z-index:99998;background:#0c0c0c;transform:translateY(0);pointer-events:all;will-change:transform;" aria-hidden="true"></div>
+
   <!-- ── Toast ── -->
   <div class="mb-toast" id="mb-toast" role="status" aria-live="polite"></div>
 
@@ -100,7 +103,7 @@
         </div>
         <h3 class="mb-empty-page__title">Seu moodboard está vazio</h3>
         <p class="mb-empty-page__text">Acesse o catálogo e clique no ícone de marcador nos produtos para adicioná-los aqui.</p>
-        <a href="index.html#produtos" class="btn btn--primary">Explorar Catálogo</a>
+        <a href="produtos.html" class="btn btn--primary">Explorar Catálogo</a>
       </div>
 
       <!-- Products grid -->
@@ -329,6 +332,47 @@
       toast.classList.add('visible');
       setTimeout(() => toast.classList.remove('visible'), duration);
     }
+  </script>
+
+  <script>
+  (function () {
+    var curtain = document.getElementById('page-curtain');
+    if (!curtain) return;
+    var ease = 'cubic-bezier(.77,0,.175,1)';
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        curtain.style.transition = 'transform .72s ' + ease;
+        curtain.style.transform  = 'translateY(-100%)';
+        curtain.addEventListener('transitionend', function () {
+          curtain.style.pointerEvents = 'none';
+        }, { once: true });
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(https?:\/\/|\/\/|mailto:|tel:)/.test(href)) return;
+      if (link.target === '_blank') return;
+      if (href.indexOf('.html') === -1) return;
+
+      e.preventDefault();
+      try { sessionStorage.setItem('csm-pt', '1'); } catch (_) {}
+
+      curtain.style.transition    = 'none';
+      curtain.style.transform     = 'translateY(100%)';
+      curtain.style.pointerEvents = 'all';
+      curtain.offsetHeight;
+      curtain.style.transition = 'transform .65s ' + ease;
+      curtain.style.transform  = 'translateY(0)';
+      curtain.addEventListener('transitionend', function () {
+        window.location.href = href;
+      }, { once: true });
+    });
+  }());
   </script>
 
 </body>
