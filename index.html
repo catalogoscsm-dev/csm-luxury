@@ -19,19 +19,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
+  <!-- Animate.css — efeitos de entrada no carregamento da página -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- model-viewer — AR / 3D para produtos -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
 
   <!-- ============================================================
-       BARRA COPA DO MUNDO 2026
+       LOADING SCREEN — Reveal da marca CSM
   ============================================================ -->
-  <div class="worldcup-bar" role="banner" aria-label="Mensagem comemorativa — Copa do Mundo 2026">
-    <div class="worldcup-bar__inner">
-      <span class="worldcup-bar__icon" aria-hidden="true">— ★ —</span>
-      <p class="worldcup-bar__text">Design campeão: Prepare sua casa para os grandes momentos de 2026 com o conforto que você merece.</p>
-      <span class="worldcup-bar__icon" aria-hidden="true">— ★ —</span>
+  <div id="loading-screen" aria-hidden="true">
+    <div class="ls__inner">
+      <img src="imagens/logo/csm-logo.png" alt="" class="ls__logo" width="180" height="54" draggable="false" />
+      <div class="ls__line" aria-hidden="true"></div>
+      <p class="ls__tagline">Campinas Shopping Móveis</p>
     </div>
   </div>
+
+  <!-- Cortina de transição entre páginas (z-index 99998, abaixo do loading screen 99999) -->
+  <div id="page-curtain" class="page-curtain" aria-hidden="true"></div>
 
   <!-- ============================================================
        HEADER
@@ -39,6 +47,47 @@
   <header class="header" id="header">
     <div class="container header__inner">
 
+      <!-- ── ESQUERDA: Menu + Cadastro + Fale Conosco ── -->
+      <div class="header__left">
+
+        <!-- 1. Menu -->
+        <button class="header-icon header__menu-btn" id="menu-toggle-btn"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="menu-overlay">
+          <div class="header__menu-icon" aria-hidden="true">
+            <span class="header__menu-line"></span>
+            <span class="header__menu-line"></span>
+          </div>
+          <span class="header__menu-label">Menu</span>
+        </button>
+
+        <!-- 2. Cadastro -->
+        <button type="button" class="header-icon header__cadastro-btn"
+          aria-label="Cadastrar-se"
+          onclick="openModal('modal-arquiteto')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <line x1="19" y1="8" x2="19" y2="14"/>
+            <line x1="22" y1="11" x2="16" y2="11"/>
+          </svg>
+          <span class="header__icon-label">Cadastro</span>
+        </button>
+
+        <!-- 3. Fale Conosco -->
+        <a class="header-icon header__wpp-btn"
+          href="fale-conosco.html"
+          aria-label="Fale conosco">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="header__icon-label">Fale Conosco</span>
+        </a>
+
+      </div>
+
+      <!-- ── CENTRO: Logo ── -->
       <a href="#" class="header__logo" aria-label="CSM — Campinas Shopping Móveis">
         <img
           src="imagens/logo/csm-logo.png"
@@ -49,61 +98,147 @@
         />
       </a>
 
-      <button
-        class="header__burger"
-        aria-label="Abrir menu de navegação"
-        aria-expanded="false"
-        aria-controls="nav-primary"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <!-- ── DIREITA: Minha Conta + Favoritos + Tema ── -->
+      <div class="header__right">
 
-      <nav class="header__nav" id="nav-primary" aria-label="Navegação principal">
-        <ul class="header__nav-list">
-          <li><a href="#historia" class="nav-link">Nossa História</a></li>
-          <li><a href="#ambientes" class="nav-link">Ambientes</a></li>
-          <li><a href="#produtos" class="nav-link">Produtos</a></li>
-          <li><a href="#showroom" class="nav-link">Showroom</a></li>
-          <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
-          <li><a href="#arquitetos" class="nav-link">Arquitetos</a></li>
-          <li>
-            <button type="button" class="btn btn--outline btn--sm" onclick="openModal('modal-arquiteto')">
-              Cadastre-se / Login
-            </button>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/5519990034068?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-              class="btn btn--primary btn--sm"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Fale Conosco</a>
-          </li>
-        </ul>
-      </nav>
+        <!-- 5. Pesquisar -->
+        <button type="button" class="header-icon header__search-btn" id="header-search-btn"
+          data-label="Pesquisar"
+          aria-label="Pesquisar produtos"
+          aria-expanded="false"
+          aria-controls="search-overlay">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
 
-      <!-- Alternador Dark / Light Mode -->
-      <button class="header__theme-toggle" id="theme-toggle" aria-label="Ativar modo escuro">
-        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1"  x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1"  y1="12" x2="3"  y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
-          <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
-        </svg>
-      </button>
+        <!-- 6. Favoritos / Moodboard (sem círculo) -->
+        <button class="header-icon header__moodboard-btn" id="moodboard-header-btn"
+          data-label="Favoritos"
+          aria-label="Meu Moodboard — Favoritos"
+          aria-expanded="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="header__moodboard-badge" id="moodboard-badge" hidden>0</span>
+        </button>
+
+        <!-- 7. Tema Light / Dark (sem círculo) -->
+        <button class="header-icon header__theme-toggle" id="theme-toggle"
+          data-label="Tema"
+          aria-label="Alternar tema claro/escuro">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22"  x2="5.64"  y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1"  y1="12" x2="3"  y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+
+      </div>
 
     </div>
   </header>
+
+  <!-- ============================================================
+       MENU OVERLAY — Estilo Louis Vuitton
+  ============================================================ -->
+  <div class="menu-overlay" id="menu-overlay" role="dialog" aria-modal="true" aria-label="Menu de navegação" hidden>
+
+    <!-- Barra do topo (espelha o header enquanto aberto) -->
+    <div class="menu-overlay__topbar">
+      <div class="container menu-overlay__topbar-inner">
+        <div class="header__left">
+          <button class="header__menu-btn is-open" id="menu-close-btn" aria-label="Fechar menu">
+            <div class="header__menu-icon" aria-hidden="true">
+              <span class="header__menu-line"></span>
+              <span class="header__menu-line"></span>
+            </div>
+            <span class="header__menu-label">Fechar</span>
+          </button>
+        </div>
+        <a href="#" class="header__logo" aria-label="CSM">
+          <img src="imagens/logo/csm-logo.png" alt="CSM" class="header__logo-img menu-overlay__logo" width="160" height="48" />
+        </a>
+        <div class="header__right"></div>
+      </div>
+    </div>
+
+    <!-- Conteúdo principal do menu -->
+    <div class="menu-overlay__body">
+      <div class="container menu-overlay__inner">
+
+        <!-- Navegação principal (esquerda) -->
+        <nav class="menu-nav" aria-label="Navegação principal">
+          <ul class="menu-nav__list">
+            <li class="menu-nav__item">
+              <a href="#inicio" class="menu-nav__link" data-menu-link data-num="01"><span class="menu-nav__link-text">Início</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="#historia" class="menu-nav__link" data-menu-link data-num="02"><span class="menu-nav__link-text">Nossa História</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="#ambientes" class="menu-nav__link" data-menu-link data-num="03"><span class="menu-nav__link-text">Ambientes</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="produtos.html" class="menu-nav__link" data-num="04"><span class="menu-nav__link-text">Produtos</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="#showroom" class="menu-nav__link" data-menu-link data-num="05"><span class="menu-nav__link-text">Showroom</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="#depoimentos" class="menu-nav__link" data-menu-link data-num="06"><span class="menu-nav__link-text">Depoimentos</span></a>
+            </li>
+            <li class="menu-nav__item">
+              <a href="#arquitetos" class="menu-nav__link" data-menu-link data-num="07"><span class="menu-nav__link-text">Arquitetos</span></a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Painel lateral (direita) -->
+        <aside class="menu-aside">
+          <div class="menu-aside__block">
+            <p class="menu-aside__label">Showroom</p>
+            <p class="menu-aside__text">Av. Dr. Moraes Sales, 1575<br />Cambuí, Campinas — SP</p>
+          </div>
+          <div class="menu-aside__block">
+            <p class="menu-aside__label">Atendimento</p>
+            <a href="https://wa.me/5519990034068" class="menu-aside__text menu-aside__link" target="_blank" rel="noopener noreferrer">(19) 99003-4068 — WhatsApp</a>
+            <a href="mailto:contato@csmdecor.com.br" class="menu-aside__text menu-aside__link">contato@csmdecor.com.br</a>
+          </div>
+          <div class="menu-aside__block menu-aside__block--socials">
+            <a href="https://www.instagram.com/csmdecor/" target="_blank" rel="noopener noreferrer" class="menu-aside__social">Instagram</a>
+            <span class="menu-aside__dot" aria-hidden="true">·</span>
+            <a href="https://web.facebook.com/CampinasShoppingMoveis/" target="_blank" rel="noopener noreferrer" class="menu-aside__social">Facebook</a>
+          </div>
+          <a
+            href="https://wa.me/5519990034068?text=Quero%20agendar%20uma%20visita%20ao%20showroom%20CSM."
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Agendar visita ao showroom</a>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- Rodapé do overlay -->
+    <div class="menu-overlay__footer">
+      <div class="container">
+        <p class="menu-overlay__tagline">6.000 m² de Inspiração &nbsp;·&nbsp; 200+ Marcas Parceiras &nbsp;·&nbsp; 30+ Anos de Tradição</p>
+      </div>
+    </div>
+
+  </div>
 
   <main>
 
@@ -112,34 +247,29 @@
     ============================================================ -->
     <section class="hero" id="inicio" aria-label="Apresentação CSM">
 
-      <div class="hero__slider" aria-hidden="true">
-        <div class="hero__slide hero__slide--active" style="background-image: url('apresentacao/mesa-centro-liu.webp');"></div>
-        <div class="hero__slide" style="background-image: url('apresentacao/mesa-zaki7.webp');"></div>
-        <div class="hero__slide" style="background-image: url('apresentacao/noa0c.webp');"></div>
-        <div class="hero__slide" style="background-image: url('apresentacao/poltrona-ada6.jpg');"></div>
-        <div class="hero__slide" style="background-image: url('apresentacao/poltrona-shell4.webp');"></div>
-        <div class="hero__slide" style="background-image: url('apresentacao/puff5.webp');"></div>
+      <!-- Vídeo de fundo -->
+      <div class="hero__video-wrap" aria-hidden="true">
+        <video class="hero__video"
+          autoplay muted loop playsinline preload="auto"
+          poster="apresentacao/mesa-centro-liu.webp">
+          <source src="gemini.mp4" type="video/mp4" />
+        </video>
         <div class="hero__bg-overlay"></div>
       </div>
 
-      <!-- Seta esquerda -->
-      <button class="hero__arrow hero__arrow--prev" aria-label="Slide anterior">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-
       <!-- Conteúdo sobreposto -->
       <div class="container hero__body">
-        <p class="eyebrow">Campinas Shopping Móveis</p>
-        <h1 class="hero__headline">
+        <p class="eyebrow" id="hero-eyebrow">Campinas Shopping Móveis</p>
+        <h1 class="hero__headline" id="hero-headline">
           O ambiente que você<br />
           <em>sempre imaginou</em>,<br />
           finalmente realizado.
         </h1>
-        <p class="hero__sub">
+        <p class="hero__sub" id="hero-sub">
           Móveis e decoração de alto padrão.<br />
           Mais de 30 anos de tradição. 6.000 m² de inspiração.
         </p>
-        <div class="hero__actions">
+        <div class="hero__actions" id="hero-actions">
           <a
             href="https://wa.me/5519990034068?text=Quero%20agendar%20uma%20visita%20ao%20showroom%20CSM."
             class="btn btn--primary btn--lg"
@@ -147,21 +277,6 @@
           >Agendar visita ao showroom</a>
           <a href="#ambientes" class="btn btn--ghost btn--lg">Explorar ambientes</a>
         </div>
-      </div>
-
-      <!-- Seta direita -->
-      <button class="hero__arrow hero__arrow--next" aria-label="Próximo slide">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-
-      <!-- Dots de navegação -->
-      <div class="hero__dots" role="group" aria-label="Navegação do carrossel">
-        <button class="hero__dot hero__dot--active" aria-label="Slide 1 de 6" data-slide="0"></button>
-        <button class="hero__dot" aria-label="Slide 2 de 6" data-slide="1"></button>
-        <button class="hero__dot" aria-label="Slide 3 de 6" data-slide="2"></button>
-        <button class="hero__dot" aria-label="Slide 4 de 6" data-slide="3"></button>
-        <button class="hero__dot" aria-label="Slide 5 de 6" data-slide="4"></button>
-        <button class="hero__dot" aria-label="Slide 6 de 6" data-slide="5"></button>
       </div>
 
     </section>
@@ -738,7 +853,7 @@
         </article>
 
         <!-- ── Chesterfield I — linkado à página de produto ── -->
-        <article class="cat-card" data-tipo="sofa" data-imgs='["https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg","https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-1.jpg"]' data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Chesterfield%20I.%20Pode%20me%20enviar%20mais%20informações%3F">
+        <article class="cat-card" data-tipo="sofa" data-imgs='["https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg","https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-1.jpg"]' data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20no%20Sofá%20Chesterfield%20I.%20Pode%20me%20enviar%20mais%20informações%3F" data-model="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/SheenChair/glTF-Binary/SheenChair.glb" data-model-name="Sofá Chesterfield I">
           <figure class="cat-card__fig" data-nome="Chesterfield I">
             <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg"
                  alt="Sofá Chesterfield I — CSM Decor" loading="lazy" />
@@ -1167,77 +1282,225 @@
     <!-- ============================================================
          DEPOIMENTOS
     ============================================================ -->
-    <section class="depoimentos" id="depoimentos" aria-label="Depoimentos de clientes">
-      <div class="container">
+    <section class="dep" id="depoimentos" aria-label="Depoimentos de clientes">
 
-        <p class="eyebrow">Clientes</p>
+      <!-- Cabeçalho -->
+      <div class="container dep__header">
+        <p class="eyebrow">Depoimentos</p>
         <h2 class="section-title">
           O que dizem sobre<br /><em>a experiência CSM</em>
         </h2>
+      </div>
 
-        <div class="rating-bar" aria-label="Avaliação geral 4.9 de 5 estrelas no Google">
-          <span class="stars" aria-hidden="true">★★★★★</span>
-          <span class="rating-text"><strong>4,9</strong> / 5 — mais de 300 avaliações no Google</span>
-          <svg class="google-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-          </svg>
+      <!-- Carousel -->
+      <div class="dep__carousel" id="dep-carousel" aria-live="polite">
+
+        <div class="dep__track" id="dep-track">
+
+          <!-- Slide 1 -->
+          <article class="dep__slide" role="group" aria-label="Depoimento 1 de 4">
+            <div class="container dep__slide-inner">
+              <span class="dep__mark" aria-hidden="true">"</span>
+              <blockquote class="dep__quote">
+                <p class="dep__text">A experiência no showroom da CSM transformou completamente a minha relação com o espaço que habito. Cada ambiente é uma declaração de intenção — e os consultores têm o talento raro de ouvir antes de sugerir.</p>
+                <footer class="dep__footer">
+                  <div class="dep__rule" aria-hidden="true"></div>
+                  <cite class="dep__cite">
+                    <span class="dep__name">Ana Lima</span>
+                    <span class="dep__context">Campinas, SP &nbsp;·&nbsp; Projeto Residencial</span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </article>
+
+          <!-- Slide 2 -->
+          <article class="dep__slide" role="group" aria-label="Depoimento 2 de 4">
+            <div class="container dep__slide-inner">
+              <span class="dep__mark" aria-hidden="true">"</span>
+              <blockquote class="dep__quote">
+                <p class="dep__text">Trouxe a equipe CSM para o meu projeto de escritório e o resultado vai além do que imaginei. É o tipo de qualidade que os clientes percebem antes mesmo de você mencionar a origem dos móveis.</p>
+                <footer class="dep__footer">
+                  <div class="dep__rule" aria-hidden="true"></div>
+                  <cite class="dep__cite">
+                    <span class="dep__name">Ricardo Mendes</span>
+                    <span class="dep__context">São Paulo, SP &nbsp;·&nbsp; Projeto Comercial</span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="dep__slide" role="group" aria-label="Depoimento 3 de 4">
+            <div class="container dep__slide-inner">
+              <span class="dep__mark" aria-hidden="true">"</span>
+              <blockquote class="dep__quote">
+                <p class="dep__text">O atendimento é tão cuidadoso quanto os próprios móveis. Cada decisão foi pensada para o meu espaço — nunca senti que estavam empurrando o que tinham em estoque. É uma parceria, não uma venda.</p>
+                <footer class="dep__footer">
+                  <div class="dep__rule" aria-hidden="true"></div>
+                  <cite class="dep__cite">
+                    <span class="dep__name">Fernanda Sousa</span>
+                    <span class="dep__context">Campinas, SP &nbsp;·&nbsp; Projeto Residencial</span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </article>
+
+          <!-- Slide 4 -->
+          <article class="dep__slide" role="group" aria-label="Depoimento 4 de 4">
+            <div class="container dep__slide-inner">
+              <span class="dep__mark" aria-hidden="true">"</span>
+              <blockquote class="dep__quote">
+                <p class="dep__text">Em 20 anos como arquiteta, poucos fornecedores me surpreenderam com esse nível de comprometimento. A CSM entende que um móvel de alto padrão é também uma responsabilidade — e leva isso a sério do projeto à entrega.</p>
+                <footer class="dep__footer">
+                  <div class="dep__rule" aria-hidden="true"></div>
+                  <cite class="dep__cite">
+                    <span class="dep__name">Mariana Carvalho</span>
+                    <span class="dep__context">Campinas, SP &nbsp;·&nbsp; Arquiteta Parceira</span>
+                  </cite>
+                </footer>
+              </blockquote>
+            </div>
+          </article>
+
+        </div><!-- /dep__track -->
+
+        <!-- Navegação -->
+        <div class="dep__controls container">
+
+          <button class="dep__arrow dep__arrow--prev" id="dep-prev" aria-label="Depoimento anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="dep__dots" role="group" aria-label="Navegar entre depoimentos">
+            <button class="dep__dot dep__dot--active" aria-label="Depoimento 1" data-dep="0"></button>
+            <button class="dep__dot" aria-label="Depoimento 2" data-dep="1"></button>
+            <button class="dep__dot" aria-label="Depoimento 3" data-dep="2"></button>
+            <button class="dep__dot" aria-label="Depoimento 4" data-dep="3"></button>
+          </div>
+
+          <button class="dep__arrow dep__arrow--next" id="dep-next" aria-label="Próximo depoimento">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
         </div>
 
-        <div class="reviews-grid">
-
-          <blockquote class="review" data-animate>
-            <div class="review__header">
-              <div class="review__avatar" style="background:#F07800;" aria-hidden="true">A</div>
-              <div>
-                <cite class="review__name">Ana Lima</cite>
-                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
-              </div>
-            </div>
-            <p class="review__text">
-              "A experiência no showroom da CSM é absolutamente única. Cada ambiente é um convite — e os consultores realmente entendem de alto padrão. Meu apartamento ficou irreconhecível, da melhor forma possível."
-            </p>
-            <time class="review__date" datetime="2026-04">Abril 2026</time>
-          </blockquote>
-
-          <blockquote class="review" data-animate>
-            <div class="review__header">
-              <div class="review__avatar" style="background:#2d4a3e;" aria-hidden="true">R</div>
-              <div>
-                <cite class="review__name">Ricardo Mendes</cite>
-                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
-              </div>
-            </div>
-            <p class="review__text">
-              "Projeto de escritório inteiro feito em parceria com a equipe CSM. Prazo cumprido, materiais impecáveis e um resultado que impressiona todos os clientes que recebo. Recomendo sem reservas."
-            </p>
-            <time class="review__date" datetime="2026-03">Março 2026</time>
-          </blockquote>
-
-          <blockquote class="review" data-animate>
-            <div class="review__header">
-              <div class="review__avatar" style="background:#1a3a5c;" aria-hidden="true">F</div>
-              <div>
-                <cite class="review__name">Fernanda Sousa</cite>
-                <div class="stars review__stars" aria-label="5 estrelas">★★★★★</div>
-              </div>
-            </div>
-            <p class="review__text">
-              "Indicação de uma amiga arquiteta e não me arrependi. Além da qualidade dos móveis, o atendimento foi completamente personalizado. Senti que cuidaram da minha casa como se fosse a deles."
-            </p>
-            <time class="review__date" datetime="2026-05">Maio 2026</time>
-          </blockquote>
-
-        </div>
-
-        <div class="depoimentos__cta">
-          <a href="https://g.page/r/PLACEHOLDER/review" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
-            Ver todas as avaliações no Google
+        <!-- CTA Google -->
+        <div class="dep__google container">
+          <a href="https://g.page/r/PLACEHOLDER/review" class="dep__google-link" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <span><strong>4,9</strong> / 5 &nbsp;·&nbsp; +300 avaliações no Google</span>
           </a>
         </div>
 
+      </div><!-- /dep__carousel -->
+
+    </section>
+
+    <!-- ============================================================
+         BLOG / INSPIRAÇÃO
+    ============================================================ -->
+    <section class="blog-section" id="blog" aria-label="Blog de inspiração e decoração">
+      <div class="container">
+        <p class="eyebrow">Blog &amp; Decoração</p>
+        <h2 class="section-title">Inspire-se com <em>nossas ideias</em></h2>
+        <p class="section-sub">Dicas, tendências e guias criados pelos nossos especialistas para transformar cada ambiente da sua casa.</p>
+
+        <div class="blog-grid">
+
+          <a href="https://www.csmdecor.com.br/wsite/como-montar-composicoes-perfeitas-de-quadros/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: Como montar composições perfeitas de quadros">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/07/fotoa.jpg" alt="Composições de quadros" loading="lazy" />
+              <span class="blog-card__cat">Decoração</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-07-19">19 Jul 2022</time>
+              <h3 class="blog-card__title">Como montar composições perfeitas de quadros</h3>
+              <p class="blog-card__excerpt">Saber combinar os diferentes tipos de quadros faz com que o resultado seja harmonioso e reflita sua personalidade.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+          <a href="https://www.csmdecor.com.br/wsite/espaco-gourmet-confira-dicas-para-montar-sua-area-externa/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: Espaço Gourmet — dicas para montar sua área externa">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/07/csm4.jpg" alt="Área gourmet externa" loading="lazy" />
+              <span class="blog-card__cat">Área Gourmet</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-07-19">19 Jul 2022</time>
+              <h3 class="blog-card__title">Espaço Gourmet: dicas para montar sua área externa</h3>
+              <p class="blog-card__excerpt">Quintais e varandas podem ser aproveitados funcionalmente para proporcionar momentos únicos de descanso e lazer.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+          <a href="https://www.csmdecor.com.br/wsite/5-tendencias-de-decoracao-para-se-inspirar/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: 5 tendências de decoração para se inspirar">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/06/3-3.jpg" alt="Tendências de decoração" loading="lazy" />
+              <span class="blog-card__cat">Tendências</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-06-21">21 Jun 2022</time>
+              <h3 class="blog-card__title">5 tendências de decoração para se inspirar</h3>
+              <p class="blog-card__excerpt">A decoração influencia a mensagem que o ambiente transmite, com foco crescente no bem-estar e na conexão com a natureza.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+          <a href="https://www.csmdecor.com.br/wsite/sofa-reclinavel-e-poltrona-dicas-para-montar-uma-sala-de-cinema-em-casa/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: Sofá reclinável e poltrona — sala de cinema em casa">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/06/g13materia-csmdecor.jpg" alt="Sala de cinema em casa" loading="lazy" />
+              <span class="blog-card__cat">Living</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-06-21">21 Jun 2022</time>
+              <h3 class="blog-card__title">Sofá reclinável e poltrona: como montar uma sala de cinema em casa</h3>
+              <p class="blog-card__excerpt">Ter um cinema em casa permite desfrutar de um ambiente confortável com o sofá e a poltrona ideais para cada momento.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+          <a href="https://www.csmdecor.com.br/wsite/conforto-para-o-casal-dicas-para-deixar-seu-quarto-mais-confortavel/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: Conforto para o casal — quarto mais confortável">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/06/3-1.jpg" alt="Quarto confortável para o casal" loading="lazy" />
+              <span class="blog-card__cat">Quartos</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-06-21">21 Jun 2022</time>
+              <h3 class="blog-card__title">Conforto para o casal: como deixar seu quarto mais aconchegante</h3>
+              <p class="blog-card__excerpt">Decoração e escolha de cama e colchão influenciam diretamente no conforto e qualidade de vida do casal.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+          <a href="https://www.csmdecor.com.br/wsite/5-dicas-para-melhorar-a-decoracao-da-sua-casa/" class="blog-card" target="_blank" rel="noopener noreferrer" aria-label="Ler: 5 dicas para melhorar a decoração da sua casa">
+            <figure class="blog-card__fig">
+              <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2022/06/csm_decor__25052022144512.webp" alt="Melhorar a decoração da casa" loading="lazy" />
+              <span class="blog-card__cat">Decoração</span>
+            </figure>
+            <div class="blog-card__body">
+              <time class="blog-card__date" datetime="2022-06-01">01 Jun 2022</time>
+              <h3 class="blog-card__title">5 dicas para melhorar a decoração da sua casa</h3>
+              <p class="blog-card__excerpt">A decoração traz conforto e bem-estar, permitindo desfrutar dos espaços de forma muito mais plena e significativa.</p>
+              <span class="blog-card__link">Ler artigo <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </a>
+
+        </div>
+
+        <div style="text-align:center;margin-top:3rem">
+          <a href="https://www.csmdecor.com.br/wsite/blog/" class="btn btn--outline" target="_blank" rel="noopener noreferrer">
+            Ver todos os artigos
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1615,7 +1878,74 @@
     </button>
   </div>
 
+  <!-- GSAP + ScrollTrigger — motor de animação ao rolar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <script>
+    // Helpers globais: travar/destravar scroll
+    function lockScroll()   { document.body.style.overflow = 'hidden'; }
+    function unlockScroll() { document.body.style.overflow = ''; }
+
+    // Scroll suave para elemento com offset de cabeçalho
+    function smoothScrollTo(target, offset) {
+      var top = target.getBoundingClientRect().top + window.scrollY + (offset || -80);
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    // ── Loading Screen — dismiss e reveal ───────────────────────
+    (function () {
+      var ls = document.getElementById('loading-screen');
+      if (!ls) return;
+
+      // Vindo de outra página via transição de cortina: pula o loading screen
+      if (sessionStorage.getItem('csm-pt')) {
+        sessionStorage.removeItem('csm-pt');
+        ls.remove();
+        unlockScroll();
+        if (window.heroTl) window.heroTl.play();
+        return;
+      }
+
+      // Reduced motion: pula tudo instantaneamente
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        ls.remove();
+        return;
+      }
+
+      // Mantém scroll travado durante o loading
+      lockScroll();
+
+      function dismiss() {
+        ls.classList.add('ls--done');
+        ls.addEventListener('transitionend', function (e) {
+          if (e.propertyName !== 'opacity') return;
+          ls.remove();
+          unlockScroll();
+          // Dispara a animação hero após o reveal
+          if (window.heroTl) window.heroTl.play();
+        }, { once: true });
+      }
+
+      // Animações do loader terminam em ~1.45s → dismiss em 1.5s
+      setTimeout(dismiss, 1500);
+    }());
+
+    // ── Âncoras internas → scroll suave ─────────────────────────
+    document.addEventListener('click', function (e) {
+      var anchor = e.target.closest('a[href^="#"]');
+      if (!anchor) return;
+      var id = anchor.getAttribute('href');
+      if (id === '#') return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      // Só intercepta se o menu overlay não estiver aberto
+      var overlay = document.getElementById('menu-overlay');
+      if (overlay && !overlay.hasAttribute('hidden')) return;
+      e.preventDefault();
+      smoothScrollTo(target, -80);
+    });
+
     // ── Utilitários ──────────────────────────────────────────────
     document.getElementById('ano').textContent = new Date().getFullYear();
 
@@ -1634,21 +1964,74 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // ── Mobile menu ──────────────────────────────────────────────
-    const burger = document.querySelector('.header__burger');
-    const nav    = document.getElementById('nav-primary');
-    burger.addEventListener('click', () => {
-      const open = nav.classList.toggle('header__nav--open');
-      burger.classList.toggle('header__burger--open', open);
-      burger.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('click', () => {
-        nav.classList.remove('header__nav--open');
-        burger.classList.remove('header__burger--open');
-        burger.setAttribute('aria-expanded', 'false');
+    // ── Menu Overlay (LV-style) ──────────────────────────────────
+    (function () {
+      const toggleBtn = document.getElementById('menu-toggle-btn');
+      const closeBtn  = document.getElementById('menu-close-btn');
+      const overlay   = document.getElementById('menu-overlay');
+      if (!toggleBtn || !overlay) return;
+
+      const navLinks = overlay.querySelectorAll('.menu-nav__link');
+      let isOpen = false;
+      let openRAF = null;
+
+      // Aplica delays escalonados em cada link
+      navLinks.forEach((link, i) => {
+        link.style.transitionDelay = (0.08 + i * 0.055) + 's';
       });
-    });
+
+      function openMenu() {
+        isOpen = true;
+        overlay.removeAttribute('hidden');
+        overlay.removeAttribute('aria-hidden');
+        lockScroll();
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.classList.add('is-open');
+        cancelAnimationFrame(openRAF);
+        openRAF = requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            overlay.classList.add('is-open');
+          });
+        });
+      }
+
+      function closeMenu() {
+        isOpen = false;
+        overlay.classList.remove('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.classList.remove('is-open');
+        unlockScroll();
+        // Aguarda transição antes de esconder
+        overlay.addEventListener('transitionend', function hide(e) {
+          if (e.propertyName !== 'clip-path') return;
+          overlay.setAttribute('hidden', '');
+          overlay.removeEventListener('transitionend', hide);
+        });
+      }
+
+      toggleBtn.addEventListener('click', () => isOpen ? closeMenu() : openMenu());
+      closeBtn?.addEventListener('click', closeMenu);
+
+      // Fecha ao clicar em um link do menu + scroll suave via Lenis
+      overlay.querySelectorAll('[data-menu-link]').forEach(link => {
+        link.addEventListener('click', function (e) {
+          var href = link.getAttribute('href');
+          var target = href && href !== '#' ? document.querySelector(href) : null;
+          e.preventDefault();
+          closeMenu();
+          if (target) {
+            setTimeout(function () {
+              smoothScrollTo(target, -80);
+            }, 680);
+          }
+        });
+      });
+
+      // Escape fecha
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && isOpen) closeMenu();
+      });
+    }());
 
     // ── Carrossel Ambientes — Center Mode Infinite ───────────────
     (function () {
@@ -2039,7 +2422,7 @@
     });
 
     // ── Scroll reveal ────────────────────────────────────────────
-    const revealEls = document.querySelectorAll('[data-animate], .stat, .review, .cat-card');
+    const revealEls = document.querySelectorAll('[data-animate], .stat, .review'); /* .cat-card removido — gerenciado pelo GSAP */
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
@@ -2049,14 +2432,20 @@
     function openModal(id) {
       const el = document.getElementById(id);
       el.removeAttribute('hidden');
-      document.body.style.overflow = 'hidden';
+      lockScroll();
       el.querySelector('.modal__close').focus();
+      if (id === 'modal-arquiteto') {
+        document.getElementById('header-login-btn')?.classList.add('is-active');
+        document.querySelector('.header__cadastro-btn')?.classList.add('is-active');
+      }
     }
 
     function closeModal(id) {
       document.getElementById(id).setAttribute('hidden', '');
-      document.body.style.overflow = '';
+      unlockScroll();
       if (id === 'modal-arquiteto') {
+        document.getElementById('header-login-btn')?.classList.remove('is-active');
+        document.querySelector('.header__cadastro-btn')?.classList.remove('is-active');
         document.getElementById('arq-form-wrap').hidden = false;
         document.getElementById('arq-success').hidden = true;
         document.querySelectorAll('.pro-tab').forEach(t => t.classList.remove('pro-tab--active'));
@@ -2176,37 +2565,64 @@
       }
     });
 
-    // ── Carrossel Hero ───────────────────────────────────────────
+    // ── Hero vídeo: pausa ao sair do viewport (economia de recursos) ──
     (function () {
-      const slides = document.querySelectorAll('.hero__slide');
-      const dots   = document.querySelectorAll('.hero__dot');
-      let current  = 0;
-      let timer;
+      var video = document.querySelector('.hero__video');
+      if (!video) return;
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            e.isIntersecting ? video.play() : video.pause();
+          });
+        }, { threshold: 0.25 }).observe(video);
+      }
+    }());
+
+    // ── Carousel Depoimentos ─────────────────────────────────
+    (function () {
+      var track  = document.getElementById('dep-track');
+      var slides = document.querySelectorAll('.dep__slide');
+      var dots   = document.querySelectorAll('.dep__dot');
+      var prev   = document.getElementById('dep-prev');
+      var next   = document.getElementById('dep-next');
+      if (!track || !slides.length) return;
+
+      var current = 0;
+      var total   = slides.length;
+      var timer   = null;
+      var DELAY   = 6000;
 
       function goTo(n) {
-        slides[current].classList.remove('hero__slide--active');
-        dots[current].classList.remove('hero__dot--active');
-        current = (n + slides.length) % slides.length;
-        slides[current].classList.add('hero__slide--active');
-        dots[current].classList.add('hero__dot--active');
+        slides[current].classList.remove('dep__slide--active');
+        dots[current].classList.remove('dep__dot--active');
+        dots[current].removeAttribute('aria-current');
+        current = (n + total) % total;
+        slides[current].classList.add('dep__slide--active');
+        dots[current].classList.add('dep__dot--active');
+        dots[current].setAttribute('aria-current', 'true');
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
       }
 
-      function next() { goTo(current + 1); }
-      function prev() { goTo(current - 1); }
-
-      function startTimer() { timer = setInterval(next, 5000); }
+      function startTimer() { timer = setInterval(function () { goTo(current + 1); }, DELAY); }
       function resetTimer()  { clearInterval(timer); startTimer(); }
 
-      document.querySelector('.hero__arrow--prev').addEventListener('click', () => { prev(); resetTimer(); });
-      document.querySelector('.hero__arrow--next').addEventListener('click', () => { next(); resetTimer(); });
+      // Estado inicial
+      slides[0].classList.add('dep__slide--active');
+      dots[0].classList.add('dep__dot--active');
+      dots[0].setAttribute('aria-current', 'true');
 
-      dots.forEach(function(dot, i) {
-        dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+      prev.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
+      next.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
       });
 
-      const hero = document.getElementById('inicio');
-      hero.addEventListener('mouseenter', () => clearInterval(timer));
-      hero.addEventListener('mouseleave', startTimer);
+      // Pausa ao hover / foco
+      var carousel = document.getElementById('dep-carousel');
+      carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+      carousel.addEventListener('mouseleave', startTimer);
+      carousel.addEventListener('focusin',    function () { clearInterval(timer); });
+      carousel.addEventListener('focusout',   startTimer);
 
       startTimer();
     }());
@@ -2260,6 +2676,666 @@
         });
       });
     }());
+
+    // ── Busca Preditiva ──────────────────────────────────────
+    (function () {
+      var DB = [
+        { name: 'Sofá Chesterfield I',      cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=96&q=80', href: 'produto.html',                                tags: ['sofa','sofá','chester','chesterfield','couro','estofado'] },
+        { name: 'Sofá Portland',             cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=96&q=80', href: 'produto.html',                                tags: ['sofa','sofá','portland','estofado'] },
+        { name: 'Sofá Premium',              cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=96&q=80', href: 'produto.html',                                tags: ['sofa','sofá','premium','estofado'] },
+        { name: 'Living',                    cat: 'Ambiente',     img: 'https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=living',              tags: ['living','sala','sala de estar','sofa','sofá'] },
+        { name: 'Sala de Jantar',            cat: 'Ambiente',     img: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sala-jantar',         tags: ['jantar','sala de jantar','mesa','cadeira','sala'] },
+        { name: 'Quartos e Colchões',        cat: 'Dormitório',   img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=quartos-colchoes',    tags: ['quarto','quartos','cama','colchao','colchão','dormitorio'] },
+        { name: 'Linha Couro',               cat: 'Estofados',    img: 'https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=linha-couro',         tags: ['couro','linha couro','poltrona','estofado','sofa','sofá'] },
+        { name: 'Área Gourmet',              cat: 'Externo',      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=area-gourmet',        tags: ['gourmet','area gourmet','area','externo','varanda','churrasco'] },
+        { name: 'Poltronas Reclináveis',     cat: 'Estofados',    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=poltronas-reclinaveis', tags: ['poltrona','poltronas','reclinavel','reclinável'] },
+        { name: 'Corporativo',               cat: 'Escritório',   img: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=corporativo',         tags: ['corporativo','escritorio','escritório','empresa','mesa'] },
+        { name: 'Sala de TV',                cat: 'Entretenimento', img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sala-tv',           tags: ['tv','sala de tv','home theater','televisao','televisão'] },
+        { name: 'Complementos',              cat: 'Decoração',    img: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=complementos',        tags: ['complemento','complementos','decoracao','decoração','aparador'] },
+      ];
+
+      function norm(s) {
+        return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      }
+
+      function doSearch(q) {
+        if (!q || q.length < 2) return [];
+        var nq = norm(q);
+        return DB.filter(function (item) {
+          return norm(item.name).indexOf(nq) !== -1 ||
+                 item.tags.some(function (t) { return norm(t).indexOf(nq) !== -1; });
+        }).slice(0, 3);
+      }
+
+      var overlay     = document.getElementById('search-overlay');
+      var inputEl     = document.getElementById('search-input');
+      var clearBtn    = document.getElementById('search-clear');
+      var closeBtn    = document.getElementById('search-close');
+      var openBtn     = document.getElementById('header-search-btn');
+      var resultsList = document.getElementById('search-results-list');
+      var backdrop    = document.getElementById('search-backdrop');
+
+      function openSearch() {
+        overlay.hidden = false;
+        if (openBtn) { openBtn.setAttribute('aria-expanded', 'true'); openBtn.classList.add('is-active'); }
+        lockScroll();
+        requestAnimationFrame(function () { inputEl.focus(); });
+      }
+
+      function closeSearch() {
+        overlay.hidden = true;
+        if (openBtn) { openBtn.setAttribute('aria-expanded', 'false'); openBtn.classList.remove('is-active'); }
+        unlockScroll();
+        inputEl.value = '';
+        clearBtn.hidden = true;
+        resultsList.hidden = true;
+        resultsList.innerHTML = '';
+      }
+
+      function renderResults(q) {
+        var results = doSearch(q);
+        if (!q || q.length < 2) {
+          resultsList.hidden = true;
+          resultsList.innerHTML = '';
+          return;
+        }
+        resultsList.innerHTML = '';
+        if (results.length === 0) {
+          var li = document.createElement('li');
+          li.className = 'search-noresults';
+          li.innerHTML = 'Nenhum resultado para "<strong>' + q + '</strong>"';
+          resultsList.appendChild(li);
+        } else {
+          results.forEach(function (item) {
+            var li = document.createElement('li');
+            li.innerHTML =
+              '<a class="search-result-item" href="' + item.href + '">' +
+                '<img class="search-result-item__thumb" src="' + item.img + '" alt="' + item.name + '" width="52" height="52" loading="lazy"/>' +
+                '<div class="search-result-item__info">' +
+                  '<span class="search-result-item__name">' + item.name + '</span>' +
+                  '<span class="search-result-item__cat">' + item.cat + '</span>' +
+                '</div>' +
+                '<svg class="search-result-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>' +
+              '</a>';
+            resultsList.appendChild(li);
+          });
+        }
+        resultsList.hidden = false;
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openSearch);
+      closeBtn.addEventListener('click', closeSearch);
+      backdrop.addEventListener('click', closeSearch);
+
+      inputEl.addEventListener('input', function () {
+        var q = inputEl.value.trim();
+        clearBtn.hidden = !q;
+        renderResults(q);
+      });
+
+      clearBtn.addEventListener('click', function () {
+        inputEl.value = '';
+        clearBtn.hidden = true;
+        resultsList.hidden = true;
+        resultsList.innerHTML = '';
+        inputEl.focus();
+      });
+
+      document.querySelectorAll('.search-trending__tag').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var term = btn.dataset.search;
+          inputEl.value = term;
+          clearBtn.hidden = false;
+          renderResults(term);
+          inputEl.focus();
+        });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !overlay.hidden) closeSearch();
+      });
+    }());
+
+    // ── MOODBOARD ─────────────────────────────────────────────────
+    const moodboard = (function () {
+      const KEY = 'csm-moodboard';
+
+      function getItems() {
+        try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch(e) { return []; }
+      }
+      function saveItems(items) {
+        localStorage.setItem(KEY, JSON.stringify(items));
+      }
+      function hasItem(id) {
+        return getItems().some(i => i.id === id);
+      }
+      function addItem(item) {
+        const items = getItems();
+        if (!items.find(i => i.id === item.id)) { items.push(item); saveItems(items); return true; }
+        return false;
+      }
+      function removeItem(id) {
+        saveItems(getItems().filter(i => i.id !== id));
+      }
+
+      function genId(card) {
+        return (card.querySelector('.cat-card__name')?.textContent || '').trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+      }
+
+      function extractItem(card) {
+        const imgs = JSON.parse(card.dataset.imgs || 'null') || [];
+        const imgEl = card.querySelector('img');
+        return {
+          id:      genId(card),
+          name:    card.querySelector('.cat-card__name')?.textContent.trim() || '',
+          type:    card.querySelector('.cat-card__badge')?.textContent.trim() || '',
+          tagline: card.querySelector('.cat-card__tagline')?.textContent.trim() || '',
+          img:     imgs[0] || imgEl?.src || '',
+          wpp:     card.dataset.wpp || '',
+        };
+      }
+
+      function toggle(card) {
+        const id = genId(card);
+        if (hasItem(id)) { removeItem(id); return false; }
+        return addItem(extractItem(card));
+      }
+
+      function updateBadge() {
+        const n = getItems().length;
+        const badge = document.getElementById('moodboard-badge');
+        if (!badge) return;
+        badge.textContent = n;
+        badge.hidden = n === 0;
+        if (n > 0) {
+          badge.classList.remove('pop');
+          void badge.offsetWidth;
+          badge.classList.add('pop');
+        }
+      }
+
+      function updateSaveButtons() {
+        document.querySelectorAll('.cat-card__save').forEach(btn => {
+          const card = btn.closest('.cat-card');
+          const id = genId(card);
+          const saved = hasItem(id);
+          btn.classList.toggle('is-saved', saved);
+          btn.setAttribute('aria-label', saved ? 'Remover do Moodboard' : 'Salvar ao Moodboard');
+          btn.title = saved ? 'Remover do Moodboard' : 'Salvar ao Moodboard';
+        });
+      }
+
+      function renderPanel() {
+        const items = getItems();
+        const listEl = document.getElementById('moodboard-list');
+        const countEl = document.getElementById('moodboard-count-label');
+        const goBtn = document.getElementById('moodboard-go-btn');
+        const clearBtn = document.getElementById('moodboard-clear-btn');
+        if (!listEl) return;
+
+        listEl.innerHTML = '';
+
+        if (items.length === 0) {
+          listEl.innerHTML = `
+            <div class="moodboard-empty">
+              <div class="moodboard-empty__icon">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <p class="moodboard-empty__title">Board vazio</p>
+              <p class="moodboard-empty__text">Passe o mouse sobre um produto e clique no ícone de marcador para salvar.</p>
+            </div>`;
+          if (goBtn) goBtn.hidden = true;
+          if (clearBtn) clearBtn.hidden = true;
+        } else {
+          items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'moodboard-item';
+            div.innerHTML = `
+              <img class="moodboard-item__img" src="${item.img}" alt="${item.name}" loading="lazy" />
+              <div class="moodboard-item__info">
+                <span class="moodboard-item__type">${item.type}</span>
+                <p class="moodboard-item__name">${item.name}</p>
+                <p class="moodboard-item__tagline">${item.tagline}</p>
+              </div>
+              <button class="moodboard-item__remove" aria-label="Remover ${item.name}" data-id="${item.id}" type="button">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>`;
+            div.querySelector('.moodboard-item__remove').addEventListener('click', () => {
+              removeItem(item.id);
+              div.classList.add('removing');
+              setTimeout(() => { div.remove(); renderPanel(); updateBadge(); updateSaveButtons(); }, 220);
+            });
+            listEl.appendChild(div);
+          });
+          if (goBtn) goBtn.hidden = false;
+          if (clearBtn) clearBtn.hidden = false;
+        }
+
+        if (countEl) {
+          const n = items.length;
+          countEl.textContent = n === 0 ? 'Nenhum item salvo' : `${n} ${n === 1 ? 'item selecionado' : 'itens selecionados'}`;
+        }
+      }
+
+      function openPanel() {
+        const panel = document.getElementById('moodboard-panel');
+        const backdrop = document.getElementById('moodboard-backdrop');
+        if (!panel) return;
+        renderPanel();
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        backdrop?.classList.add('is-visible');
+        lockScroll();
+        const hBtn = document.getElementById('moodboard-header-btn');
+        hBtn?.setAttribute('aria-expanded', 'true');
+        hBtn?.classList.add('is-active');
+        document.getElementById('moodboard-close-btn')?.focus();
+      }
+
+      function closePanel() {
+        const panel = document.getElementById('moodboard-panel');
+        const backdrop = document.getElementById('moodboard-backdrop');
+        panel?.classList.remove('is-open');
+        panel?.setAttribute('aria-hidden', 'true');
+        backdrop?.classList.remove('is-visible');
+        unlockScroll();
+        const hBtn = document.getElementById('moodboard-header-btn');
+        hBtn?.setAttribute('aria-expanded', 'false');
+        hBtn?.classList.remove('is-active');
+      }
+
+      function init() {
+        // Injeta botão de save em todos os cat-cards (exceto "ambiente")
+        document.querySelectorAll('.cat-card').forEach(card => {
+          if (card.dataset.tipo === 'ambiente') return;
+          const fig = card.querySelector('.cat-card__fig');
+          if (!fig || fig.querySelector('.cat-card__save')) return;
+          const id = genId(card);
+          const saved = hasItem(id);
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'cat-card__save' + (saved ? ' is-saved' : '');
+          btn.setAttribute('aria-label', saved ? 'Remover do Moodboard' : 'Salvar ao Moodboard');
+          btn.title = btn.getAttribute('aria-label');
+          btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="${saved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>`;
+
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
+            e.preventDefault();
+            const wasSaved = hasItem(genId(card));
+            const nowSaved = toggle(card);
+            btn.classList.toggle('is-saved', nowSaved);
+            btn.setAttribute('aria-label', nowSaved ? 'Remover do Moodboard' : 'Salvar ao Moodboard');
+            btn.title = btn.getAttribute('aria-label');
+            btn.querySelector('svg').setAttribute('fill', nowSaved ? 'currentColor' : 'none');
+            updateBadge();
+            if (nowSaved) {
+              btn.animate(
+                [{ transform:'scale(1)' },{ transform:'scale(1.45)' },{ transform:'scale(1)' }],
+                { duration: 320, easing: 'cubic-bezier(.4,0,.2,1)' }
+              );
+            }
+          });
+          fig.appendChild(btn);
+        });
+
+        updateBadge();
+
+        // Header button opens panel
+        document.getElementById('moodboard-header-btn')?.addEventListener('click', openPanel);
+        document.getElementById('moodboard-close-btn')?.addEventListener('click', closePanel);
+        document.getElementById('moodboard-backdrop')?.addEventListener('click', closePanel);
+
+        document.getElementById('moodboard-clear-btn')?.addEventListener('click', () => {
+          if (!confirm('Limpar todos os itens do moodboard?')) return;
+          saveItems([]);
+          renderPanel();
+          updateBadge();
+          updateSaveButtons();
+        });
+
+        // Fechar com Escape
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && document.getElementById('moodboard-panel')?.classList.contains('is-open')) {
+            closePanel();
+          }
+        });
+      }
+
+      return { init, openPanel, closePanel, getItems, toggle, hasItem };
+    })();
+
+    moodboard.init();
+
+    // ── GSAP — animações de entrada e revelação ao rolar ─────────
+    (function () {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+      var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!motionOK) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── 1. Hero — timeline pausado, dispara após loading screen
+      window.heroTl = gsap.timeline({ paused: true });
+      window.heroTl
+        .from('#hero-eyebrow',       { y: 22,  opacity: 0, duration: 0.85, ease: 'power2.out' })
+        .from('#hero-headline',      { y: 60,  opacity: 0, duration: 1.25, ease: 'power3.out' }, '-=0.45')
+        .from('#hero-sub',           { y: 40,  opacity: 0, duration: 1.1,  ease: 'power2.out' }, '-=0.65')
+        .from('#hero-actions .btn',  { y: 26,  opacity: 0, duration: 0.9,  ease: 'power2.out', stagger: 0.18 }, '-=0.55');
+
+      // ── 2. Eyebrows de seção (excluindo hero)
+      gsap.utils.toArray('.eyebrow').forEach(function (el) {
+        if (el.closest('#inicio')) return;
+        gsap.from(el, {
+          y: 22, opacity: 0, duration: 0.9, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        });
+      });
+
+      // ── 3. Títulos de seção — movimento bem visível
+      gsap.utils.toArray('.section-title').forEach(function (el) {
+        gsap.from(el, {
+          y: 65, opacity: 0, duration: 1.35, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 87%', once: true },
+        });
+      });
+
+      gsap.utils.toArray('.section-sub').forEach(function (el) {
+        gsap.from(el, {
+          y: 38, opacity: 0, duration: 1.15, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        });
+      });
+
+      // ── 4. Cards de diferenciais — stagger + escala sutil
+      var difGrid = document.querySelector('.dif__grid');
+      if (difGrid) {
+        gsap.from(difGrid.querySelectorAll('.dif-card'), {
+          y: 60, opacity: 0, scale: 0.93, duration: 1.3, ease: 'power3.out', stagger: 0.1,
+          scrollTrigger: { trigger: difGrid, start: 'top 82%', once: true },
+        });
+      }
+
+      // ── 5. Cards de produtos — stagger com escala
+      var catalogoGrid = document.querySelector('.catalogo__grid');
+      if (catalogoGrid) {
+        gsap.from(catalogoGrid.querySelectorAll('.cat-card'), {
+          y: 55, opacity: 0, scale: 0.95, duration: 1.2, ease: 'power3.out', stagger: 0.14,
+          scrollTrigger: { trigger: catalogoGrid, start: 'top 82%', once: true },
+        });
+      }
+
+      // ── 6. Showroom — slides sequenciais da esquerda
+      var showroomInner = document.querySelector('.showroom__inner');
+      if (showroomInner) {
+        gsap.from(showroomInner.querySelectorAll('.showroom__body, .showroom__features, .showroom__ctas'), {
+          y: 50, opacity: 0, duration: 1.2, ease: 'power3.out', stagger: 0.2,
+          scrollTrigger: { trigger: showroomInner, start: 'top 82%', once: true },
+        });
+      }
+
+    }());
+  </script>
+
+  <!-- ============================================================
+       SEARCH OVERLAY
+  ============================================================ -->
+  <div class="search-overlay" id="search-overlay" role="search" aria-label="Busca de produtos" hidden>
+    <div class="search-overlay__panel">
+      <div class="container">
+
+        <div class="search-overlay__field">
+          <svg class="search-overlay__lupa" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-overlay__input"
+            placeholder="Buscar sofás, ambientes, decoração..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="search-overlay__clear" id="search-clear" aria-label="Limpar" hidden>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <ul class="search-results__list" id="search-results-list" role="listbox" hidden></ul>
+
+        <div class="search-trending">
+          <span class="search-trending__label">Termos mais buscados:</span>
+          <button class="search-trending__tag" data-search="Living">Living</button>
+          <span class="search-trending__dot" aria-hidden="true">•</span>
+          <button class="search-trending__tag" data-search="Linha Couro">Linha Couro</button>
+          <span class="search-trending__dot" aria-hidden="true">•</span>
+          <button class="search-trending__tag" data-search="Sala de Jantar">Sala de Jantar</button>
+        </div>
+
+      </div>
+
+      <button class="search-overlay__close" id="search-close" aria-label="Fechar busca">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="search-overlay__backdrop" id="search-backdrop"></div>
+  </div>
+
+  <!-- ============================================================
+       MOODBOARD — Painel lateral + backdrop
+  ============================================================ -->
+  <div class="moodboard-backdrop" id="moodboard-backdrop"></div>
+
+  <aside class="moodboard-panel" id="moodboard-panel" role="dialog" aria-modal="true" aria-labelledby="moodboard-panel-title" aria-hidden="true">
+
+    <div class="moodboard-panel__header">
+      <div class="moodboard-panel__hd">
+        <h2 class="moodboard-panel__title" id="moodboard-panel-title">Moodboard</h2>
+        <span class="moodboard-panel__sub">Board de Inspiração CSM</span>
+      </div>
+      <button class="moodboard-panel__close" id="moodboard-close-btn" aria-label="Fechar moodboard">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="moodboard-panel__items" id="moodboard-list"></div>
+
+    <div class="moodboard-panel__footer" id="moodboard-footer">
+      <p class="moodboard-panel__count" id="moodboard-count-label">0 itens selecionados</p>
+      <a href="moodboard.html" class="btn btn--primary" id="moodboard-go-btn" hidden>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ver Moodboard Completo
+      </a>
+      <button class="moodboard-panel__clear" id="moodboard-clear-btn" hidden>Limpar tudo</button>
+    </div>
+
+  </aside>
+
+  <!-- ============================================================
+       AR VIEWER MODAL — Visualizador 3D / Realidade Aumentada
+  ============================================================ -->
+  <div class="ar-modal" id="ar-modal" hidden role="dialog" aria-modal="true" aria-label="Visualizador 3D e Realidade Aumentada">
+
+    <div class="ar-modal__panel">
+
+      <!-- Header -->
+      <div class="ar-modal__header">
+        <div class="ar-modal__header-info">
+          <span class="ar-modal__eyebrow">CSM · Visualizador 3D</span>
+          <h2 class="ar-modal__product-name" id="ar-product-name">Sofá Chesterfield I</h2>
+        </div>
+        <button class="ar-modal__close" id="ar-modal-close" aria-label="Fechar visualizador">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Viewer 3D -->
+      <div class="ar-modal__viewer">
+
+        <!-- Loading state -->
+        <div class="ar-modal__loading" id="ar-loading">
+          <div class="ar-modal__loading-ring"></div>
+          <p class="ar-modal__loading-text">Carregando modelo 3D…</p>
+        </div>
+
+        <model-viewer
+          id="csm-model-viewer"
+          src=""
+          alt="Modelo 3D do produto CSM Decor"
+          shadow-intensity="1.4"
+          shadow-softness="0.6"
+          camera-controls
+          auto-rotate
+          auto-rotate-delay="2000"
+          rotation-per-second="18deg"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          ar-scale="auto"
+          environment-image="neutral"
+          exposure="1.1"
+          tone-mapping="commerce"
+          loading="eager"
+          reveal="interaction"
+        >
+          <!-- Botão AR nativo (aparece só em dispositivos com suporte) -->
+          <button slot="ar-button" class="ar-modal__ar-btn">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+            Ver no seu espaço
+          </button>
+        </model-viewer>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="ar-modal__footer">
+        <p class="ar-modal__hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          Arraste para girar &nbsp;·&nbsp; Pinça para zoom &nbsp;·&nbsp; "Ver no seu espaço" abre AR
+        </p>
+        <a id="ar-wpp-link" href="https://wa.me/5519990034068?text=Tenho%20interesse%20neste%20produto." class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Tenho interesse
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AR JS -->
+  <script>
+  (function () {
+    var modal   = document.getElementById('ar-modal');
+    var viewer  = document.getElementById('csm-model-viewer');
+    var loading = document.getElementById('ar-loading');
+    var nameEl  = document.getElementById('ar-product-name');
+    var closeBtn= document.getElementById('ar-modal-close');
+    var wppLink = document.getElementById('ar-wpp-link');
+    if (!modal || !viewer) return;
+
+    function openAR(modelSrc, productName, wppHref) {
+      nameEl.textContent = productName || '3D · AR';
+      viewer.src = modelSrc;
+      if (wppHref) wppLink.href = wppHref;
+      loading.classList.remove('is-hidden');
+      modal.removeAttribute('hidden');
+      lockScroll();
+
+      viewer.addEventListener('load', function onLoad() {
+        loading.classList.add('is-hidden');
+        viewer.removeEventListener('load', onLoad);
+      });
+    }
+
+    function closeAR() {
+      modal.setAttribute('hidden', '');
+      unlockScroll();
+      viewer.src = '';
+      loading.classList.remove('is-hidden');
+    }
+
+    closeBtn.addEventListener('click', closeAR);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hasAttribute('hidden')) closeAR();
+    });
+
+    // Injetar badges 3D/AR nos cards com data-model
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.cat-card[data-model]').forEach(function (card) {
+        var fig = card.querySelector('.cat-card__fig');
+        if (!fig) return;
+        var badge = document.createElement('button');
+        badge.type = 'button';
+        badge.className = 'cat-card__ar-badge';
+        badge.setAttribute('aria-label', 'Ver em 3D e Realidade Aumentada');
+        badge.innerHTML =
+          '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>' +
+          '3D · AR';
+        badge.addEventListener('click', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          openAR(
+            card.dataset.model,
+            card.dataset.modelName || card.querySelector('.cat-card__name')?.textContent,
+            card.dataset.wpp
+          );
+        });
+        fig.appendChild(badge);
+      });
+    });
+  }());
+  </script>
+
+  <!-- ============================================================
+       TRANSIÇÕES DE PÁGINA — Cortina cinematográfica
+  ============================================================ -->
+  <script>
+  (function () {
+    var curtain = document.getElementById('page-curtain');
+    if (!curtain) return;
+    var ease = 'cubic-bezier(.77,0,.175,1)';
+
+    // Revela a página: cortina sobe para fora da tela
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        curtain.style.transition = 'transform .72s ' + ease;
+        curtain.style.transform  = 'translateY(-100%)';
+        curtain.addEventListener('transitionend', function () {
+          curtain.style.pointerEvents = 'none';
+        }, { once: true });
+      });
+    });
+
+    // Cobre a página ao clicar num link .html interno, depois navega
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href || href.charAt(0) === '#') return;
+      if (/^(https?:\/\/|\/\/|mailto:|tel:)/.test(href)) return;
+      if (link.target === '_blank') return;
+      if (href.indexOf('.html') === -1) return;
+
+      e.preventDefault();
+      try { sessionStorage.setItem('csm-pt', '1'); } catch (_) {}
+
+      curtain.style.transition    = 'none';
+      curtain.style.transform     = 'translateY(100%)';
+      curtain.style.pointerEvents = 'all';
+      curtain.offsetHeight; // força reflow
+      curtain.style.transition = 'transform .65s ' + ease;
+      curtain.style.transform  = 'translateY(0)';
+      curtain.addEventListener('transitionend', function () {
+        window.location.href = href;
+      }, { once: true });
+    });
+  }());
   </script>
 
 </body>
