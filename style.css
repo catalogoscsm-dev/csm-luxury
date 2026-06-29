@@ -4705,12 +4705,18 @@ html { scroll-padding-top: 80px; }
   box-shadow: 0 8px 30px rgba(240,120,0,.5);
 }
 
-/* Variante inline (produto.html) */
+/* Variante inline (produto.html) — botão AR dentro do model-viewer */
 .ar-modal__ar-btn--inline {
-  bottom: 1rem;
-  right: 1rem;
-  font-size: .6rem;
-  padding: .65rem 1.2rem;
+  bottom: 3rem;   /* acima da dica de interação */
+  right: .85rem;
+  font-size: .58rem;
+  padding: .6rem 1.1rem;
+  gap: .45rem;
+}
+
+/* Esconde o botão AR em desktop (AR só funciona em mobile) */
+@media (hover: hover) and (pointer: fine) {
+  .ar-modal__ar-btn--inline { display: none; }
 }
 
 /* ── Footer ── */
