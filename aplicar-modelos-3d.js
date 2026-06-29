@@ -129,98 +129,83 @@ const MV_CSS = `
   color: var(--orange);
 }`;
 
+// JS injetado como script standalone no final do body
 const MV_JS = `
-  // ── Modal catálogo — 3D viewer ────────────────────────────────────────────
   (function () {
-    var modal3dWrap = document.getElementById('cat-modal-3d');
-    var modal3dBtn  = document.getElementById('cat-modal-3d-btn');
-    var modalMv     = document.getElementById('cat-modal-mv');
-    if (!modal3dWrap || !modal3dBtn || !modalMv) return;
+    var btn3d  = document.getElementById('cat-modal-3d-btn');
+    var wrap3d = document.getElementById('cat-modal-3d');
+    var mv     = document.getElementById('cat-modal-mv');
+    if (!btn3d || !wrap3d || !mv) return;
 
-    var is3dOpen = false;
+    var SVG_OPEN  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>';
+    var LABEL_VER = SVG_OPEN + ' Ver em 3D';
+    var LABEL_FECH = SVG_OPEN + ' Fechar 3D';
 
-    function openProductModal_orig(card) {
-      var glb = card.dataset.glb;
-      if (glb) {
-        modal3dBtn.hidden = false;
+    // Botão toggle abre/fecha o viewer
+    btn3d.addEventListener('click', function () {
+      if (!wrap3d.hidden) {
+        wrap3d.hidden = true;
+        mv.removeAttribute('src');
+        btn3d.classList.remove('is-open');
+        btn3d.innerHTML = LABEL_VER;
       } else {
-        modal3dBtn.hidden = true;
-        close3d();
-      }
-    }
-
-    function close3d() {
-      if (!is3dOpen) return;
-      modal3dWrap.hidden = true;
-      modal3dBtn.classList.remove('is-open');
-      modal3dBtn.textContent = '';
-      modal3dBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Ver em 3D';
-      modalMv.src = '';
-      is3dOpen = false;
-    }
-
-    modal3dBtn.addEventListener('click', function () {
-      if (is3dOpen) { close3d(); return; }
-
-      var modal = document.getElementById('modal-produto');
-      if (!modal) return;
-      var activeCard = modal._activeCard;
-      if (!activeCard) return;
-      var glb = activeCard.dataset.glb;
-      if (!glb) return;
-
-      modalMv.src = glb;
-      modal3dWrap.hidden = false;
-      modal3dBtn.classList.add('is-open');
-      modal3dBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Fechar 3D';
-      is3dOpen = true;
-    });
-
-    // Fecha 3D ao fechar o modal
-    document.addEventListener('click', function (e) {
-      if (e.target.closest('[data-close-modal]') || e.target.id === 'modal-overlay') {
-        close3d();
+        var glb = btn3d.dataset.glb;
+        if (!glb) return;
+        mv.setAttribute('src', glb);
+        wrap3d.hidden = false;
+        btn3d.classList.add('is-open');
+        btn3d.innerHTML = LABEL_FECH;
       }
     });
 
-    // Patch: referência ao card ativo no modal
-    var origOpen = window.openProductModal;
-    window.openProductModal = function (card) {
-      if (typeof origOpen === 'function') origOpen(card);
-      close3d();
-      var modal = document.getElementById('modal-produto');
-      if (modal) modal._activeCard = card;
-      var glb = card.dataset.glb;
-      if (modal3dBtn) modal3dBtn.hidden = !glb;
-    };
+    // Reset ao fechar o modal
+    document.querySelectorAll('.modal__close').forEach(function (c) {
+      c.addEventListener('click', function () {
+        wrap3d.hidden = true;
+        mv.removeAttribute('src');
+        btn3d.classList.remove('is-open');
+        btn3d.innerHTML = LABEL_VER;
+      });
+    });
   }());`;
 
 function injectModalComponents(html) {
   let changed = false;
 
-  // 1. Injeta script do model-viewer no <head> se não existir
+  // 1. Script model-viewer no <head>
   if (!html.includes('model-viewer.min.js')) {
     html = html.replace('</head>', `  ${MV_SCRIPT_TAG}\n</head>`);
     changed = true;
   }
 
-  // 2. Injeta HTML do viewer antes do botão de CTA dentro do modal
+  // 2. HTML do viewer + botão antes do CTA WhatsApp
   const modalInsertMarker = '<a id="modal-wpp-btn"';
   if (!html.includes('cat-modal-3d') && html.includes(modalInsertMarker)) {
     html = html.replace(modalInsertMarker, `${MV_MODAL_HTML}\n      ${modalInsertMarker}`);
     changed = true;
   }
 
-  // 3. Injeta CSS no final do <style> interno ou antes de </head>
+  // 3. CSS no final do último </style>
   if (!html.includes('cat-modal__3d-wrap') && html.includes('</style>')) {
     const lastStyle = html.lastIndexOf('</style>');
     html = html.slice(0, lastStyle) + MV_CSS + '\n' + html.slice(lastStyle);
     changed = true;
   }
 
-  // 4. Injeta JS antes do </body>
-  if (!html.includes('cat-modal-3d-btn') && html.includes('</body>')) {
-    html = html.replace('</body>', `<script>${MV_JS}\n  </script>\n</body>`);
+  // 4. Injeta lógica 3D diretamente dentro de openProductModal (antes do openModal)
+  //    Passa o data-glb do card para o botão, mostrando-o apenas se o modelo existir
+  const fnMarker = "openModal('modal-produto');";
+  const inject3d = `var _b3=document.getElementById('cat-modal-3d-btn'); var _w3=document.getElementById('cat-modal-3d'); var _m3=document.getElementById('cat-modal-mv'); if(_w3){_w3.hidden=true;} if(_m3){_m3.removeAttribute('src');} if(_b3){var _g=card.dataset.glb||''; _b3.dataset.glb=_g; _b3.hidden=!_g; _b3.classList.remove('is-open'); _b3.innerHTML='<svg width=\\'13\\' height=\\'13\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\'><path d=\\'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\\'/></svg> Ver em 3D';} `;
+
+  if (!html.includes('_b3=document.getElementById') && html.includes(fnMarker)) {
+    html = html.replace(fnMarker, inject3d + fnMarker);
+    changed = true;
+  }
+
+  // 5. Script standalone do toggle (antes de </body>)
+  const jsMarker = '/* csm-3d-toggle-injected */';
+  if (!html.includes(jsMarker) && html.includes('</body>')) {
+    html = html.replace('</body>', `<script>${jsMarker}\n${MV_JS}\n  </script>\n</body>`);
     changed = true;
   }
 

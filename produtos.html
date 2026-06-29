@@ -5100,7 +5100,7 @@
         }
       } catch(_){}
     }
-    openModal('modal-produto');
+    var _b3=document.getElementById('cat-modal-3d-btn'); var _w3=document.getElementById('cat-modal-3d'); var _m3=document.getElementById('cat-modal-mv'); if(_w3){_w3.hidden=true;} if(_m3){_m3.removeAttribute('src');} if(_b3){var _g=card.dataset.glb||''; _b3.dataset.glb=_g; _b3.hidden=!_g; _b3.classList.remove('is-open'); _b3.innerHTML='<svg width=\'13\' height=\'13\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\'/></svg> Ver em 3D';} openModal('modal-produto');
   }
 
   var activeFilter = 'all';
@@ -5193,5 +5193,45 @@
   }());
   </script>
 
+<script>/* csm-3d-toggle-injected */
+
+  (function () {
+    var btn3d  = document.getElementById('cat-modal-3d-btn');
+    var wrap3d = document.getElementById('cat-modal-3d');
+    var mv     = document.getElementById('cat-modal-mv');
+    if (!btn3d || !wrap3d || !mv) return;
+
+    var SVG_OPEN  = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>';
+    var LABEL_VER = SVG_OPEN + ' Ver em 3D';
+    var LABEL_FECH = SVG_OPEN + ' Fechar 3D';
+
+    // Botão toggle abre/fecha o viewer
+    btn3d.addEventListener('click', function () {
+      if (!wrap3d.hidden) {
+        wrap3d.hidden = true;
+        mv.removeAttribute('src');
+        btn3d.classList.remove('is-open');
+        btn3d.innerHTML = LABEL_VER;
+      } else {
+        var glb = btn3d.dataset.glb;
+        if (!glb) return;
+        mv.setAttribute('src', glb);
+        wrap3d.hidden = false;
+        btn3d.classList.add('is-open');
+        btn3d.innerHTML = LABEL_FECH;
+      }
+    });
+
+    // Reset ao fechar o modal
+    document.querySelectorAll('.modal__close').forEach(function (c) {
+      c.addEventListener('click', function () {
+        wrap3d.hidden = true;
+        mv.removeAttribute('src');
+        btn3d.classList.remove('is-open');
+        btn3d.innerHTML = LABEL_VER;
+      });
+    });
+  }());
+  </script>
 </body>
 </html>
