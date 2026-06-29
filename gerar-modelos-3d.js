@@ -226,6 +226,7 @@ async function generateGlb(imgUrl) {
   // 3. Generate (OBJ + GLB)
   const genEventId = await callEndpoint('generate', [processed, MC_RESOLUTION]);
   const genResult  = await waitSSE('generate', genEventId);
+
   // genResult[0] = OBJ, genResult[1] = GLB
   const glbInfo = Array.isArray(genResult) ? genResult[1] : genResult;
   if (!glbInfo) throw new Error('Generate não retornou arquivo GLB');
@@ -235,12 +236,28 @@ async function generateGlb(imgUrl) {
 
 // ── Download do .glb ──────────────────────────────────────────────────────────
 async function downloadGlb(fileInfo, outPath) {
-  const url = fileInfo.url || `${HF_SPACE}/file=${fileInfo.path}`;
-  const res = await httpGet(url);
-  if (!res || !res.ok) throw new Error(`Download .glb falhou (${res?.status})`);
-  const buf = await res.arrayBuffer();
-  fs.writeFileSync(outPath, Buffer.from(buf));
-  return buf.byteLength;
+  // /ca/file= requer sessão de browser — usa /file= direto (funciona via API)
+  const directUrl = `${HF_SPACE}/file=${fileInfo.path}`;
+  const fallbackUrl = (fileInfo.url || '').replace('/ca/file=', '/file=');
+
+  const urls = [directUrl, fallbackUrl].filter((u, i, a) => u && a.indexOf(u) === i);
+
+  let lastErr = null;
+  for (const url of urls) {
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; CSM-3D-Generator/1.0)',
+        'Referer': HF_SPACE + '/',
+      },
+    });
+    if (res.ok) {
+      const buf = await res.arrayBuffer();
+      fs.writeFileSync(outPath, Buffer.from(buf));
+      return buf.byteLength;
+    }
+    lastErr = `${url} → ${res.status}`;
+  }
+  throw new Error(`Download .glb falhou: ${lastErr}`);
 }
 
 // ── Verifica se o Space está online ──────────────────────────────────────────

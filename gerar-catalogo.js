@@ -241,7 +241,7 @@ function buildCard(p, idToSlug) {
     : `<div class="cat-card__no-img" aria-hidden="true"></div>`;
 
   return `
-          <article class="cat-card" data-tipo="${tipo}"
+          <article class="cat-card" data-tipo="${tipo}" data-id="${p.id}"
             data-imgs='${JSON.stringify(imgFull ? [imgFull] : [])}'
             data-wpp="${wpp}"
             data-specs="${specsJson}">

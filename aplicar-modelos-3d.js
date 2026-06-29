@@ -34,31 +34,18 @@ function applyGlbToCards(html, mapping) {
   for (const [id, info] of Object.entries(mapping)) {
     if (!info.path) continue;
 
-    // Encontra o card com data-id="<id>" e adiciona data-glb se não existir
-    const cardRe = new RegExp(
-      `(<div[^>]*class="[^"]*cat-card[^"]*"[^>]*data-id="${id}"[^>]*)(>)`,
-      'g'
-    );
+    const marker = `data-id="${id}"`;
+    const idx = html.indexOf(marker);
+    if (idx === -1) continue;
 
-    const before = html;
-    html = html.replace(cardRe, (match, opening, close) => {
-      if (opening.includes('data-glb=')) return match; // já tem
-      count++;
-      return `${opening} data-glb="${info.path}"${close}`;
-    });
+    // Verifica se data-glb já existe próximo ao marker
+    const nearby = html.slice(Math.max(0, idx - 20), idx + marker.length + 20);
+    if (nearby.includes('data-glb=')) continue;
 
-    if (html === before) {
-      // Tenta padrão alternativo (data-id pode estar em outra posição)
-      const altRe = new RegExp(
-        `(<div[^>]*data-id="${id}"[^>]*class="[^"]*cat-card[^"]*"[^>]*)(>)`,
-        'g'
-      );
-      html = html.replace(altRe, (match, opening, close) => {
-        if (opening.includes('data-glb=')) return match;
-        count++;
-        return `${opening} data-glb="${info.path}"${close}`;
-      });
-    }
+    // Insere data-glb logo após data-id="<id>"
+    const insert = ` data-glb="${info.path}"`;
+    html = html.slice(0, idx + marker.length) + insert + html.slice(idx + marker.length);
+    count++;
   }
 
   return { html, count };
