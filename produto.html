@@ -892,6 +892,125 @@
     </div>
   </div>
 
+  <!-- ── Produto dinâmico: popula a partir de localStorage quando ?id= presente ── -->
+  <script>
+  (function () {
+    'use strict';
+
+    var CAT = {
+      'sofa':         { label: 'Sofás',          eyebrow: 'Sofás de Alta Costura',    url: 'produtos.html?categoria=sofa' },
+      'poltrona':     { label: 'Poltronas',      eyebrow: 'Poltronas & Cadeiras',     url: 'produtos.html?categoria=poltrona' },
+      'sala-jantar':  { label: 'Sala de Jantar', eyebrow: 'Ambientes de Jantar',      url: 'produtos.html?categoria=sala-jantar' },
+      'quarto':       { label: 'Quartos',        eyebrow: 'Quartos e Dormitórios',    url: 'produtos.html?categoria=quarto' },
+      'area-gourmet': { label: 'Área Gourmet',   eyebrow: 'Área Gourmet & Externo',   url: 'produtos.html?categoria=area-gourmet' },
+      'corporativo':  { label: 'Corporativo',    eyebrow: 'Móveis Corporativos',      url: 'produtos.html?categoria=corporativo' },
+      'complemento':  { label: 'Complementos',   eyebrow: 'Complementos & Decoração', url: 'produtos.html?categoria=complemento' },
+    };
+
+    var params = new URLSearchParams(window.location.search);
+    var urlId  = params.get('id');
+    if (!urlId) return;
+
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem('csm-produto-current')); } catch (_) {}
+
+    if (!stored || String(stored.id) !== String(urlId)) {
+      window.location.replace('produtos.html');
+      return;
+    }
+
+    var p   = stored;
+    var cat = CAT[p.tipo] || CAT['sofa'];
+
+    // ── Head
+    document.title = p.name + ' — CSM Decor | Alto Padrão';
+    var sm = function (sel, val) { var el = document.querySelector(sel); if (el) el.setAttribute('content', val); };
+    sm('meta[name="description"]', p.name + ' — CSM Decor. ' + p.tagline + '. Encomenda exclusiva.');
+    sm('meta[property="og:title"]',    p.name + ' — CSM Decor');
+    sm('meta[property="og:description"]', p.tagline + '. Alto padrão em Campinas e região.');
+    if (p.imgs && p.imgs[0]) sm('meta[property="og:image"]', p.imgs[0]);
+
+    // ── Breadcrumb
+    var bcCat = document.querySelector('.breadcrumb a:last-of-type');
+    if (bcCat) { bcCat.textContent = cat.label; bcCat.href = cat.url; }
+    var bcCur = document.querySelector('.breadcrumb__current');
+    if (bcCur) bcCur.textContent = p.name;
+
+    // ── Gallery main image
+    var firstImg = (p.imgs && p.imgs[0]) ? p.imgs[0] : '';
+    var mainImg  = document.getElementById('gallery-main-img');
+    if (mainImg && firstImg) { mainImg.src = firstImg; mainImg.alt = p.name + ' — vista frontal'; }
+
+    // ── Gallery badge
+    var galBadge = document.querySelector('.gallery-badge--cat');
+    if (galBadge) galBadge.textContent = p.badge || cat.label;
+
+    // ── Gallery thumbs: rebuild from imgs array, preserve 3D tab
+    var thumbsWrap = document.querySelector('.product-gallery__thumbs');
+    var thumb3d    = document.getElementById('thumb-3d');
+    if (thumbsWrap && thumb3d) {
+      thumbsWrap.innerHTML = '';
+      var imgs = (p.imgs && p.imgs.length) ? p.imgs : (firstImg ? [firstImg] : []);
+      imgs.forEach(function (src, i) {
+        var div = document.createElement('div');
+        div.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+        div.setAttribute('role', 'listitem');
+        div.setAttribute('aria-label', 'Vista ' + (i + 1));
+        div.setAttribute('tabindex', '0');
+        div.dataset.src = src;
+        var img = document.createElement('img');
+        img.src = src; img.alt = p.name + ' — vista ' + (i + 1); img.loading = 'lazy';
+        div.appendChild(img);
+        thumbsWrap.appendChild(div);
+      });
+      if (p.glb) {
+        thumb3d.removeAttribute('hidden');
+        var mv = document.getElementById('produto-model-viewer');
+        if (mv) { mv.setAttribute('src', p.glb); mv.setAttribute('alt', p.name + ' — modelo 3D interativo'); }
+      } else {
+        thumb3d.setAttribute('hidden', '');
+      }
+      thumbsWrap.appendChild(thumb3d);
+    }
+
+    // ── Eyebrow
+    var eyebrow = document.querySelector('.product-panel__eyebrow');
+    if (eyebrow) eyebrow.textContent = cat.eyebrow;
+
+    // ── H1
+    var h1 = document.querySelector('.product-panel__name');
+    if (h1) {
+      var badge = p.badge || '';
+      if (badge && p.name.startsWith(badge)) {
+        var rest = p.name.slice(badge.length).trim();
+        h1.innerHTML = badge + (rest ? ' <em>' + rest + '</em>' : '');
+      } else {
+        h1.innerHTML = '<em>' + p.name + '</em>';
+      }
+    }
+
+    // ── Specs: generic for dynamically loaded products
+    var specsBody = document.getElementById('specs-body');
+    if (specsBody) {
+      specsBody.innerHTML =
+        '<div class="product-specs__row"><span class="product-specs__key">Material</span><span class="product-specs__val">Sob consulta — conforme revestimento escolhido</span></div>' +
+        '<div class="product-specs__row"><span class="product-specs__key">Estrutura</span><span class="product-specs__val">Madeira maciça ou estrutura metálica</span></div>' +
+        '<div class="product-specs__row"><span class="product-specs__key">Acabamento</span><span class="product-specs__val">Personalizado conforme pedido</span></div>' +
+        '<div class="product-specs__row"><span class="product-specs__key">Prazo de entrega</span><span class="product-specs__val">30 a 60 dias úteis</span></div>' +
+        '<div class="product-specs__row"><span class="product-specs__key">Dimensões</span><span class="product-specs__val">Disponíveis sob consulta</span></div>';
+    }
+
+    // ── WhatsApp CTA
+    var wppCta = document.querySelector('.product-panel__ctas .btn--primary');
+    if (wppCta && p.wpp) wppCta.href = p.wpp;
+
+    // Expose for share handler in next script block
+    window.__produtoNome    = p.name;
+    window.__produtoTagline = p.tagline;
+
+  }());
+  </script>
+
   <script>
     'use strict';
 
@@ -1058,8 +1177,8 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: 'Sofá Chesterfield I — CSM Decor',
-            text: 'Design britânico atemporal com capitonê manual e couro natural.',
+            title: (window.__produtoNome || 'Sofá Chesterfield I') + ' — CSM Decor',
+            text: window.__produtoTagline || 'Design britânico atemporal com capitonê manual e couro natural.',
             url: window.location.href,
           });
         } catch (_) {}
