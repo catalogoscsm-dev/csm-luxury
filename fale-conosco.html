@@ -289,6 +289,43 @@
     [data-theme="dark"] .fc-form__textarea::placeholder {
       color: rgba(240,236,228,.4);
     }
+    /* Força o dropdown nativo a usar esquema escuro — resolve opções invisíveis */
+    [data-theme="dark"] .fc-form__select {
+      color-scheme: dark;
+      background-color: #1e1e1e;
+    }
+    [data-theme="dark"] .fc-form__select option {
+      background-color: #1e1e1e;
+      color: #f0ece4;
+    }
+
+    /* ── Botão Voltar — animação hover/touch ── */
+    .fc-back-btn {
+      overflow: hidden;
+    }
+    .fc-back-btn__arrow {
+      transition: transform .32s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+    .fc-back-btn__label {
+      font-family: var(--font-sans);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform .32s cubic-bezier(0.16, 1, 0.3, 1) .04s;
+    }
+    .fc-back-btn:hover .fc-back-btn__arrow {
+      transform: translateX(-4px);
+    }
+    .fc-back-btn:hover .fc-back-btn__label {
+      transform: translateX(-2px);
+    }
+    /* Touch: ativa no press */
+    @media (hover: none) {
+      .fc-back-btn:active .fc-back-btn__arrow { transform: translateX(-4px); }
+      .fc-back-btn:active .fc-back-btn__label { transform: translateX(-2px); }
+    }
   </style>
 </head>
 <body>
@@ -303,11 +340,11 @@
     <div class="container header__inner">
 
       <div class="header__left">
-        <a href="index.html" class="header-icon" aria-label="Voltar ao início" style="gap:.45rem;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <a href="index.html" class="header-icon fc-back-btn" aria-label="Voltar ao início" style="gap:.45rem;">
+          <svg class="fc-back-btn__arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"/>
           </svg>
-          <span class="header__icon-label">Voltar</span>
+          <span class="fc-back-btn__label">Voltar</span>
         </a>
       </div>
 
@@ -583,10 +620,18 @@
 
       var btn = document.getElementById('theme-toggle');
       if (!btn) return;
+
+      function updateLabel() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        btn.setAttribute('data-label', isDark ? 'Tema claro' : 'Tema escuro');
+      }
+      updateLabel();
+
       btn.addEventListener('click', function () {
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
         localStorage.setItem('csm-theme', isDark ? 'light' : 'dark');
+        updateLabel();
       });
     }());
 

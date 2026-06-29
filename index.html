@@ -16,7 +16,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
   <!-- Animate.css — efeitos de entrada no carregamento da página -->
@@ -849,7 +849,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 1,90m · Prof. 1,05m · Alt. 0,80m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -902,7 +902,7 @@
                 <div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -928,7 +928,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 3,00m · Prof. 1,05/1,55m · Alt. 1,05m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -954,7 +954,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 4,00m · Prof. 1,00/1,40m · Alt. 1,00m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -980,7 +980,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 3,00m · Prof. 0,95/1,60m · Alt. 1,00m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -1006,7 +1006,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 2,40m · Prof. 0,95m · Alt. 0,80m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -1032,7 +1032,7 @@
                 <div class="cat-specs__row"><dt>Dimensões</dt><dd>Larg. 2,25m · Prof. 0,95m · Alt. 0,90m</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -1057,18 +1057,29 @@
                 <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros premium</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
         </article>
 
         <!-- ── Poltrona Aura ── -->
-        <article class="cat-card" data-tipo="poltrona" data-imgs='["https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/aura_02.png","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/aura_01.png","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/poltrona-aura.jpg","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/poltrona-aura-ii.jpg"]' data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Aura.%20Pode%20me%20enviar%20mais%20informações%3F">
+        <article class="cat-card cat-card--has-3d" data-tipo="poltrona"
+          data-imgs='["https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/aura_02.png","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/aura_01.png","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/poltrona-aura.jpg","https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/poltrona-aura-ii.jpg"]'
+          data-wpp="https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Aura.%20Pode%20me%20enviar%20mais%20informações%3F"
+          data-model="Meshy.glb"
+          data-model-name="Poltrona Aura">
           <figure class="cat-card__fig" data-nome="Aura">
             <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2024/07/aura_02.png"
                  alt="Poltrona Aura — CSM Decor" loading="lazy" />
             <span class="cat-card__badge cat-card__badge--poltrona">Poltrona</span>
+            <!-- Badge exclusivo 3D/AR na imagem -->
+            <div class="cat-card__3d-overlay" aria-hidden="true">
+              <span class="cat-card__3d-pill">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                3D · AR
+              </span>
+            </div>
           </figure>
           <div class="cat-card__body">
             <h3 class="cat-card__name">Aura</h3>
@@ -1081,9 +1092,22 @@
                 <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros premium</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
-              Ver Produto
-            </button>
+            <!-- Grupo de CTAs — Ver Produto + Ver em 3D -->
+            <div class="cat-card__cta-group">
+              <button type="button" class="btn btn--primary btn--sm cat-card__cta"
+                onclick="goToProduct(this.closest('.cat-card'))">
+                Ver Produto
+              </button>
+              <button type="button" class="cat-card__btn-3d"
+                onclick="window.openAR('Meshy.glb','Poltrona Aura','https://wa.me/5519990034068?text=Tenho%20interesse%20na%20Poltrona%20Aura.')"
+                aria-label="Ver Poltrona Aura em 3D e Realidade Aumentada">
+                <span class="cat-card__btn-3d__icon-wrap" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </span>
+                <span class="cat-card__btn-3d__label">Ver em 3D · AR</span>
+                <span class="cat-card__btn-3d__tag" aria-hidden="true">NOVO</span>
+              </button>
+            </div>
           </div>
         </article>
 
@@ -1105,7 +1129,7 @@
                 <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -1129,7 +1153,7 @@
                 <div class="cat-specs__row"><dt>Acabamento</dt><dd>Tecidos e couros</dd></div>
               </dl>
             </details>
-            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="openProductModal(this.closest('.cat-card'))">
+            <button type="button" class="btn btn--primary btn--sm cat-card__cta" onclick="goToProduct(this.closest('.cat-card'))">
               Ver Produto
             </button>
           </div>
@@ -2469,6 +2493,30 @@
       }
     });
 
+    // ── Navega para página do produto (salva dados no localStorage) ─
+    function goToProduct(card) {
+      var name    = (card.querySelector('.cat-card__name') || {}).textContent || '';
+      var badge   = (card.querySelector('.cat-card__badge') || {}).textContent || 'Sofá';
+      var tipo    = card.dataset.tipo || 'sofa';
+      var tagline = (card.querySelector('.cat-card__tagline') || {}).textContent || '';
+      var imgs    = JSON.parse(card.dataset.imgs || '[]');
+      var wpp     = card.dataset.wpp || '';
+      var glb     = card.dataset.model || card.dataset.glb || '';
+      var specs   = [];
+      card.querySelectorAll('.cat-specs__row').forEach(function (row) {
+        var key = (row.querySelector('dt') || {}).textContent || '';
+        var val = (row.querySelector('dd') || {}).textContent || '';
+        if (key) specs.push({ key: key, val: val });
+      });
+      try {
+        localStorage.setItem('csm-produto-current', JSON.stringify({
+          id: 'csm-index', name: name, badge: badge, tipo: tipo, tagline: tagline,
+          imgs: imgs, wpp: wpp, glb: glb, specs: specs
+        }));
+      } catch (_) {}
+      window.location.href = 'produto.html?id=csm-index';
+    }
+
     // ── Modal de produto ─────────────────────────────────────────
     function openProductModal(card) {
       const fig     = card.querySelector('.cat-card__fig');
@@ -2993,11 +3041,13 @@
         panel.classList.add('is-open');
         panel.setAttribute('aria-hidden', 'false');
         backdrop?.classList.add('is-visible');
+        document.querySelector('.fab-cluster')?.classList.add('panel-open');
         lockScroll();
         const hBtn = document.getElementById('moodboard-header-btn');
         hBtn?.setAttribute('aria-expanded', 'true');
         hBtn?.classList.add('is-active');
-        document.getElementById('moodboard-close-btn')?.focus();
+        // Focus com pequeno delay para garantir que a animação iniciou
+        setTimeout(() => document.getElementById('moodboard-close-btn')?.focus(), 80);
       }
 
       function closePanel() {
@@ -3006,6 +3056,7 @@
         panel?.classList.remove('is-open');
         panel?.setAttribute('aria-hidden', 'true');
         backdrop?.classList.remove('is-visible');
+        document.querySelector('.fab-cluster')?.classList.remove('panel-open');
         unlockScroll();
         const hBtn = document.getElementById('moodboard-header-btn');
         hBtn?.setAttribute('aria-expanded', 'false');
@@ -3051,15 +3102,18 @@
 
         // Header button opens panel
         document.getElementById('moodboard-header-btn')?.addEventListener('click', openPanel);
-        document.getElementById('moodboard-close-btn')?.addEventListener('click', closePanel);
-        document.getElementById('moodboard-backdrop')?.addEventListener('click', closePanel);
 
-        document.getElementById('moodboard-clear-btn')?.addEventListener('click', () => {
-          if (!confirm('Limpar todos os itens do moodboard?')) return;
-          saveItems([]);
-          renderPanel();
-          updateBadge();
-          updateSaveButtons();
+        // Delegação de evento — funciona mesmo que os elementos existam após este script
+        document.addEventListener('click', e => {
+          if (e.target.closest('#moodboard-close-btn')) { closePanel(); return; }
+          if (e.target.id === 'moodboard-backdrop') { closePanel(); return; }
+          if (e.target.id === 'moodboard-clear-btn' || e.target.closest('#moodboard-clear-btn')) {
+            if (!confirm('Limpar todos os itens do moodboard?')) return;
+            saveItems([]);
+            renderPanel();
+            updateBadge();
+            updateSaveButtons();
+          }
         });
 
         // Fechar com Escape
@@ -3327,6 +3381,9 @@
       viewer.src = '';
       loading.classList.remove('is-hidden');
     }
+
+    // Expõe openAR globalmente para botões inline nos cards
+    window.openAR = openAR;
 
     closeBtn.addEventListener('click', closeAR);
     document.addEventListener('keydown', function (e) {

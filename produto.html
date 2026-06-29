@@ -233,9 +233,9 @@
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
           <a href="produtos.html">Produtos</a>
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <a href="produtos.html?categoria=sofa">Sofás</a>
+          <a id="breadcrumb-cat" href="produtos.html?categoria=sofa">Sofás</a>
           <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <span class="breadcrumb__current" aria-current="page">Sofá Chesterfield I</span>
+          <span id="breadcrumb-current" class="breadcrumb__current" aria-current="page">Sofá Chesterfield I</span>
         </nav>
 
         <!-- Layout: galeria + painel -->
@@ -256,7 +256,7 @@
                   loading="eager"
                 />
                 <div class="product-gallery__badge-wrap" aria-hidden="true">
-                  <span class="gallery-badge gallery-badge--cat">Sofás</span>
+                  <span id="gallery-badge-cat" class="gallery-badge gallery-badge--cat">Sofás</span>
                   <span class="gallery-badge gallery-badge--new">Encomenda</span>
                 </div>
                 <div class="product-gallery__zoom-hint" aria-hidden="true">
@@ -316,7 +316,7 @@
             </div>
 
             <!-- Thumbnails -->
-            <div class="product-gallery__thumbs" role="list" aria-label="Miniaturas do produto">
+            <div id="gallery-thumbs-container" class="product-gallery__thumbs" role="list" aria-label="Miniaturas do produto">
               <div class="gallery-thumb active" role="listitem" data-src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg" aria-label="Vista 1" tabindex="0">
                 <img src="https://www.csmdecor.com.br/wsite/wp-content/uploads/2025/10/chesterfield-i-2.jpg" alt="Sofá Chesterfield I — vista 1" loading="lazy" />
               </div>
@@ -344,9 +344,9 @@
           <!-- ── PAINEL DE CONVERSÃO ── -->
           <aside class="product-panel" aria-label="Detalhes e compra">
 
-            <p class="product-panel__eyebrow">Sofás de Alta Costura</p>
+            <p id="product-eyebrow" class="product-panel__eyebrow">Sofás de Alta Costura</p>
 
-            <h1 class="product-panel__name">
+            <h1 id="product-name" class="product-panel__name">
               Sofá <em>Chesterfield I</em>
             </h1>
 
@@ -469,6 +469,7 @@
             <!-- CTAs principais -->
             <div class="product-panel__ctas">
               <a
+                id="product-wpp-btn"
                 href="https://wa.me/5519990034068?text=Olá%2C%20tenho%20interesse%20no%20Sofá%20Chesterfield%20I%20e%20gostaria%20de%20solicitar%20um%20orçamento."
                 class="btn btn--primary btn--lg"
                 target="_blank"
@@ -989,15 +990,32 @@
       }
     }
 
-    // ── Specs: generic for dynamically loaded products
+    // ── Specs: from localStorage data if available, else generic
     var specsBody = document.getElementById('specs-body');
     if (specsBody) {
-      specsBody.innerHTML =
-        '<div class="product-specs__row"><span class="product-specs__key">Material</span><span class="product-specs__val">Sob consulta — conforme revestimento escolhido</span></div>' +
-        '<div class="product-specs__row"><span class="product-specs__key">Estrutura</span><span class="product-specs__val">Madeira maciça ou estrutura metálica</span></div>' +
-        '<div class="product-specs__row"><span class="product-specs__key">Acabamento</span><span class="product-specs__val">Personalizado conforme pedido</span></div>' +
-        '<div class="product-specs__row"><span class="product-specs__key">Prazo de entrega</span><span class="product-specs__val">30 a 60 dias úteis</span></div>' +
-        '<div class="product-specs__row"><span class="product-specs__key">Dimensões</span><span class="product-specs__val">Disponíveis sob consulta</span></div>';
+      if (p.specs && p.specs.length) {
+        specsBody.innerHTML = '';
+        p.specs.forEach(function (s) {
+          var row = document.createElement('div');
+          row.className = 'product-specs__row';
+          var key = document.createElement('span');
+          key.className = 'product-specs__key';
+          key.textContent = s.key || '';
+          var val = document.createElement('span');
+          val.className = 'product-specs__val';
+          val.textContent = s.val || '';
+          row.appendChild(key);
+          row.appendChild(val);
+          specsBody.appendChild(row);
+        });
+      } else {
+        specsBody.innerHTML =
+          '<div class="product-specs__row"><span class="product-specs__key">Material</span><span class="product-specs__val">Sob consulta — conforme revestimento escolhido</span></div>' +
+          '<div class="product-specs__row"><span class="product-specs__key">Estrutura</span><span class="product-specs__val">Madeira maciça ou estrutura metálica</span></div>' +
+          '<div class="product-specs__row"><span class="product-specs__key">Acabamento</span><span class="product-specs__val">Personalizado conforme pedido</span></div>' +
+          '<div class="product-specs__row"><span class="product-specs__key">Prazo de entrega</span><span class="product-specs__val">30 a 60 dias úteis</span></div>' +
+          '<div class="product-specs__row"><span class="product-specs__key">Dimensões</span><span class="product-specs__val">Disponíveis sob consulta</span></div>';
+      }
     }
 
     // ── WhatsApp CTA
@@ -1335,6 +1353,7 @@
     });
   }());
   </script>
+
 
 </body>
 </html>
