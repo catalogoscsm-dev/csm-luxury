@@ -1241,23 +1241,29 @@
     var mvProduto  = document.getElementById('produto-model-viewer');
     if (!thumb3d || !photoView || !view3d) return;
 
-    var is3dActive = false;
+    var is3dActive  = false;
+    var modelLoaded = false;
+
+    // Ouve o load UMA VEZ de forma persistente — resolve race condition onde
+    // o GLB termina de carregar antes do usuário clicar no tab 3D
+    if (mvProduto) {
+      mvProduto.addEventListener('load', function () {
+        modelLoaded = true;
+        if (loading3d) loading3d.style.display = 'none';
+      });
+    }
 
     function enter3D() {
       photoView.hidden = true;
       view3d.hidden = false;
       thumb3d.classList.add('active');
-      // remove active de todas as thumbs de foto
       document.querySelectorAll('.gallery-thumb:not(.gallery-thumb--3d)').forEach(function (t) {
         t.classList.remove('active');
       });
       is3dActive = true;
-      if (mvProduto) {
-        loading3d.style.display = 'flex';
-        mvProduto.addEventListener('load', function onLoad() {
-          loading3d.style.display = 'none';
-          mvProduto.removeEventListener('load', onLoad);
-        });
+      if (loading3d) {
+        // Se o modelo já carregou, esconde o overlay imediatamente
+        loading3d.style.display = modelLoaded ? 'none' : 'flex';
       }
     }
 
@@ -1269,7 +1275,6 @@
       if (src) document.getElementById('gallery-main-img').src = src;
     }
 
-    // Click na tab 3D
     thumb3d.addEventListener('click', function () {
       if (!is3dActive) enter3D();
     });
@@ -1277,7 +1282,6 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (!is3dActive) enter3D(); }
     });
 
-    // Click em qualquer thumb de foto sai do modo 3D
     document.querySelectorAll('.gallery-thumb:not(.gallery-thumb--3d)').forEach(function (t) {
       t.addEventListener('click', function () {
         if (is3dActive) exitToPhoto(t.dataset.src);
