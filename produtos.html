@@ -5019,7 +5019,7 @@
           </button>
         </div>
         <ul class="search-results__list" id="search-results-list" role="listbox" hidden></ul>
-        <div class="search-trending">
+        <div class="search-trending" id="search-trending">
           <span class="search-trending__label">Termos mais buscados:</span>
           <button class="search-trending__tag" data-search="Sofá">Sofá</button>
           <span class="search-trending__dot" aria-hidden="true">•</span>
@@ -5266,63 +5266,186 @@
   <script>
   // ── Busca Preditiva ──────────────────────────────────────
   (function () {
+    'use strict';
     var DB = [
-      { name: 'Sofá Chesterfield I',      cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=96&q=80', href: 'produto.html',                                tags: ['sofa','sofá','chester','chesterfield','couro','estofado'] },
-      { name: 'Sofá Portland',             cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',                tags: ['sofa','sofá','portland','estofado'] },
-      { name: 'Sofá Premium',              cat: 'Sofá',         img: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',                tags: ['sofa','sofá','premium','estofado'] },
-      { name: 'Living',                    cat: 'Ambiente',     img: 'https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',                tags: ['living','sala','sala de estar','sofa','sofá'] },
-      { name: 'Sala de Jantar',            cat: 'Ambiente',     img: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sala-jantar',         tags: ['jantar','sala de jantar','mesa','cadeira','sala'] },
-      { name: 'Quartos e Colchões',        cat: 'Dormitório',   img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=quarto',              tags: ['quarto','quartos','cama','colchao','colchão','dormitorio'] },
-      { name: 'Linha Couro',               cat: 'Estofados',    img: 'https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',                tags: ['couro','linha couro','poltrona','estofado','sofa','sofá'] },
-      { name: 'Área Gourmet',              cat: 'Externo',      img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=area-gourmet',        tags: ['gourmet','area gourmet','area','externo','varanda','churrasco'] },
-      { name: 'Poltronas Reclináveis',     cat: 'Estofados',    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=poltrona',             tags: ['poltrona','poltronas','reclinavel','reclinável'] },
-      { name: 'Corporativo',               cat: 'Escritório',   img: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=corporativo',         tags: ['corporativo','escritorio','escritório','empresa','mesa'] },
-      { name: 'Sala de TV',                cat: 'Entretenimento', img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',             tags: ['tv','sala de tv','home theater','televisao','televisão'] },
-      { name: 'Complementos',              cat: 'Decoração',    img: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=complemento',         tags: ['complemento','complementos','decoracao','decoração','aparador'] },
+      { name: 'Sofá Chesterfield I',   cat: 'Sofá',           img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=96&q=80',  href: 'produto.html',                         tags: ['sofa','sofá','chester','chesterfield','couro','estofado'] },
+      { name: 'Sofá Portland',          cat: 'Sofá',           img: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',         tags: ['sofa','sofá','portland','estofado'] },
+      { name: 'Sofá Premium',           cat: 'Sofá',           img: 'https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&w=96&q=80',  href: 'produtos.html?categoria=sofa',         tags: ['sofa','sofá','premium','estofado'] },
+      { name: 'Living',                 cat: 'Ambiente',       img: 'https://images.unsplash.com/photo-1560185009-5bf9f2849488?auto=format&fit=crop&w=96&q=80',  href: 'produtos.html?categoria=sofa',         tags: ['living','sala','sala de estar','sofa','sofá'] },
+      { name: 'Sala de Jantar',         cat: 'Ambiente',       img: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sala-jantar',  tags: ['jantar','sala de jantar','mesa','cadeira','sala'] },
+      { name: 'Quartos e Colchões',     cat: 'Dormitório',     img: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=quarto',       tags: ['quarto','quartos','cama','colchao','colchão','dormitorio'] },
+      { name: 'Linha Couro',            cat: 'Estofados',      img: 'https://images.unsplash.com/photo-1567016376408-0226e4d0c1ea?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',         tags: ['couro','linha couro','poltrona','estofado','sofa','sofá'] },
+      { name: 'Área Gourmet',           cat: 'Externo',        img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=area-gourmet', tags: ['gourmet','area gourmet','area','externo','varanda','churrasco'] },
+      { name: 'Poltronas Reclináveis',  cat: 'Estofados',      img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=poltrona',     tags: ['poltrona','poltronas','reclinavel','reclinável'] },
+      { name: 'Corporativo',            cat: 'Escritório',     img: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=corporativo',  tags: ['corporativo','escritorio','escritório','empresa','mesa'] },
+      { name: 'Sala de TV',             cat: 'Entretenimento', img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=sofa',         tags: ['tv','sala de tv','home theater','televisao','televisão'] },
+      { name: 'Complementos',           cat: 'Decoração',      img: 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=96&q=80', href: 'produtos.html?categoria=complemento',  tags: ['complemento','complementos','decoracao','decoração','aparador'] },
     ];
-    function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+
+    function norm(s) {
+      return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    }
+
+    function highlight(text, q) {
+      var nt = norm(text), nq = norm(q);
+      var i = nt.indexOf(nq);
+      if (i < 0 || nq.length < 2) return text;
+      return text.slice(0, i) + '<mark>' + text.slice(i, i + nq.length) + '</mark>' + text.slice(i + nq.length);
+    }
+
     function doSearch(q) {
       if (!q || q.length < 2) return [];
       var nq = norm(q);
-      return DB.filter(function(item) {
-        return norm(item.name).indexOf(nq) !== -1 || item.tags.some(function(t) { return norm(t).indexOf(nq) !== -1; });
-      }).slice(0, 3);
+      return DB.filter(function (item) {
+        return norm(item.name).indexOf(nq) !== -1 ||
+               item.tags.some(function (t) { return norm(t).indexOf(nq) !== -1; });
+      }).slice(0, 5);
     }
-    var overlay     = document.getElementById('search-overlay');
-    var inputEl     = document.getElementById('search-input');
-    var clearBtn    = document.getElementById('search-clear');
-    var closeBtn    = document.getElementById('search-close');
-    var openBtn     = document.getElementById('header-search-btn');
-    var resultsList = document.getElementById('search-results-list');
-    var backdrop    = document.getElementById('search-backdrop');
-    function openSearch()  { overlay.hidden = false; if (openBtn) { openBtn.setAttribute('aria-expanded', 'true'); openBtn.classList.add('is-active'); } lockScroll(); requestAnimationFrame(function() { inputEl.focus(); }); }
-    function closeSearch() { overlay.hidden = true; if (openBtn) { openBtn.setAttribute('aria-expanded', 'false'); openBtn.classList.remove('is-active'); } unlockScroll(); inputEl.value = ''; clearBtn.hidden = true; resultsList.hidden = true; resultsList.innerHTML = ''; }
+
+    var openBtn = document.getElementById('header-search-btn');
+    if (!openBtn) return;
+
+    var kbdIdx = -1;
+    var wired  = false;
+
+    function $(id) { return document.getElementById(id); }
+
+    function openSearch() {
+      var ov = $('search-overlay');
+      if (!ov || !ov.hasAttribute('hidden')) return;
+      ov.removeAttribute('hidden');
+      openBtn.setAttribute('aria-expanded', 'true');
+      openBtn.classList.add('is-active');
+      lockScroll();
+      setTimeout(function () { var el = $('search-input'); if (el) el.focus(); }, 60);
+      kbdIdx = -1;
+    }
+
+    function closeSearch() {
+      var ov = $('search-overlay');
+      if (!ov || ov.hasAttribute('hidden')) return;
+      ov.classList.add('is-closing');
+      setTimeout(function () {
+        ov.setAttribute('hidden', '');
+        ov.classList.remove('is-closing');
+        var inp = $('search-input');        if (inp) inp.value = '';
+        var clr = $('search-clear');        if (clr) clr.hidden = true;
+        var lst = $('search-results-list'); if (lst) { lst.hidden = true; lst.innerHTML = ''; }
+        var tr  = $('search-trending');     if (tr)  tr.hidden = false;
+      }, 280);
+      openBtn.setAttribute('aria-expanded', 'false');
+      openBtn.classList.remove('is-active');
+      unlockScroll();
+      kbdIdx = -1;
+    }
+
     function renderResults(q) {
+      var lst = $('search-results-list');
+      var tr  = $('search-trending');
+      if (!lst) return;
+      lst.innerHTML = '';
+      kbdIdx = -1;
+      if (!q || q.length < 2) {
+        lst.hidden = true;
+        if (tr) tr.hidden = false;
+        return;
+      }
+      if (tr) tr.hidden = true;
       var results = doSearch(q);
-      if (!q || q.length < 2) { resultsList.hidden = true; resultsList.innerHTML = ''; return; }
-      resultsList.innerHTML = '';
       if (results.length === 0) {
-        var li = document.createElement('li'); li.className = 'search-noresults';
+        var li = document.createElement('li');
+        li.className = 'search-noresults';
         li.innerHTML = 'Nenhum resultado para "<strong>' + q + '</strong>"';
-        resultsList.appendChild(li);
+        lst.appendChild(li);
       } else {
-        results.forEach(function(item) {
+        results.forEach(function (item, i) {
           var li = document.createElement('li');
-          li.innerHTML = '<a class="search-result-item" href="' + item.href + '"><img class="search-result-item__thumb" src="' + item.img + '" alt="' + item.name + '" width="52" height="52" loading="lazy"/><div class="search-result-item__info"><span class="search-result-item__name">' + item.name + '</span><span class="search-result-item__cat">' + item.cat + '</span></div><svg class="search-result-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a>';
-          resultsList.appendChild(li);
+          li.style.animationDelay = (i * 45) + 'ms';
+          li.innerHTML =
+            '<a class="search-result-item" href="' + item.href + '">' +
+              '<img class="search-result-item__thumb" src="' + item.img + '" alt="" width="52" height="52" loading="lazy"/>' +
+              '<div class="search-result-item__info">' +
+                '<span class="search-result-item__name">' + highlight(item.name, q) + '</span>' +
+                '<span class="search-result-item__cat">' + item.cat + '</span>' +
+              '</div>' +
+              '<svg class="search-result-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>' +
+            '</a>';
+          lst.appendChild(li);
         });
       }
-      resultsList.hidden = false;
+      lst.hidden = false;
     }
-    if (openBtn) openBtn.addEventListener('click', openSearch);
-    closeBtn.addEventListener('click', closeSearch);
-    backdrop.addEventListener('click', closeSearch);
-    inputEl.addEventListener('input', function() { var q = inputEl.value.trim(); clearBtn.hidden = !q; renderResults(q); });
-    clearBtn.addEventListener('click', function() { inputEl.value = ''; clearBtn.hidden = true; resultsList.hidden = true; resultsList.innerHTML = ''; inputEl.focus(); });
-    document.querySelectorAll('.search-trending__tag').forEach(function(btn) {
-      btn.addEventListener('click', function() { var term = btn.dataset.search; inputEl.value = term; clearBtn.hidden = false; renderResults(term); inputEl.focus(); });
+
+    function kbdMove(dir) {
+      var lst = $('search-results-list');
+      if (!lst) return;
+      var items = lst.querySelectorAll('li');
+      if (!items.length) return;
+      items.forEach(function (el) { el.classList.remove('is-kbd-active'); });
+      kbdIdx = Math.max(-1, Math.min(kbdIdx + dir, items.length - 1));
+      if (kbdIdx < 0) {
+        var inp = $('search-input'); if (inp) inp.focus();
+      } else {
+        items[kbdIdx].classList.add('is-kbd-active');
+        var a = items[kbdIdx].querySelector('a'); if (a) a.focus();
+      }
+    }
+
+    function ensureWired() {
+      if (wired) return;
+      wired = true;
+      var close    = $('search-close');
+      var backdrop = $('search-backdrop');
+      var input    = $('search-input');
+      var clrBtn   = $('search-clear');
+      if (close)    close.addEventListener('click', closeSearch);
+      if (backdrop) backdrop.addEventListener('click', closeSearch);
+      if (input) {
+        input.addEventListener('input', function () {
+          var q = input.value.trim();
+          var clr = $('search-clear'); if (clr) clr.hidden = !q;
+          renderResults(q);
+        });
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { closeSearch(); return; }
+          if (e.key === 'ArrowDown') { e.preventDefault(); kbdMove(1); }
+          if (e.key === 'ArrowUp')   { e.preventDefault(); kbdMove(-1); }
+          if (e.key === 'Enter') {
+            var lst = $('search-results-list');
+            if (lst && kbdIdx >= 0) {
+              var its = lst.querySelectorAll('li');
+              if (its[kbdIdx]) { var a = its[kbdIdx].querySelector('a'); if (a) a.click(); }
+            }
+          }
+        });
+      }
+      if (clrBtn) {
+        clrBtn.addEventListener('click', function () {
+          var inp = $('search-input'); if (inp) { inp.value = ''; inp.focus(); }
+          var clr = $('search-clear'); if (clr) clr.hidden = true;
+          var lst = $('search-results-list'); if (lst) { lst.hidden = true; lst.innerHTML = ''; }
+          var tr  = $('search-trending'); if (tr) tr.hidden = false;
+          kbdIdx = -1;
+        });
+      }
+      document.querySelectorAll('.search-trending__tag').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var q = btn.dataset.search;
+          var inp = $('search-input'); if (inp) { inp.value = q; inp.focus(); }
+          var clr = $('search-clear'); if (clr) clr.hidden = false;
+          renderResults(q);
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        var ov = $('search-overlay');
+        if (e.key === 'Escape' && ov && !ov.hasAttribute('hidden')) closeSearch();
+      });
+    }
+
+    openBtn.addEventListener('click', function () {
+      ensureWired();
+      openSearch();
     });
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && !overlay.hidden) closeSearch(); });
   }());
   </script>
 </body>
