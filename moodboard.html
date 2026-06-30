@@ -214,7 +214,18 @@
 
     // ── Load items from localStorage ─────────────────────────────
     function getItems() {
-      try { return JSON.parse(localStorage.getItem(ITEMS_KEY)) || []; } catch(e) { return []; }
+      try {
+        const raw = JSON.parse(localStorage.getItem(ITEMS_KEY)) || [];
+        return raw.map(i => ({
+          id:      i.id      || (i.name||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''),
+          name:    i.name    || '',
+          type:    i.type    || i.tipo || '',
+          tagline: i.tagline || '',
+          img:     i.img     || '',
+          wpp:     i.wpp     || '',
+          tipo:    i.tipo    || i.type || '',
+        }));
+      } catch(e) { return []; }
     }
     function saveItems(items) {
       localStorage.setItem(ITEMS_KEY, JSON.stringify(items));

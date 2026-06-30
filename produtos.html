@@ -5163,7 +5163,7 @@
         if (idx > -1) {
           mb.saved.splice(idx, 1);
         } else {
-          mb.saved.push({ name: _mName, img: _mImg, tipo: _mTipo });
+          mb.saved.push({ id: _mName.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''), name: _mName, type: badge ? badge.textContent.trim() : '', tagline: tag || '', img: _mImg, wpp: wpp || '', tipo: _mTipo });
         }
         try { localStorage.setItem('csm-moodboard', JSON.stringify(mb.saved)); } catch(_){}
         mb.updateBadge();
@@ -5305,7 +5305,7 @@
       var n=nm.textContent.trim(); var imgEl=card.querySelector('img'); var src=imgEl?imgEl.src:'';
       var isSaved=saved.some(function(s){return s.name===n;});
       if(isSaved){btn.classList.add('is-saved');btn.setAttribute('aria-pressed','true');}
-      btn.addEventListener('click',function(e){ e.stopPropagation(); var idx=saved.findIndex(function(s){return s.name===n;}); if(idx>-1){saved.splice(idx,1);btn.classList.remove('is-saved');btn.setAttribute('aria-pressed','false');}else{saved.push({name:n,img:src,tipo:card.dataset.tipo||''});btn.classList.add('is-saved');btn.setAttribute('aria-pressed','true');} try{localStorage.setItem('csm-moodboard',JSON.stringify(saved));}catch(_){} updateBadge(); });
+      btn.addEventListener('click',function(e){ e.stopPropagation(); var _id=n.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''); var idx=saved.findIndex(function(s){return s.id===_id||s.name===n||(s.id&&s.id===_id);}); if(idx>-1){saved.splice(idx,1);btn.classList.remove('is-saved');btn.setAttribute('aria-pressed','false');}else{saved.push({id:_id,name:n,type:(card.querySelector('.cat-card__badge')||{textContent:''}).textContent.trim(),tagline:(card.querySelector('.cat-card__tagline')||{textContent:''}).textContent.trim(),img:src,wpp:card.dataset.wpp||'',tipo:card.dataset.tipo||''});btn.classList.add('is-saved');btn.setAttribute('aria-pressed','true');if(typeof btn.animate==='function')btn.animate([{transform:'scale(1)'},{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:320,easing:'cubic-bezier(.4,0,.2,1)'});} try{localStorage.setItem('csm-moodboard',JSON.stringify(saved));}catch(_){} updateBadge(); });
     });
     var mb=document.getElementById('moodboard-header-btn');
     if(mb) mb.addEventListener('click',function(){window.location.href='moodboard.html';});

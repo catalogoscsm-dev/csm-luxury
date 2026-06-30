@@ -108,6 +108,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
           </svg>
+          <span class="header__moodboard-badge" id="moodboard-badge" hidden>0</span>
         </button>
 
         <!-- 7. Tema -->
@@ -1022,9 +1023,10 @@
     var wppCta = document.querySelector('.product-panel__ctas .btn--primary');
     if (wppCta && p.wpp) wppCta.href = p.wpp;
 
-    // Expose for share handler in next script block
+    // Expose for share handler and favorites in next script block
     window.__produtoNome    = p.name;
     window.__produtoTagline = p.tagline;
+    window.__produto        = p;
 
   }());
   </script>
@@ -1181,14 +1183,85 @@
     });
 
     // ── Favoritar ────────────────────────────────────────────
+    const MB_KEY = 'csm-moodboard';
+
+    function getMbItems() {
+      try { return JSON.parse(localStorage.getItem(MB_KEY)) || []; } catch(_) { return []; }
+    }
+    function saveMbItems(items) {
+      try { localStorage.setItem(MB_KEY, JSON.stringify(items)); } catch(_) {}
+    }
+    function genMbId(name) {
+      return (name||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+    }
+    function updateMbBadge() {
+      const badge = document.getElementById('moodboard-badge');
+      if (!badge) return;
+      const n = getMbItems().length;
+      badge.textContent = n;
+      badge.hidden = n === 0;
+    }
+
     const btnFav = document.getElementById('btn-favoritar');
-    btnFav.addEventListener('click', () => {
-      const active = btnFav.classList.toggle('active');
+
+    function setFavState(active) {
+      btnFav.classList.toggle('active', active);
       btnFav.setAttribute('aria-pressed', String(active));
+      btnFav.setAttribute('aria-label', active ? 'Remover dos favoritos' : 'Adicionar aos favoritos');
       const svg = btnFav.querySelector('svg');
-      svg.setAttribute('fill', active ? 'var(--orange)' : 'none');
+      svg.setAttribute('fill',   active ? 'var(--orange)' : 'none');
       svg.setAttribute('stroke', active ? 'var(--orange)' : 'currentColor');
+      const label = btnFav.childNodes[btnFav.childNodes.length - 1];
+      if (label && label.nodeType === 3) label.textContent = active ? ' Favoritado' : ' Favoritar';
+    }
+
+    function findMbIdx(items, p) {
+      const id   = genMbId(p.name);
+      const name = (p.name || '').trim();
+      return items.findIndex(i =>
+        i.id === id ||
+        genMbId(i.name) === id ||
+        (i.name || '').trim() === name
+      );
+    }
+
+    // Inicializa estado com base no que já está salvo
+    (function initFav() {
+      const p = window.__produto; if (!p) return;
+      setFavState(findMbIdx(getMbItems(), p) > -1);
+      updateMbBadge();
+    }());
+
+    btnFav.addEventListener('click', () => {
+      const p = window.__produto; if (!p) return;
+      const id = genMbId(p.name);
+      let items = getMbItems();
+      const idx = findMbIdx(items, p);
+      if (idx > -1) {
+        items.splice(idx, 1);
+        setFavState(false);
+      } else {
+        items.push({
+          id:      id,
+          name:    p.name    || '',
+          type:    p.badge   || '',
+          tagline: p.tagline || '',
+          img:     (p.imgs && p.imgs[0]) || '',
+          wpp:     p.wpp    || '',
+          tipo:    p.tipo   || '',
+        });
+        setFavState(true);
+      }
+      saveMbItems(items);
+      updateMbBadge();
     });
+
+    // ── Botão de favoritos do header → moodboard ─────────────
+    const mbHeaderBtn = document.getElementById('moodboard-header-btn');
+    if (mbHeaderBtn) mbHeaderBtn.addEventListener('click', () => {
+      window.location.href = 'moodboard.html';
+    });
+    updateMbBadge();
 
     // ── Compartilhar ─────────────────────────────────────────
     document.getElementById('btn-compartilhar').addEventListener('click', async () => {
