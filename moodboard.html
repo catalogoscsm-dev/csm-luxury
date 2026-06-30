@@ -293,26 +293,41 @@
     });
 
     // ── Share ─────────────────────────────────────────────────────
-    document.getElementById('share-btn').addEventListener('click', async () => {
+    document.getElementById('share-btn').addEventListener('click', async (e) => {
+      e.preventDefault();
       const url = window.location.href;
-      try {
-        if (navigator.share) {
-          await navigator.share({
-            title: nameInput.value || 'Moodboard CSM Decor',
-            text: 'Confira os móveis que selecionei na CSM Decor!',
-            url,
-          });
-        } else {
-          await navigator.clipboard.writeText(url);
-          showToast('Link copiado para a área de transferência!');
-        }
-      } catch(e) {
+      const title = nameInput.value || 'Moodboard CSM Decor';
+
+      // Tenta Web Share API (funciona em mobile e em alguns navegadores desktop)
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text: 'Confira os móveis que selecionei na CSM Decor!', url });
+          return;
+        } catch(_) { /* share cancelado ou não suportado — cai no clipboard */ }
+      }
+
+      // Tenta Clipboard API moderna
+      if (navigator.clipboard && navigator.clipboard.writeText) {
         try {
           await navigator.clipboard.writeText(url);
-          showToast('Link copiado!');
-        } catch(e2) {
-          showToast('Copie o link da barra de endereço.');
-        }
+          showToast('Link copiado para a área de transferência!');
+          return;
+        } catch(_) { /* sem permissão — cai no fallback */ }
+      }
+
+      // Fallback para navegadores antigos ou contexto não-seguro
+      try {
+        const tmp = document.createElement('textarea');
+        tmp.value = url;
+        tmp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+        document.body.appendChild(tmp);
+        tmp.focus();
+        tmp.select();
+        document.execCommand('copy');
+        document.body.removeChild(tmp);
+        showToast('Link copiado!');
+      } catch(_) {
+        showToast('Copie o link da barra de endereço do navegador.');
       }
     });
 

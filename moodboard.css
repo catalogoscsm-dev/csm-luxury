@@ -113,6 +113,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn--icon:hover { border-color: var(--orange); color: var(--orange); }
 
+/* Share button lives on the dark header — precisa de contraste invertido */
+.btn--share {
+  border-color: rgba(255,255,255,.25);
+  color: rgba(255,255,255,.75);
+}
+.btn--share:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-1px);
+}
+
 /* ── Header ── */
 .mb-header {
   background: var(--darker);

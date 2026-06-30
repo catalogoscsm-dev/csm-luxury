@@ -52,7 +52,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
           <span class="header__moodboard-badge" id="moodboard-badge" hidden>0</span>
         </button>
-        <button class="header-icon header__theme-toggle" id="theme-toggle" aria-label="Alternar tema">
+        <button class="header-icon header__theme-toggle" id="theme-toggle" data-label="Tema" aria-label="Alternar tema claro/escuro">
           <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
@@ -167,10 +167,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Portland</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Almofadas de fibra siliconada, sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D26 dura</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 e D28 soft de alta resiliência envolvida por manta de fibra siliconada, sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Aço</dd></div><div class="cat-specs__row"><dt>Largura</dt><dd>1,90m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>1,05m / 1,70m (chaise)</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,80m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -188,10 +188,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Oreon</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D25 soft de alta resiliência envolvida por plumante, tecnoform e sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D25 soft de alta resiliência envolvida por plumante</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D29 de alta resiliência envolvida por plumante e mola zig zag</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -209,10 +209,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Chesterfield I</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 soft, sustentação por molas zig zag</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft de alta resiliência envolvida por manta plumante e sustentação por cinta elástica. As almofadas de assento são soltas</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div><div class="cat-specs__row"><dt>Largura</dt><dd>2,40m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>1,00m</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,80m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -230,10 +230,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Premium</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Almofadas de fibra siliconada e sustentação por molas zig zag</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Fibra</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft de alta resiliência e pillow com espuma D26 soft e sustentação por molas zig zag</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -251,10 +251,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Ibiza</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D30 soft de alta resiliência envolvida por manta de fibra siliconada</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D26 dura</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D30 soft de alta resiliência envolvida por manta de fibra siliconada. Acionamento elétrico, com sistema touch</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Aço</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 3,00m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>1,05m fechado / 1,55m aberto</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>1,05m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -272,10 +272,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Seul</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D25 soft de alta resiliência envolvida por plumante e sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 hr soft de alta resiliência envolvida por plumante e mola espiral</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>MDF</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 4,00m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>1,00m fechado / 1,40m aberto</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>1,00m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -293,10 +293,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Rubi</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D23 de alta resiliência envolvida por fibra siliconada e sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D23 soft de alta resiliência envolvida por tecnoform</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D32 de alta resiliência envolvida por plumante e mola zig zag</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>MDF</dd></div><div class="cat-specs__row"><dt>Largura</dt><dd>3,00m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>0,95m fechado / 1,60m aberto</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>1,00m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -314,10 +314,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Chesterfield II</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 soft envolvida por fibra, sustentação por molas zig zag</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft de alta resiliência envolvida por manta de plumante, sustentação por cinta elástica. As almofadas de assento são soltas</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 2,40m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>0,95m</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,80m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -335,10 +335,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Apgar</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Fibra siliconada com sustentação por cinta elástica</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 hr soft de alta resiliência envolvida por plumante e mola zig zag</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 2,25m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>0,95m</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,90m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -356,10 +356,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá California</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Fibra, com mecanismo de catraca com haste flexível em 4 estágios</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Braços</dt><dd>Espuma D26 dura</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft de alta resiliência envolvida por manta de fibra siliconada. Os assentos são retráteis</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira e rodízios em silicone</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 3,30m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>1,10m fechado / 1,45m aberto</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,90m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -394,10 +394,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Chesterfield X</h2>
               <p class="cat-card__tagline">Sofá · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Encosto</dt><dd>Espuma D26 soft, sustentação por molas zig zag</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>Madeira eucalipto de reflorestamento e chapa MDF</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Espuma D26 soft de alta resiliência envolvida por manta de plumante, sustentação por cinta elástica. As almofadas de assento são soltas</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>Madeira</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 2,30m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>0,95m</dd></div><div class="cat-specs__row"><dt>Altura</dt><dd>0,78m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -840,10 +840,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Oregon</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -861,10 +861,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Marche</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -882,10 +882,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Malta</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -903,10 +903,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Lille</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -924,10 +924,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Ideale</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -945,10 +945,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Eros</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -966,10 +966,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Brisa</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -987,10 +987,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Atlante</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1008,10 +1008,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Vigo</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1029,10 +1029,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Sparta</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1050,10 +1050,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de Cabeceira Roma</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1071,10 +1071,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cama Malta</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1092,10 +1092,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cama Estofada Lille</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1113,10 +1113,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cama Afrodite (Tecido)</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1134,10 +1134,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cama Afrodite (Tela)</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1155,10 +1155,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Penteadeira Lisboa</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1176,10 +1176,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cômoda Roma</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1197,10 +1197,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cômoda Lille</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1218,10 +1218,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cômoda Eros</h2>
               <p class="cat-card__tagline">Cód.Int.: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>1011</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1239,10 +1239,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Puffs Linha Shape</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Os módulos Shape criam ilhas colaborativas em qualquer espaço. Seja ele um escritório ou uma ár</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1260,10 +1260,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Puff Puffon</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Soluções criativas consistem em fazer conexões, estar aberto a novas ideias, correr riscos e ex</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1281,10 +1281,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Puffs Puff</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Os módulos Puff criam ilhas colaborativas em qualquer espaço. Seja ele um escritório ou uma áre</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1302,10 +1302,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Puff Levoo</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Levoo é multifuncional. Banco e porta objetos, é leve, fácil de transportar, divertido e possui</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>interna de corpo e tampo em madeira, com espuma laminada e possibilidade de revestimento em diversas opções de tecido. com altura de 389mm e diâmetro do tampo em 355mm.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1323,10 +1323,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Slider para Escritórios</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A visão sobre como serão os escritórios em um futuro próximo, vai muito além do que pensar apen</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1344,10 +1344,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesas Linha Pix</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Simples e alegre, a mesa Pix é composta por dois elementos que podem ser organizados livremente</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>tubular trapezoidal constituída por tubos interligados por um processo de solda, com quatro sapatas em polipropileno copolímero e pintura epox-pó.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1365,10 +1365,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Talk</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Talk foi concebida visando ampliar as possibilidades ergonômicas que uma mesa para escritório p</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1386,10 +1386,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Piano</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Inspirado na forma como os pianistas seguram suas partituras, daí o nome, a forma do produto se</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>dianteiros em madeira e pés posteriores em metal com pintura em mesma coloração do suporte.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1407,10 +1407,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Note</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Sendo um complemento perfeito para o seu escritório ou home office, a mesa Note proporciona uma</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1428,10 +1428,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Noa</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A CSM DECOR conta com um showroom completo de móveis corporativos com as linhas office, colabor</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1449,10 +1449,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesas Linha Flow</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Apresentando versatilidade, a linha de mesas Flow preenche as mais diversas exigências de ambie</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1470,10 +1470,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Bistrô</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A Mesa Bistrô é ideal para quem busca pela versatilidade. Foi desenvolvida para ocupar espaços </p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1491,10 +1491,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Estantes Linha Pix Modular</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Assim como a Estante Pix, a Pix Modular possuí modelos diferenciados para se adaptarem a cada a</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1512,10 +1512,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Estantes Linha Pix</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A Estante Pix permite modelos diferenciados de acordo com o ambiente, trazendo modernidade e ve</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1533,10 +1533,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofás Linha Pix</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 O sofá para escritório, Pix Modular traz uma tendência mundial de escritórios colaborativos. Am</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>trapezoidal em tubo de aço carbono de seção redonda, sendo as travessas estruturais do assento com o mesmo tubo, com pintura epox-pó com possibilidade em diversas cores.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1554,10 +1554,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofás Linha Noa</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Conforto e personalidade expresso em linhas orgânicas, a linha Noa é composta por sofás modular</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>e assento anatômicos, trabalhados em espuma de alta densidade e opção de revestimento em tecido a escolher.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>em quatro pés fixa em tubo de aço carbono de seção redonda, sendo as travessas estruturais do assento no mesmo tubo, com possibilidade de pintura epox-pó em diversas cores.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1575,10 +1575,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional UP</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Up! tem sua essência associada a dinâmica jovial, concepção que surpreende e traduz modernidade</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>e encosto disposto em monobloco, injetado em polipropileno, encosto com formato retangular, com oitocentos respiradores circulares, possibilitando, desse modo a perspiração, com altura de 270mm e largura de 450mm e com pouca conformação para facilitar alternância postural, com 455mm de largura e 405mm de profundidade.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>fixa em " v " invertido: tubo de aço carbono de seção cilíndrica, com diâmetro externo mínimo inicial de 25,4mm. o tubo passa por um processo de estampagem que afere um vinco em formato aproximado de " v", que implica em melhor acabamento e melhora no desempenho mecânico do produto, tal estrutura passa por tratamento de superfície por meio de tinta à pó, depositada através do processo eletrostático, passando por banho de desengraxe, estabilização e tratamento anti ferruginoso.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1596,10 +1596,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Satz</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Trazendo mais cores! A linha Satz é a nova solução para ambientes corporativos e coletivos. Sua</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>em polipropileno com aplicação de textura diferenciada e a possibilidade em diversas cores.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>em aço no formato de quatro pés permitindo o empilhamento de até seis cadeiras, com pintura epox-pó em diversas cores.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1617,10 +1617,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional New Iso</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A cadeira plástica New Iso conta com uma grande variedade de cores e modelos. Uma para cada tip</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>e encosto injetado em polipropileno 100% reciclável, encosto com medidas de 295x470x28 (altura x largura x espessura) e assento anatômico com medidas 470x430x31 (largura x profundidade x espessura).</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>fixa tipo 04 pés manufaturada em aço carbono tubular de seção oblonga com medidas mínimas de 16 x 30 x 1,2 mm, com travessas sob o assento em tubos de seção cilíndrica com medidas de 19,00 x 1,2 mm e suporte do encosto de 16 x 30 x 1,2 mm, a estrutura passa por tratamento de superfície por meio de pintura a pó, através do processo de deposição eletrostática, passando pelos processos de desengraxe.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1638,10 +1638,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Luna</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Luna é elegante e possui formas arredondadas, garantindo conforto em locais de alta rotatividad</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>e encosto injetados em polipropileno, 100% reciclável, assento de formato semicircular, no conceito mocho.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>fixa 04 pés, em tubo de aço carbono de secção circular, pintura a pó. não empilhável.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1659,10 +1659,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Longarina Leaf</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A versatilidade da linha Leaf continua sendo explorada agora em versão longarina. O projeto é 1</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>injetado em polipropileno, com espessura mínima de parede de 4,0, com largura mínima de 400 mm na região próxima do meio da peça (corte no sentido transversal), e no mínimo 300 mm na região superior do encosto. extensão vertical mínima do encosto de 300 mm, espaldar dotado de curvatura que proporciona correto apoio lombar para o usuário.</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>injetado em polipropileno, dotado de contracapa injetada no mesmo material, com superfície apresentando pouca conformação e borda frontal arredondada, apresentando os aspectos dimensionais mínimos de 430 mm de largura e profundidade no mínimo, 430 mm.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>em formato de "v" invertido ou similar, em material injetado, a base de nylon com fibra de vidro, provido de reforços estruturais internos tipo "x", provendo maior resistência mecânica à peça, com recorte para encaixe à viga e peça superior em chapa de aço para finalização da fixação por parafusos injetados na base. sistema de encaixe à viga, permitindo ajustes na posição de fixação dos assentos, sendo fixados à mesma através de parafusos e porcas. dotada de duas sapatas injetadas em resina.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1680,10 +1680,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Leaf</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Unindo o clássico ao moderno, a linha Leaf inova ao trazer versões que a deixam completa para d</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Descrição Técnica</dt><dd>Encosto injetado em polipropileno, com espessura mínima de parede de 4,0, com largura mínima de 400 mm na região próxima do meio da peça (corte no sentido transversal), e no mínimo 300 mm na região superior do encosto. extensão vertical mínima do encosto de 300 mm, espaldar dotado de curvatura que proporciona correto apoio lombar para o usuário.</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>injetado em polipropileno, dotado de contracapa injetada no mesmo material, com superfície apresentando pouca conformação e borda frontal arredondada, apresentando os aspectos dimensionais mínimos de 430 mm de largura e profundidade no mínimo, 430 mm.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>manufaturada em aço carbono tubular de seção cilíndrica, com diâmetro mínimo de 22,00 mm, com espessura de parede entre 1,90 e 2,25 mm, do tipo quatro pés, com tratamento de superfície por meio de pintura a pó, através do processo de deposição eletrostática, passando pelos processos de desengraxe. Estrutura da mesma cor que o assento e encosto.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1701,10 +1701,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Connect</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Dispondo de linhas e traços leves, a linha Connect é a solução versátil e prática de assentos p</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Descrição Técnica</dt><dd>Assento e encosto injetado em polipropileno. encosto independente do assento, com curvatura que permite maior conforto na região lombar, este encosto possui diversos orifícios que permite a troca térmica do usuário com o ambiente. assento com capa de proteção.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>fixa universitária, para prancheta fixa, em aço trefilado maciço de 11.11mm, com pintura eletrostática a pó, que permite maior durabilidade pois passa por um processo ant ferruginoso.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1722,10 +1722,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Linha Multifuncional Bit</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Bit expressa beleza e irreverência. A inspiração clássica está nas formas envolventes que remet</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Descrição Técnica</dt><dd>Assento e encosto independentes, injetados em polipropileno 100% reciclável, sendo que o encosto apresenta, apoio para que o usuário possa se apoiar no encosto mesmo em uma postura que permita apoio lateral ao encosto, utilizando-o como se fosse um apoio para os cotovelos e braços.</dd></div><div class="cat-specs__row"><dt>Estrutura</dt><dd>fixa empilhável, do tipo 04 pés manufaturada em tubo de aço carbono de secção circular, com diâmetro externo mínimo de 22,22 mm e espessura de parede de, no mínimo, 1,50 mm. apresenta tratamento de superfície por meio de pintura a pó.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1743,10 +1743,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltronas Linha Pix</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Compacta, versátil e com um design harmonioso, a poltrona para escritório PIX se mostra uma esc</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div><div class="cat-specs__row"><dt>Descrição Técnica</dt><dd>Rodízios em nylon com pista em pu, com roda de 66mm, anti risco e ideal para piso frio ou que precise de proteção.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1764,10 +1764,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltronas Linha Neo</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A poltrona para escritório Neo é uma adição acertada à linha colaborativa, com formas sutis e r</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1785,10 +1785,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras linha Secretária</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Buscando trazer a qualidade dos produtos em conjunto com a acessibilidade, a linha Secretária f</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1806,10 +1806,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras linha Presidente</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Buscando trazer a qualidade dos produtos em conjunto com a acessibilidade, a linha Presidente f</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1827,10 +1827,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras linha Executiva</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Buscando trazer a qualidade dos produtos em conjunto com a acessibilidade, a linha Executiva fo</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1848,10 +1848,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras linha Diretor</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Buscando trazer a qualidade em conjunto com a acessibilidade, a linha Diretor foi desenvolvida </p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1869,10 +1869,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Nexus</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Sendo o exemplo da essencialidade, a cadeira Nexus demonstra claramente que nada é deixado ao a</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1890,10 +1890,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Liss</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Tanto com seu encosto telado ou em polipropileno, a Liss é extremamente adaptável e versátil so</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1911,10 +1911,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Job</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A linha Job é a tradução de conforto e modernidade. Sua ampla linha possui a solução para ambie</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1932,10 +1932,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Goah</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Goah, a peça que faltava para completar seu ambiente. Goah é leve e descomplicada! Um produto 1</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1953,10 +1953,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Alles</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 A linha Alles é perfeita para tudo! Perfeita para o home, ideal para o Office. É inovadora porq</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1974,10 +1974,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Agile</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Agile é a combinação perfeita entre minimalismo e sofisticação. Seu amplo encosto em tela com a</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -1995,10 +1995,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Addit</h2>
               <p class="cat-card__tagline">Cód.Int.:91702 Uma nova proposta em cadeira operativa, a Addit traz um moderno e amplo encosto em tela de linh</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cód.Int.</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2016,10 +2016,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeiras Linha Acto</h2>
               <p class="cat-card__tagline">Cod.Int: 91702 Sendo a tradução de conforto e modernidade, é uma declaração de estilo: sua diversidade a torna</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Cod.Int</dt><dd>91702</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2071,10 +2071,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa Centro/Lateral MANU</h2>
               <p class="cat-card__tagline">Cód.Int.: 51441</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Mesa Centro Manu</dt><dd>Amêndoa, Amêndoa Fosco, Noce, Noce fosco e Ônix.</dd></div><div class="cat-specs__row"><dt>Mesa Centro Manu Teca</dt><dd>Natural e Natural Fosco.</dd></div><div class="cat-specs__row"><dt>Mesa Lateral Manu</dt><dd>Apenas no Metal nas cores: Champagne, Dourado e Preto Fosco.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2143,10 +2143,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltrona NAZCA</h2>
               <p class="cat-card__tagline">Cód.Int.: 62198</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>. Madeira de eucalipto reflorestável</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>. Fixo / Percintas elásticas / Espuma D-28 / Manta Siliconada</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>. Fixo / Percintas elásticas / Espuma D-23 Soft / Manta Siliconada</dd></div><div class="cat-specs__row"><dt>Pés</dt><dd>. Fixos</dd></div><div class="cat-specs__row"><dt>Alt. do assento ao piso</dt><dd>0,46m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2164,10 +2164,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltrona ATENA</h2>
               <p class="cat-card__tagline">Cód.Int.: 62198</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>. Madeira de eucalipto reflorestável</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>. Fixo / Percintas elásticas / Espuma D-28 / Manta Siliconada</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>. Almofada solta de fibra Siliconada.</dd></div><div class="cat-specs__row"><dt>Base</dt><dd>. Fixa / Madeira de eucalipto ou aço carbono.</dd></div><div class="cat-specs__row"><dt>Alt. do assento ao piso</dt><dd>0,44m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2185,10 +2185,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltrona SHELL</h2>
               <p class="cat-card__tagline">Cód. Int. 62198</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>. Madeira de eucalipto reflorestável /Anatômico multilaminado.</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>. Fixo / Percintas elásticas / Espuma D-28 / Manta Siliconada</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>. Almofada solta de fibra Siliconada.</dd></div><div class="cat-specs__row"><dt>Base</dt><dd>. Fixa / Madeira de eucalipto reflorestável.</dd></div><div class="cat-specs__row"><dt>Alt. do assento ao piso</dt><dd>0,44m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2478,10 +2478,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Puff ITALIA</h2>
               <p class="cat-card__tagline">Cód. Interno: 1011</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>L120 x A43 x P46 cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2584,10 +2584,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá cama Planno</h2>
               <p class="cat-card__tagline">Cód. Interno: 18</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>LARGURA</dt><dd>1,74m</dd></div><div class="cat-specs__row"><dt>ALTURA</dt><dd>0,85m</dd></div><div class="cat-specs__row"><dt>PRODUNDIDADE</dt><dd>0,98m</dd></div><div class="cat-specs__row"><dt>PFROFUNDIDADE ABERTO</dt><dd>1,30m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2605,10 +2605,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Cama Fit</h2>
               <p class="cat-card__tagline">Cód. Interno: 18</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>LAGURA</dt><dd>1,62m</dd></div><div class="cat-specs__row"><dt>ALTURA</dt><dd>0,83m</dd></div><div class="cat-specs__row"><dt>PROFUNDIDADE</dt><dd>0,97m</dd></div><div class="cat-specs__row"><dt>PROFUNDIDADE ABERTO</dt><dd>1,92m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2626,10 +2626,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá cama Orlando</h2>
               <p class="cat-card__tagline">Cód. Interno: 18</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>LARGURA</dt><dd>2,17m</dd></div><div class="cat-specs__row"><dt>ALTURA</dt><dd>0,81m</dd></div><div class="cat-specs__row"><dt>PRODUNDIDADE</dt><dd>0,81m</dd></div><div class="cat-specs__row"><dt>PFROFUNDIDADE ABERTO</dt><dd>1,34m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2647,10 +2647,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá cama Daybed</h2>
               <p class="cat-card__tagline">Cód. Interno: 18</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>LARGURA</dt><dd>1,70m</dd></div><div class="cat-specs__row"><dt>ALTURA</dt><dd>0,90m</dd></div><div class="cat-specs__row"><dt>PRODUNDIDADE</dt><dd>1,06m</dd></div><div class="cat-specs__row"><dt>PFROFUNDIDADE ABERTO</dt><dd>1,30m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2838,10 +2838,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá VERSALES</h2>
               <p class="cat-card__tagline">Cód. Interno 87108</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Madeira de Estrutura</dt><dd>Madeira de reflorestamento, eucalipto 100% aparelhada e estufada com humidade controlada, por estufa.</dd></div><div class="cat-specs__row"><dt>Montagem da Estrutura</dt><dd>Nas junções das madeiras são utilizados grampos não oxidantes para manter a estrutura firme e resistente.</dd></div><div class="cat-specs__row"><dt>Espumas</dt><dd>Certificadas de acordo com a norma ISO 9001:2000, sem CFC (cloro-flúor-carbono): não prejudica a camada de Ozônio.</dd></div><div class="cat-specs__row"><dt>Sistema de Conforto</dt><dd>Molas Bonnel trançadas com percinta italiana 60mm.</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>Fixo com espuma D-28 Soft com manta acrílica 180gm.</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>Almofadas soltas com fibra siliconizada.</dd></div><div class="cat-specs__row"><dt>Almofadas</dt><dd>Com bordas.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2859,10 +2859,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Home HEITOR</h2>
               <p class="cat-card__tagline">Cód. Interno: 86874</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Foto</dt><dd>Cinamomo Natural c/ Branco Brilho</dd></div><div class="cat-specs__row"><dt>Detalhes padrão</dt><dd>Caixa com gaveta</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2880,10 +2880,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Home ZARA</h2>
               <p class="cat-card__tagline">Cód. Interno: 86874</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Foto</dt><dd>Off white brilho com detalhes cinamomo natural</dd></div><div class="cat-specs__row"><dt>*Detalhe padrão</dt><dd>Frente gaveta e painel lateral</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2901,10 +2901,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Rack LAIS</h2>
               <p class="cat-card__tagline">Cód. Interno: 86874</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Foto</dt><dd>Cinamomo natural</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2922,10 +2922,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Home ELEGANCE</h2>
               <p class="cat-card__tagline">Cód. Interno: 86874</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Foto</dt><dd>Branco fosco com detalhes em fendi brilho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2943,10 +2943,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Home RENOVARE</h2>
               <p class="cat-card__tagline">Cód. Interno: 86874</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Detalhe padrão</dt><dd>Lateral painel, caixa de gavetas e frentes das gavetas</dd></div><div class="cat-specs__row"><dt>Foto</dt><dd>Branco brilho com detalhes gavetas em fendi fosco e painel com vidro mármore carrara</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2964,10 +2964,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Carrinho bar AMSTERDAM</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>s na foto: damasco e dourado brilhante.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -2985,10 +2985,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Carrinho bar RENÊ</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>s nas fotos: preto fosco e damasco</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3006,10 +3006,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Aparador CHEVRON</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>nas fotos: mel.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3027,10 +3027,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Aparador DUO</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>s nas fotos: off white e grafite</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3048,10 +3048,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Espelho BOLD</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>s na foto: mel e preto fosco</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3069,10 +3069,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Espelho JABUTI</h2>
               <p class="cat-card__tagline">Cód. Interno: 84365</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>nas fotos: acril prata.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3243,10 +3243,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa jantar CONE</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Base</dt><dd>de mesa com tampo de madeira</dd></div><div class="cat-specs__row"><dt>Base</dt><dd>de mesa com vidro laqueado encaixado</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3417,10 +3417,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Espelho URCA</h2>
               <p class="cat-card__tagline">Design assinado por Paulo Sartori Cód. Interno – 1098</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Acabamento</dt><dd>s: Nogueira, Carvalho ou Laca.</dd></div><div class="cat-specs__row"><dt>Personalize</dt><dd>Consulte opções de cores e medidas.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3540,10 +3540,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltrona LIBRE</h2>
               <p class="cat-card__tagline">Designer: Samuca Gerber Cód. Interno: 54632</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Personalize seu móvel</dt><dd>VÁRIAS OPÇÕES DE CORES, CONSULTE UMA DE NOSSAS CONSULTORAS.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3561,10 +3561,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Poltrona BLAUSEE</h2>
               <p class="cat-card__tagline">Designer: Samuca Gerber Cód. Interno: 54632</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Personalize seu móvel</dt><dd>VÁRIAS OPÇÕES DE CORES, CONSULTE UMA DE NOSSAS CONSULTORAS.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3599,10 +3599,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeira GODAN</h2>
               <p class="cat-card__tagline">Cód. Interno: 813</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>0,48X0,59X0,85cm (largura X profundidade X altura)</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3620,10 +3620,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Cadeira BEBEL</h2>
               <p class="cat-card__tagline">Cód. Interno: 813</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>0,48X0,59X0,85cm (largura X profundidade X altura)</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3709,10 +3709,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa retangular Bolero</h2>
               <p class="cat-card__tagline">Cód. Interno – 1098 Designer Paulo Sartori Mesa de jantar Bolero apresenta design futurista e arrojado com cur</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Base</dt><dd>MDF microtextura, laca brilho ou lâmina de carvalho, nogueira</dd></div><div class="cat-specs__row"><dt>Tampo</dt><dd>MDF microtextura, laca brilho ou lâmina de carvalho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3798,10 +3798,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Fine</h2>
               <p class="cat-card__tagline">O Sofá Fine trabalhado em um assento baixo e fixo, traz como características um linho ecológico bege claro e p</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Altura</dt><dd>0,80 m</dd></div><div class="cat-specs__row"><dt>Largura</dt><dd>2,83 m</dd></div><div class="cat-specs__row"><dt>Profundidade</dt><dd>0,99 m</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3819,10 +3819,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá Lux</h2>
               <p class="cat-card__tagline">ESTRUTURA Estrutura possui base fixa em MDF e madeira de eucalipto reflorestada. ACABAMENTOS DESTE PRODUTO: Ac</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>possui base fixa em MDF e madeira de eucalipto reflorestada.</dd></div><div class="cat-specs__row"><dt>Acabamento</dt><dd>em linho cinza de alta qualidade.</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3857,10 +3857,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá 4203 fixo</h2>
               <p class="cat-card__tagline">Estrutura; em madeira de eucalipto de reflorestamento Assentos; possui percintas elásticas e espuma soft envol</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>; em madeira de eucalipto de reflorestamento</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>s; possui percintas elásticas e espuma soft envolta por uma manta de espuma ecosoft</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>; larg.2.00 prof.0.87 alt. 0.85</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>; larg. 2.46 prof. 0.87 alt. 0.85</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -3878,10 +3878,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Sofá 4209 fixo</h2>
               <p class="cat-card__tagline">Estrutura; em madeira de eucalipto de reflorestamento Assentos; possui assentos com percintas elásticas e espu</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Estrutura</dt><dd>; em madeira de eucalipto de reflorestamento</dd></div><div class="cat-specs__row"><dt>Assento</dt><dd>s; possui assentos com percintas elásticas e espuma de alta densidade envolta com manta de espuma ecosoft</dd></div><div class="cat-specs__row"><dt>Encosto</dt><dd>s; composto por almofadas fixas preenchidas com fibra poliéster, agregando-lhe conforto e um visual aconchegante</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4035,10 +4035,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Metade de Barril 4001-P E 4001-G</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Mdf</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>4100-P Altura: 35cm, Largura:17cm, Profundidade: 12,5cm4100-G  Altura: 51cm, Largura:38cm, Profundidade: 18cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4056,10 +4056,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Quadro TAMPA DE BARRIL</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>4131-P Diâmetro: 38cm Profundidade: 2cm</dd></div><div class="cat-specs__row"><dt>4131-M Diâmetro</dt><dd>48cm Profundidade: 3cm</dd></div><div class="cat-specs__row"><dt>4131-G  Diâmetro</dt><dd>70cm Profundidade: 3cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4077,10 +4077,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Pufe SOMMELIER 1051</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 30 cm x Altura: 47 cm x Profundidade: 30 cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4098,10 +4098,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mocho CANOA 4122</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 46cm x Largura: 53cm x Profundidade: 37cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4119,10 +4119,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mocho BOLICHE 2115</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 45cm x Largura: 33cm x Profundidade: 33cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4140,10 +4140,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mocho BISTRO 1689</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 46cm x Diâmetro: 32cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4161,10 +4161,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mocho GAIOLA 4117</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 54cm x Largura: 39cm x Profundidade: 39cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4182,10 +4182,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mocho PUB 2113</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 45cm x Largura: 39cm x Profundidade: 31cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4203,10 +4203,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar boteco 1597</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Estrutura e madeira maciça e tampo em painel laminado.</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro: 70cm x Altura: 105cm – REF. 1597</dd></div><div class="cat-specs__row"><dt>Diâmetro</dt><dd>70cm x Altura: 80cm – REF. 1597-A</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4224,10 +4224,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar boteco 1597-E</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Estrutura e madeira maciça e tampo em painel laminado.</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro: 70cm x Altura: 105cm – REF. 1597</dd></div><div class="cat-specs__row"><dt>Diâmetro</dt><dd>70cm x Altura: 80cm – REF. 1597-AE</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4245,10 +4245,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar boteco 1597-AE</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Estrutura e madeira maciça e tampo em painel laminado.</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro: 70cm x Altura: 105cm – REF. 1597</dd></div><div class="cat-specs__row"><dt>Diâmetro</dt><dd>70cm x Altura: 80cm – REF. 1597-AE</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4266,10 +4266,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar boteco QUADRADA 2119-AE</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Estrutura em madeira maciça e tampo em painel laminado com bordas maciças desgastadas.</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro: 70cm x Altura: 80cm – REF. 1597-A</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4287,10 +4287,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar boteco 1597-A</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Estrutura e madeira maciça e tampo em painel laminado.</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro: 70cm x Altura: 105cm – REF. 1597Diâmetro: 70cm x Altura: 80cm – REF. 1597-A</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4308,10 +4308,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar BISTRO 1699</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro 70cm x altura 105cm</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier com gravação rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4329,10 +4329,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Mesa de bar 116 &#8211; 1571</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Diâmetro 70cm x altura 105cm REF.1571Diâmetro 70cm x altura 80cm REF.1571-A</dd></div><div class="cat-specs__row"><dt>Opções</dt><dd>Lisa ou Sommelier de rótulo de Whisky, Cerveja ou Vinho</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4350,10 +4350,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banqueta boteco 05 &#8211; 1593</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 38cm x Altura: 102cm x Profundidade: 44cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4405,10 +4405,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banqueta INDIA 4107</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 101,5cm x Largura: 55cm Profundidade: 47,5cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4426,10 +4426,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banqueta PUB 2 &#8211; 4111</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Madeira maciça e mdf</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 100cm x Largura: 50cm Profundidade: 52cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4447,10 +4447,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banqueta ANATOMICA C/ ENCOSTO 4140</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Madeira Maciça/Metal</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 98cm x Altura: 46,5m x Profundidade: 56cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4468,10 +4468,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banqueta NINFA 1592</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 43cm x Altura: 94cm x Profundidade: 47cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4489,10 +4489,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco ANATOMICO ARAMADO 4112</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Material</dt><dd>Madeira Maciça/Metal</dd></div><div class="cat-specs__row"><dt>Medidas</dt><dd>Largura: 74cm x Altura: 46,5m x Profundidade: 50cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4510,10 +4510,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco CANOA 4121</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 79cm x Largura: 42cm Profundidade: 38cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4531,10 +4531,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco BOLICHE 2114</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 75cm x Largura: 33cm Profundidade: 33cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4552,10 +4552,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco BISTRO 1688</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 78cm x Diâmetro: 32cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4573,10 +4573,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco PUB ARAMADO 4138</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 97,5cm x Largura: 37cm Profundidade: 47cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4594,10 +4594,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco PUB COM ENCOSTO 2112</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 98cm x Largura: 40cm Profundidade: 40cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4615,10 +4615,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Banco PUB 2001</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 75cm x Largura: 40cm Profundidade: 40cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4636,10 +4636,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Adega PÉ PALITO 2062</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 70cm x Largura: 69cm x Profundidade: 35cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4657,10 +4657,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Adega MODULAR 6 GARRAFAS 1650</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 25cm x Largura: 35cm x Profundidade:33cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4678,10 +4678,10 @@
             <div class="cat-card__body">
               <h2 class="cat-card__name">Adega MODULAR 12 GARRAFAS 1651</h2>
               <p class="cat-card__tagline">Área Gourmet · Design exclusivo · Alto padrão</p>
-              <details class="cat-specs">
-                <summary class="cat-specs__toggle">Especificações técnicas</summary>
+              <div class="cat-specs">
+                <button type="button" class="cat-specs__toggle" onclick="toggleCatSpecs(this)">Especificações técnicas</button>
                 <dl class="cat-specs__list"><div class="cat-specs__row"><dt>Medidas</dt><dd>Altura: 25cm x Largura: 67cm x Profundidade:33cm</dd></div></dl>
-              </details>
+              </div>
               <button type="button" class="btn btn--primary btn--sm cat-card__cta"
                 onclick="openProductModal(this.closest('.cat-card'))">
                 Ver Produto
@@ -4942,6 +4942,10 @@
             Ver página completa
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
           </a>
+          <button type="button" id="modal-fav-btn" class="btn btn--outline modal__cta modal__fav-btn" style="margin-top:.5rem;justify-content:center;gap:.55rem;">
+            <svg id="modal-fav-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span id="modal-fav-label">Favoritar</span>
+          </button>
         </div>
       </div>
     </div>
@@ -5122,12 +5126,11 @@
       try {
         var specs = JSON.parse(card.dataset.specs || '[]');
         if (specs.length) {
-          var dl = document.createElement('dl'); dl.className='cat-specs__list';
+          var dl = document.createElement('dl'); dl.className = 'modal-spec-list';
           specs.forEach(function(s){
-            var row=document.createElement('div'); row.className='cat-specs__row';
-            var dt=document.createElement('dt'); dt.textContent=s.key;
-            var dd=document.createElement('dd'); dd.textContent=s.val;
-            row.appendChild(dt); row.appendChild(dd); dl.appendChild(row);
+            var dt = document.createElement('dt'); dt.textContent = s.key;
+            var dd = document.createElement('dd'); dd.textContent = s.val;
+            dl.appendChild(dt); dl.appendChild(dd);
           });
           specsEl.appendChild(dl);
         }
@@ -5136,7 +5139,126 @@
     var _b3=document.getElementById('cat-modal-3d-btn'); var _w3=document.getElementById('cat-modal-3d'); var _m3=document.getElementById('cat-modal-mv'); if(_w3){_w3.hidden=true;} if(_m3){_m3.removeAttribute('src');} if(_b3){var _g=card.dataset.glb||''; _b3.dataset.glb=_g; _b3.hidden=!_g; _b3.classList.remove('is-open'); _b3.innerHTML='<svg width=\'13\' height=\'13\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\'/></svg> Ver em 3D';}
     try { localStorage.setItem('csm-produto-current', JSON.stringify({ id: card.dataset.id||'', name: name, badge: badge?badge.textContent:'', tipo: card.dataset.tipo||'', tagline: tag, imgs: JSON.parse(card.dataset.imgs||'[]'), wpp: wpp||'', glb: card.dataset.glb||'' })); } catch(_) {}
     var _dl = document.getElementById('modal-detail-link'); if (_dl) _dl.href = card.dataset.id ? 'produto.html?id=' + card.dataset.id : 'produto.html';
+
+    // ── Favoritar button ──
+    var _favBtn   = document.getElementById('modal-fav-btn');
+    var _favLabel = document.getElementById('modal-fav-label');
+    if (_favBtn) {
+      var _mName = name;
+      var _mImg  = imgs[0] || (img ? img.src : '');
+      var _mTipo = card.dataset.tipo || '';
+
+      function _setFavState(isSaved) {
+        _favBtn.classList.toggle('is-saved', isSaved);
+        if (_favLabel) _favLabel.textContent = isSaved ? 'Favoritado ✓' : 'Favoritar';
+      }
+
+      var _mb = window._csmMB;
+      _setFavState(_mb ? _mb.saved.some(function(s){ return s.name === _mName; }) : false);
+
+      if (_favBtn._favHandler) _favBtn.removeEventListener('click', _favBtn._favHandler);
+      _favBtn._favHandler = function() {
+        var mb = window._csmMB; if (!mb) return;
+        var idx = mb.saved.findIndex(function(s){ return s.name === _mName; });
+        if (idx > -1) {
+          mb.saved.splice(idx, 1);
+        } else {
+          mb.saved.push({ name: _mName, img: _mImg, tipo: _mTipo });
+        }
+        try { localStorage.setItem('csm-moodboard', JSON.stringify(mb.saved)); } catch(_){}
+        mb.updateBadge();
+        var nowSaved = mb.saved.some(function(s){ return s.name === _mName; });
+        _setFavState(nowSaved);
+        /* sync card bookmark button */
+        document.querySelectorAll('.cat-card').forEach(function(c) {
+          var cnm = c.querySelector('.cat-card__name');
+          if (!cnm || cnm.textContent.trim() !== _mName) return;
+          var csb = c.querySelector('.cat-card__save');
+          if (!csb) return;
+          csb.classList.toggle('is-saved', nowSaved);
+          csb.setAttribute('aria-pressed', nowSaved ? 'true' : 'false');
+        });
+      };
+      _favBtn.addEventListener('click', _favBtn._favHandler);
+    }
+
     openModal('modal-produto');
+  }
+
+  // ── Accordion exclusivo com animação ─────────────────────────
+  (function () {
+    // Envolve cada .cat-specs__list em .cat-specs__body para animação
+    document.querySelectorAll('.cat-specs').forEach(function (specs) {
+      var list = specs.querySelector('.cat-specs__list');
+      if (!list || list.parentElement.classList.contains('cat-specs__body')) return;
+      var body = document.createElement('div');
+      body.className = 'cat-specs__body';
+      list.parentNode.insertBefore(body, list);
+      body.appendChild(list);
+    });
+  }());
+
+  function openCatSpecs(specs) {
+    var body = specs.querySelector('.cat-specs__body');
+    var rows = specs.querySelectorAll('.cat-specs__row');
+    if (!body) return;
+
+    // Reseta estado das linhas
+    rows.forEach(function (row) {
+      row.style.transition = 'none';
+      row.style.opacity = '0';
+      row.style.transform = 'translateY(7px)';
+      row.style.transitionDelay = '0ms';
+    });
+
+    specs.classList.add('is-open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+
+    // Stagger: cada linha aparece conforme o campo vai descendo
+    rows.forEach(function (row, i) {
+      setTimeout(function () {
+        row.style.transition = 'opacity 0.30s ease, transform 0.30s ease';
+        row.style.opacity = '1';
+        row.style.transform = 'none';
+      }, 45 + i * 55);
+    });
+  }
+
+  function closeCatSpecs(specs) {
+    var body = specs.querySelector('.cat-specs__body');
+    var rows = specs.querySelectorAll('.cat-specs__row');
+    if (!body) return;
+
+    // Fade out rápido nas linhas
+    rows.forEach(function (row, i) {
+      row.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+      row.style.transitionDelay = i * 15 + 'ms';
+      row.style.opacity = '0';
+      row.style.transform = 'translateY(4px)';
+    });
+
+    // Recolhe o body após fade
+    setTimeout(function () {
+      body.style.maxHeight = '0';
+      specs.classList.remove('is-open');
+    }, 70);
+  }
+
+  function toggleCatSpecs(btn) {
+    var specs = btn.closest('.cat-specs');
+    if (!specs) return;
+    var isOpen = specs.classList.contains('is-open');
+
+    // Fecha todos os outros
+    document.querySelectorAll('.cat-specs.is-open').forEach(function (other) {
+      if (other !== specs) closeCatSpecs(other);
+    });
+
+    if (isOpen) {
+      closeCatSpecs(specs);
+    } else {
+      openCatSpecs(specs);
+    }
   }
 
   var activeFilter = 'all';
@@ -5187,6 +5309,7 @@
     });
     var mb=document.getElementById('moodboard-header-btn');
     if(mb) mb.addEventListener('click',function(){window.location.href='moodboard.html';});
+    window._csmMB = { saved: saved, updateBadge: updateBadge };
   }());
 
   (function(){
@@ -5202,6 +5325,131 @@
   if(sb) sb.addEventListener('click',function(){window.location.href='index.html';});
 
   var an=document.getElementById('ano'); if(an) an.textContent=new Date().getFullYear();
+  </script>
+
+  <!-- ── Accordion de especificações: exclusivo + animação ── -->
+  <script>
+  (function () {
+    var EASE = 'cubic-bezier(.4,0,.2,1)';
+
+    document.querySelectorAll('details.cat-specs').forEach(function (det) {
+      var list    = det.querySelector('.cat-specs__list');
+      var summary = det.querySelector('.cat-specs__toggle');
+      if (!list || !summary) return;
+
+      /*
+       * Inserimos um wrapper <div class="cat-specs__panel"> entre <details> e o <dl>.
+       * Motivo: a UA stylesheet do browser aplica display:none em filhos diretos de
+       * details:not([open]).  Colocando o <dl> dentro de um <div> com display:block
+       * (inline style — maior especificidade), ele fica sempre no fluxo e podemos
+       * controlar a visibilidade exclusivamente via max-height/overflow no wrapper.
+       */
+      var panel = document.createElement('div');
+      list.parentNode.insertBefore(panel, list);
+      panel.appendChild(list);
+      panel.style.cssText = 'display:block;overflow:hidden;max-height:0;transition:none;';
+
+      var isOpen = false;
+
+      /* fecha sem animação — usado na inicialização e para fechar os outros */
+      function forceClose() {
+        isOpen = false;
+        det.removeAttribute('open');
+        panel.style.transition = 'none';
+        panel.style.maxHeight  = '0';
+        var rows = list.querySelectorAll('.cat-specs__row');
+        rows.forEach(function (r) {
+          r.style.transition = 'none';
+          r.style.opacity    = '0';
+          r.style.transform  = '';
+        });
+      }
+
+      /* abre com slide-down + fade escalonado por linha */
+      function openPanel() {
+        if (isOpen) return;
+        isOpen = true;
+        det.setAttribute('open', '');
+
+        var rows = list.querySelectorAll('.cat-specs__row');
+        rows.forEach(function (r) {
+          r.style.transition = 'none';
+          r.style.opacity    = '0';
+          r.style.transform  = 'translateY(10px)';
+        });
+
+        /* mede altura real: maxHeight:none → lê scrollHeight → volta a 0 → reflow */
+        panel.style.transition = 'none';
+        panel.style.maxHeight  = 'none';
+        var h = panel.scrollHeight;
+        panel.style.maxHeight  = '0';
+        void panel.offsetHeight; /* força reflow */
+
+        /* dispara animações */
+        panel.style.transition = 'max-height .44s ' + EASE;
+        panel.style.maxHeight  = h + 'px';
+
+        rows.forEach(function (r, i) {
+          var d = (0.07 + i * 0.08).toFixed(2) + 's';
+          r.style.transition = 'opacity .32s ease ' + d + ',transform .32s ease ' + d;
+          r.style.opacity    = '1';
+          r.style.transform  = 'none';
+        });
+
+        panel.addEventListener('transitionend', function onDone(ev) {
+          if (ev.propertyName !== 'max-height') return;
+          panel.removeEventListener('transitionend', onDone);
+          panel.style.maxHeight  = 'none';
+          panel.style.transition = '';
+        });
+      }
+
+      /* fecha com slide-up + fade-out */
+      function closePanel() {
+        if (!isOpen) return;
+        isOpen = false;
+
+        var rows = list.querySelectorAll('.cat-specs__row');
+        var curH  = panel.scrollHeight;
+
+        panel.style.transition = 'none';
+        panel.style.maxHeight  = curH + 'px';
+        void panel.offsetHeight;
+
+        rows.forEach(function (r) {
+          r.style.transition = 'opacity .18s ease';
+          r.style.opacity    = '0';
+        });
+        panel.style.transition = 'max-height .34s ' + EASE;
+        panel.style.maxHeight  = '0';
+
+        panel.addEventListener('transitionend', function onDone(ev) {
+          if (ev.propertyName !== 'max-height') return;
+          panel.removeEventListener('transitionend', onDone);
+          det.removeAttribute('open');
+          panel.style.transition = '';
+        });
+      }
+
+      /* inicializa fechado */
+      forceClose();
+
+      /* expõe close para o loop de exclusividade */
+      det._specClose = forceClose;
+
+      summary.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (isOpen) {
+          closePanel();
+        } else {
+          document.querySelectorAll('details.cat-specs').forEach(function (o) {
+            if (o !== det && o._specClose) o._specClose();
+          });
+          openPanel();
+        }
+      });
+    });
+  }());
   </script>
 
   <script>
